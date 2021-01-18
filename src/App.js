@@ -17,10 +17,14 @@ class App extends Component {
     };
   };
 
+  handleSearch = (event) => {
+    console.log(event.target.value);
+  };
+
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar searchHandler={this.handleSearch} />
         <LargeCharacter char={this.state.char} />
       </div>
     );
