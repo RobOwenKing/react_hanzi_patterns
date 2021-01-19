@@ -5,20 +5,22 @@ import { Component } from 'react';
 import SearchBar from './components/search_bar.jsx';
 import LargeCharacter from './components/large_character.jsx';
 
-var data = require('../src/data/test.json');
-console.log(data);
+// const data = require('../src/data/test.json');
+const data = require('../src/data/dictionary.json');
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      char: "也"
-    };
+    this.state = {};
   };
 
-  handleSearch = (event) => {
-    console.log(event.target.value);
+  handleSearch = (searchTerm) => {
+    if (searchTerm.length === 1) {
+      if (data.some(element => element.character === searchTerm)) {
+        this.setState({ char: searchTerm });
+      }
+    }
   };
 
   render() {
