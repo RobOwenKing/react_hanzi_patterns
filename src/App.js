@@ -17,8 +17,9 @@ class App extends Component {
 
   handleSearch = (searchTerm) => {
     if (searchTerm.length === 1) {
-      if (data.some(element => element.character === searchTerm)) {
-        this.setState({ char: searchTerm });
+      const charData = data.find(element => element.character === searchTerm);
+      if (charData) {
+        this.setState({ charData: charData });
       }
     }
   };
@@ -27,7 +28,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar searchHandler={this.handleSearch} />
-        <LargeCharacter char={this.state.char} />
+        {this.state.charData && <LargeCharacter charData={this.state.charData} />}
       </div>
     );
   }
