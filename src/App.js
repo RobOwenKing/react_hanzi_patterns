@@ -3,7 +3,7 @@ import './App.css';
 import { Component } from 'react';
 
 import SearchBar from './components/search_bar.jsx';
-import LargeCharacter from './components/large_character.jsx';
+import CharacterDetails from './components/character_details.jsx';
 
 // const data = require('../src/data/test.json');
 const data = require('../src/data/dictionary.json');
@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar searchHandler={this.handleSearch} />
-        {this.state.charData && <LargeCharacter charData={this.state.charData} />}
+        {this.state.charData && <CharacterDetails charData={this.state.charData} />}
       </div>
     );
   }
