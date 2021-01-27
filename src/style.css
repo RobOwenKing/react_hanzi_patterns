@@ -1,0 +1,12 @@
+.container {
+  margin: 32px;
+}
+
+input {
+  font-size: 1.6em;
+  margin: 0px auto;
+}
+
+.char-large {
+  font-size: 5em;
+}

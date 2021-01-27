@@ -1,5 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
+import './style.css';
+
 import { Component } from 'react';
 
 import SearchBar from './components/search_bar.jsx';
@@ -26,7 +27,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div class="container">
         <SearchBar searchHandler={this.handleSearch} />
         {this.state.charData && <CharacterDetails charData={this.state.charData} />}
       </div>
