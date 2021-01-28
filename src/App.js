@@ -27,8 +27,11 @@ class App extends Component {
 
   render() {
     return (
-      <div class="container">
-        <SearchBar searchHandler={this.handleSearch} />
+      <div className="container">
+        <div className="top">
+          <h1>Patterns in the Hanzi</h1>
+          <SearchBar searchHandler={this.handleSearch} />
+        </div>
         {this.state.charData && <CharacterDetails charData={this.state.charData} />}
       </div>
     );

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class LargeCharacter extends Component {
   render() {
     return (
-      <span class="char-large">{this.props.charData.character}</span>
+      <span className="char-large" style={{fontFamily: this.props.style}}>{this.props.charData.character}</span>
     );
   }
 }
