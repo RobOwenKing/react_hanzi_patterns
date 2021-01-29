@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import LargeCharacter from './large_character.jsx';
 
 const FONTFAMILIES = {
-  'heiti': "STHeiti, 华文黑体, 'Microsoft YaHei', 微软雅黑, SimHei, 黑体",
-  'songti': "SimSun, 宋体, 'Zhongyi Songti', 中易宋体"
+  'heiti': "STHeiti, 华文黑体, 'Microsoft YaHei', 微软雅黑, SimHei, 黑体, sans-serif",
+  'songti': "SimSun, 宋体, 'Zhongyi Songti', 中易宋体, serif"
 };
 
 class CharacterDetails extends Component {

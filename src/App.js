@@ -9,6 +9,10 @@ import CharacterDetails from './components/character_details.jsx';
 // const data = require('../src/data/test.json');
 const data = require('../src/data/dictionary.json');
 
+// Using HanziJS from https://github.com/nieldlr/hanzi under MIT license
+var hanzi = require("hanzi");
+hanzi.start();
+
 class App extends Component {
   constructor(props) {
     super(props);
