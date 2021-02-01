@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import LargeCharacter from './large_character.jsx';
 
+import { pinyinify } from '../helpers/pinyinify.js';
+
 const FONTFAMILIES = {
   'heiti': "STHeiti, 华文黑体, 'Microsoft YaHei', 微软雅黑, SimHei, 黑体, sans-serif",
   'songti': "SimSun, 宋体, 'Zhongyi Songti', 中易宋体, serif"
@@ -20,7 +22,9 @@ class CharacterDetails extends Component {
   formattedDefinition() {
     return (
       this.props.charDefn.map((element) => {
-        return <li>{element.pinyin} - {element.definition}</li>
+        return (
+            <p>{pinyinify(element.pinyin)} - {element.definition}</p>
+          )
       })
     )
   }
@@ -30,7 +34,7 @@ class CharacterDetails extends Component {
       <div>
         <LargeCharacter style={FONTFAMILIES.heiti} charData={this.props.charData} />
         <LargeCharacter style={FONTFAMILIES.songti} charData={this.props.charData} />
-        {this.props.charDefn && <ul>{this.formattedDefinition()}</ul>}
+        {this.props.charDefn && this.formattedDefinition()}
         {this.props.charData.etymology && <p>{this.formattedEtymology()}</p>}
       </div>
     );
