@@ -17,14 +17,20 @@ class CharacterDetails extends Component {
     }
   };
 
+  formattedDefinition() {
+    return (
+      this.props.charDefn.map((element) => {
+        return <li>{element.pinyin} - {element.definition}</li>
+      })
+    )
+  }
+
   render() {
     return (
       <div>
         <LargeCharacter style={FONTFAMILIES.heiti} charData={this.props.charData} />
         <LargeCharacter style={FONTFAMILIES.songti} charData={this.props.charData} />
-        {this.props.charData.pinyin
-            && <p>{this.props.charData.pinyin.join(', ')}</p>}
-        {this.props.charData.definition && <p>{this.props.charData.definition}</p>}
+        {this.props.charDefn && <ul>{this.formattedDefinition()}</ul>}
         {this.props.charData.etymology && <p>{this.formattedEtymology()}</p>}
       </div>
     );

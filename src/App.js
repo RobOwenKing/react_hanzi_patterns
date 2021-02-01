@@ -10,8 +10,7 @@ import CharacterDetails from './components/character_details.jsx';
 const data = require('../src/data/dictionary.json');
 
 // Using HanziJS from https://github.com/nieldlr/hanzi under MIT license
-var hanzi = require("hanzi");
-hanzi.start();
+const hanzi = require("hanzi");
 
 class App extends Component {
   constructor(props) {
@@ -20,11 +19,19 @@ class App extends Component {
     this.state = {};
   };
 
+  componentDidMount() {
+    hanzi.start();
+  }
+
   handleSearch = (searchTerm) => {
     if (searchTerm.length === 1) {
       const charData = data.find(element => element.character === searchTerm);
+      const charDefn = hanzi.definitionLookup(searchTerm);
       if (charData) {
         this.setState({ charData: charData });
+      }
+      if (charDefn) {
+        this.setState({ charDefn: charDefn });
       }
     }
   };
@@ -36,7 +43,8 @@ class App extends Component {
           <h1>Patterns in the Hanzi</h1>
           <SearchBar searchHandler={this.handleSearch} />
         </div>
-        {this.state.charData && <CharacterDetails charData={this.state.charData} />}
+        {this.state.charData &&
+            <CharacterDetails charData={this.state.charData} charDefn={this.state.charDefn} />}
       </div>
     );
   }

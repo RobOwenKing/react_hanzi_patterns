@@ -1,0 +1,3 @@
+{this.props.charData.pinyin
+  && <p>{this.props.charData.pinyin.join(', ')}</p>}
+{this.props.charData.definition && <p>{this.props.charData.definition}</p>}
