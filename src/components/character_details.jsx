@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import LargeCharacter from './large_character.jsx';
+import SmallCharacter from './small_character.jsx';
 
 import { pinyinify } from '../helpers/pinyinify.js';
 
@@ -33,6 +34,12 @@ class CharacterDetails extends Component {
     )
   }
 
+  charactersWithComponent() {
+    const chars = this.props.hanzi.getCharactersWithComponent(this.props.charData.character);
+    return chars.map((char) => {return (<SmallCharacter char={char} hanzi={this.props.hanzi} />)})
+        .reduce((prev, curr) => [prev, ', ', curr]);
+  }
+
   render() {
     return (
       <div>
@@ -45,7 +52,7 @@ class CharacterDetails extends Component {
         {this.props.charData.etymology && <p>{this.formattedEtymology()}</p>}
 
         <h3>Characters which contain {this.props.charData.character}</h3>
-        {this.props.hanzi.getCharactersWithComponent(this.props.charData.character).join(', ')}
+        {this.charactersWithComponent()}
       </div>
     );
   }
