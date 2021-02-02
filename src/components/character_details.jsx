@@ -36,8 +36,14 @@ class CharacterDetails extends Component {
 
   charactersWithComponent() {
     const chars = this.props.hanzi.getCharactersWithComponent(this.props.charData.character);
-    return chars.map((char) => {return (<SmallCharacter char={char} hanzi={this.props.hanzi} />)})
-        .reduce((prev, curr) => [prev, ', ', curr]);
+    // If no characters are found with the given component
+    // the above function returns string "X not found"
+    if (Array.isArray(chars)) {
+      return chars.map((char) => {return (<SmallCharacter char={char} hanzi={this.props.hanzi} />)})
+          .reduce((prev, curr) => [prev, ' ', curr]);
+    } else {
+      return (<p>None found</p>)
+    }
   }
 
   render() {

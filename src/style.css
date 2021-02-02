@@ -21,3 +21,11 @@ input {
 .italics {
   font-style: italic;
 }
+
+ruby > rb {
+  font-size: 2em;
+}
+
+ruby > rt {
+  font-size: 0.8em;
+}

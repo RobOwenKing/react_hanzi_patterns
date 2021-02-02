@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
+import { pinyinify } from '../helpers/pinyinify.js';
+
 class SmallCharacter extends Component {
   pinyin() {
     const pinyin = this.props.hanzi.getPinyin(this.props.char);
-    return pinyin ? pinyin.join(', ') : '?';
+    return pinyin ? pinyin.map((element) => pinyinify(element)).join(', ') : '?';
   }
 
   render() {
