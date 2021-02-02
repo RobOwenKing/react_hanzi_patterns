@@ -23,7 +23,11 @@ class CharacterDetails extends Component {
     return (
       this.props.charDefn.map((element) => {
         return (
-            <p>{pinyinify(element.pinyin)} - {element.definition}</p>
+            <p>
+            <span className="bold">{pinyinify(element.pinyin)}</span>
+            &nbsp;
+            <span className="italics">{element.definition}</span>
+            </p>
           )
       })
     )
@@ -34,8 +38,14 @@ class CharacterDetails extends Component {
       <div>
         <LargeCharacter style={FONTFAMILIES.heiti} charData={this.props.charData} />
         <LargeCharacter style={FONTFAMILIES.songti} charData={this.props.charData} />
+
         {this.props.charDefn && this.formattedDefinition()}
+
+        <h3>Character Etymology</h3>
         {this.props.charData.etymology && <p>{this.formattedEtymology()}</p>}
+
+        <h3>Characters which contain {this.props.charData.character}</h3>
+        {this.props.hanzi.getCharactersWithComponent(this.props.charData.character).join(', ')}
       </div>
     );
   }

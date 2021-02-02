@@ -44,7 +44,7 @@ class App extends Component {
           <SearchBar searchHandler={this.handleSearch} />
         </div>
         {this.state.charData &&
-            <CharacterDetails charData={this.state.charData} charDefn={this.state.charDefn} />}
+            <CharacterDetails charData={this.state.charData} charDefn={this.state.charDefn} hanzi={hanzi} />}
       </div>
     );
   }

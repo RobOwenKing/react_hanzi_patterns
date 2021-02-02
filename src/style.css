@@ -13,3 +13,11 @@ input {
 .char-large {
   font-size: 5em;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+.italics {
+  font-style: italic;
+}
