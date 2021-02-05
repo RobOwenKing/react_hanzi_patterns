@@ -4,6 +4,7 @@ import LargeCharacter from './large_character.jsx';
 import SmallCharacter from './small_character.jsx';
 
 import { pinyinify } from '../helpers/pinyinify.js';
+import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
 
 const FONTFAMILIES = {
   'heiti': "STHeiti, 华文黑体, 'Microsoft YaHei', 微软雅黑, SimHei, 黑体, sans-serif",
@@ -11,6 +12,14 @@ const FONTFAMILIES = {
 };
 
 class CharacterDetails extends Component {
+  frequency() {
+    const freqData = this.props.hanzi.getCharacterFrequency(this.props.charData.character);
+    if (typeof freqData != 'string') {
+      const position = freqData.number;
+      return `${ordinalSuffix(position)} most common`;
+    }
+  };
+
   formattedEtymology() {
     const etymology = this.props.charData.etymology;
     if (etymology.type !== "pictophonetic") {
@@ -51,6 +60,8 @@ class CharacterDetails extends Component {
       <div>
         <LargeCharacter style={FONTFAMILIES.heiti} charData={this.props.charData} />
         <LargeCharacter style={FONTFAMILIES.songti} charData={this.props.charData} />
+
+        <p>{this.frequency()}</p>
 
         {this.props.charDefn && this.formattedDefinition()}
 

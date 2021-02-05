@@ -21,7 +21,7 @@ class App extends Component {
 
   componentDidMount() {
     hanzi.start();
-  }
+  };
 
   handleSearch = (searchTerm) => {
     if (searchTerm.length === 1) {
