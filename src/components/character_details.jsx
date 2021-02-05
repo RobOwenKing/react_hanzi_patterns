@@ -36,6 +36,7 @@ class CharacterDetails extends Component {
   };
 
   etymologyType() {
+    if (!this.props.charData.etymology) { return 'Not found'; }
     const type = this.props.charData.etymology.type;
     if (type === 'pictophonetic') {
       return 'Phonosemantic';
@@ -50,6 +51,7 @@ class CharacterDetails extends Component {
 
   etymologyContents() {
     const etymology = this.props.charData.etymology;
+    if (!etymology) { return 'N/A'; }
     if (etymology.type === 'pictophonetic') {
       return [
           etymology.semantic,
@@ -70,7 +72,7 @@ class CharacterDetails extends Component {
     // If no characters are found with the given component
     // the above function returns string "X not found"
     if (Array.isArray(chars)) {
-      return chars.map((char) => {return (<SmallCharacter char={char} hanzi={this.props.hanzi} />)})
+      return chars.map((char) => {return (<SmallCharacter char={char} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />)})
           .reduce((prev, curr) => [prev, ' ', curr]);
     } else {
       return (<p>None found</p>)
@@ -87,7 +89,7 @@ class CharacterDetails extends Component {
 
         {this.props.charDefn && this.formattedDefinition()}
 
-        <Etymology type={this.etymologyType()} contents={this.etymologyContents()} hanzi={this.props.hanzi} />
+        <Etymology type={this.etymologyType()} contents={this.etymologyContents()} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />
 
         <h3>Characters which contain {this.props.charData.character}</h3>
         {this.charactersWithComponent()}

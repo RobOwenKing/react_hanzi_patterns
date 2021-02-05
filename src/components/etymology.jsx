@@ -10,8 +10,8 @@ class Etymology extends Component {
     if (Array.isArray(contents)) {
       return (
         <div>
-          <SmallCharacter char={contents[0]} hanzi={this.props.hanzi} /> ({contents[1]}) +
-          <SmallCharacter char={contents[2]} hanzi={this.props.hanzi} />
+          <SmallCharacter char={contents[0]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({contents[1]}) +
+          <SmallCharacter char={contents[2]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />
         </div>
       );
     } else {

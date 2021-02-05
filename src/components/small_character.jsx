@@ -13,9 +13,13 @@ class SmallCharacter extends Component {
     }
   }
 
+  handleClick = (event) => {
+    this.props.clickHandler(this.props.char);
+  };
+
   render() {
     return (
-      <ruby>
+      <ruby onClick={this.handleClick}>
         <rb>{this.props.char}</rb>
         <rp>(</rp><rt>{this.pinyin()}</rt><rp>)</rp>
       </ruby>
