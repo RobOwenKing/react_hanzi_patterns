@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Etymology from './etymology.jsx';
 import LargeCharacter from './large_character.jsx';
 import SmallCharacter from './small_character.jsx';
 
@@ -20,15 +21,6 @@ class CharacterDetails extends Component {
     }
   };
 
-  formattedEtymology() {
-    const etymology = this.props.charData.etymology;
-    if (etymology.type !== "pictophonetic") {
-      return `${etymology.type}: ${etymology.hint}`;
-    } else {
-      return `${etymology.phonetic} (phonetic) + ${etymology.semantic} (semantic)`;
-    }
-  };
-
   formattedDefinition() {
     return (
       this.props.charDefn.map((element) => {
@@ -41,7 +33,37 @@ class CharacterDetails extends Component {
           )
       })
     )
-  }
+  };
+
+  etymologyType() {
+    const type = this.props.charData.etymology.type;
+    if (type === 'pictophonetic') {
+      return 'Phonosemantic';
+    } else if (type === 'ideographic') {
+      return 'Ideographic';
+    } else if (type === 'pictographic') {
+      return 'Pictographic';
+    } else {
+      return 'Unknown';
+    }
+  };
+
+  etymologyContents() {
+    const etymology = this.props.charData.etymology;
+    if (etymology.type === 'pictophonetic') {
+      return [
+          etymology.semantic,
+          etymology.hint,
+          etymology.phonetic
+      ];
+    } else if (etymology.type === 'ideographic') {
+      return etymology.hint;
+    } else if (etymology.type === 'pictographic') {
+      return etymology.hint;
+    } else {
+      return '';
+    }
+  };
 
   charactersWithComponent() {
     const chars = this.props.hanzi.getCharactersWithComponent(this.props.charData.character);
@@ -65,8 +87,7 @@ class CharacterDetails extends Component {
 
         {this.props.charDefn && this.formattedDefinition()}
 
-        <h3>Character Etymology</h3>
-        {this.props.charData.etymology && <p>{this.formattedEtymology()}</p>}
+        <Etymology type={this.etymologyType()} contents={this.etymologyContents()} hanzi={this.props.hanzi} />
 
         <h3>Characters which contain {this.props.charData.character}</h3>
         {this.charactersWithComponent()}
