@@ -5,7 +5,12 @@ import { pinyinify } from '../helpers/pinyinify.js';
 class SmallCharacter extends Component {
   pinyin() {
     const pinyin = this.props.hanzi.getPinyin(this.props.char);
-    return pinyin ? pinyin.map((element) => pinyinify(element)).join(', ') : '?';
+    if (!pinyin) {
+      return '?';
+    } else {
+      const uniques = Array.from(new Set(pinyin));
+      return uniques.map((element) => pinyinify(element)).join(', ');
+    }
   }
 
   render() {
