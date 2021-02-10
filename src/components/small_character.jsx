@@ -34,7 +34,7 @@ class SmallCharacter extends Component {
 
   render() {
     return (
-      <span>
+      <span className="small-character">
         {this.component()}
       </span>
     );
