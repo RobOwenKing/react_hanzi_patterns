@@ -12,6 +12,14 @@ const FONTFAMILIES = {
   'songti': "SimSun, 宋体, 'Zhongyi Songti', 中易宋体, serif"
 };
 
+/**
+* Renders a <CharacterDetails /> component - all the content based on the hanzi chosen by the user
+* @param  props
+* @param  props.hanzi - the relevant hanzi
+* @param  props.charData - the object for that character in Make Me A Hanzi
+* @param  props.overrideStyles - used to set the CSS of the button
+*/
+
 class CharacterDetails extends Component {
   frequency() {
     const freqData = this.props.hanzi.getCharacterFrequency(this.props.charData.character);
