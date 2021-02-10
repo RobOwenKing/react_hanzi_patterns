@@ -17,12 +17,26 @@ class SmallCharacter extends Component {
     this.props.clickHandler(this.props.char);
   };
 
+  component() {
+    if (this.props.showPinyin) {
+      return (
+        <ruby onClick={this.handleClick}>
+          <rb>{this.props.char}</rb>
+          <rp>(</rp><rt>{this.pinyin()}</rt><rp>)</rp>
+        </ruby>
+      );
+    } else {
+      return (
+        <span onClick={this.handleClick}>{this.props.char}</span>
+      );
+    }
+  };
+
   render() {
     return (
-      <ruby onClick={this.handleClick}>
-        <rb>{this.props.char}</rb>
-        <rp>(</rp><rt>{this.pinyin()}</rt><rp>)</rp>
-      </ruby>
+      <span>
+        {this.component()}
+      </span>
     );
   }
 }
