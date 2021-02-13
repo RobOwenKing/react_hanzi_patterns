@@ -31,12 +31,12 @@ class CharacterDetails extends Component {
 
   formattedDefinition() {
     return (
-      this.props.charDefn.map((element) => {
+      this.props.charDefn.map((element, index) => {
         return (
-            <p>
-            <span className="bold">{pinyinify(element.pinyin)}</span>
-            &nbsp;
-            <span className="italics">{element.definition}</span>
+            <p key={index}>
+              <span className="bold">{pinyinify(element.pinyin)}</span>
+              &nbsp;
+              <span className="italics">{element.definition}</span>
             </p>
           )
       })
@@ -80,7 +80,7 @@ class CharacterDetails extends Component {
     // If no characters are found with the given component
     // the above function returns string "X not found"
     if (Array.isArray(chars)) {
-      return chars.map((char) => {return (<SmallCharacter char={char} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />)})
+      return chars.map((char) => {return (<SmallCharacter key={char} char={char} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />)})
           .reduce((prev, curr) => [prev, ' ', curr]);
     } else {
       return (<p>None found</p>)

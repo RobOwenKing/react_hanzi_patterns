@@ -22,6 +22,10 @@ input {
   font-style: italic;
 }
 
+.small-character {
+  cursor: pointer;
+}
+
 .small-character > rb,
 .small-character > span {
   font-size: 2em;
