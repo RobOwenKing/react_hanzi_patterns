@@ -16,7 +16,9 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      showPinyin: false
+    };
   };
 
   componentDidMount() {
@@ -36,6 +38,10 @@ class App extends Component {
     }
   };
 
+  handleClickShowPinyin = (event) => {
+    this.setState({ showPinyin: event.target.checked });
+  }
+
   render() {
     return (
       <div className="container">
@@ -43,13 +49,15 @@ class App extends Component {
           <h1>Patterns in the Hanzi</h1>
           <SearchBar searchHandler={this.handleSearch} />
           <div>
-            <label for="show-pinyin">Show pinyin? </label>
-            <input type="checkbox" id="show-pinyin" name="show-pinyin" />
+            <label htmlFor="show-pinyin">Show pinyin? </label>
+            <input type="checkbox" id="show-pinyin" name="show-pinyin"
+                onClick={this.handleClickShowPinyin} />
           </div>
         </div>
         {this.state.charData &&
             <CharacterDetails hanzi={hanzi} charData={this.state.charData}
-                charDefn={this.state.charDefn} clickHandler={this.handleSearch} />}
+                charDefn={this.state.charDefn} clickHandler={this.handleSearch}
+                showPinyin={this.state.showPinyin} />}
       </div>
     );
   }

@@ -80,7 +80,7 @@ class CharacterDetails extends Component {
     // If no characters are found with the given component
     // the above function returns string "X not found"
     if (Array.isArray(chars)) {
-      return chars.map((char) => {return (<SmallCharacter key={char} char={char} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />)})
+      return chars.map((char) => {return (<SmallCharacter key={char} char={char} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
           .reduce((prev, curr) => [prev, ' ', curr]);
     } else {
       return (<p>None found</p>)
