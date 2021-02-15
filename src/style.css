@@ -26,11 +26,11 @@ input {
   cursor: pointer;
 }
 
-.small-character > rb,
+.small-character rb,
 .small-character > span {
   font-size: 2em;
 }
 
-.small-character > rt {
+.small-character rt {
   font-size: 0.8em;
 }
