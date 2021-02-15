@@ -8,7 +8,7 @@ class SearchBar extends Component {
   render() {
     return (
       <input type="text" className="search-bar"
-          onChange={this.handleChange} />
+          onChange={this.handleChange} placeholder="Any hanzi or pinyin" />
     );
   }
 }
