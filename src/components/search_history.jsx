@@ -13,7 +13,7 @@ class SearchHistory extends Component {
           <SmallCharacter char={'录'} clickHandler={this.props.clickHandler} />
         </span>
         &nbsp;·&nbsp;
-        {this.props.searchHistory.map((char) => {return (<SmallCharacter key={char} char={char} clickHandler={this.props.clickHandler} />)})}
+        {this.props.searchHistory.map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} />)})}
       </div>
     );
   }
