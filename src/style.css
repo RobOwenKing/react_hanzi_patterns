@@ -26,6 +26,10 @@ input {
 }
 
 .grey-text {
+  color: #333;
+}
+
+.light-grey-text {
   color: #666;
 }
 

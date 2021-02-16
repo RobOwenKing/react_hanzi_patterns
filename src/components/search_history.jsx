@@ -6,7 +6,7 @@ class SearchHistory extends Component {
   render() {
     return (
       <div className="search-history">
-        <span className="grey-text">
+        <span className="light-grey-text">
           <SmallCharacter char={'搜'} clickHandler={this.props.clickHandler} />
           <SmallCharacter char={'索'} clickHandler={this.props.clickHandler} />
           <SmallCharacter char={'记'} clickHandler={this.props.clickHandler} />

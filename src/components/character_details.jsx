@@ -36,7 +36,7 @@ class CharacterDetails extends Component {
             <p key={index}>
               <span className="bold">{pinyinify(element.pinyin)}</span>
               &nbsp;
-              <span className="italics">{element.definition}</span>
+              <span className="italics grey-text">{element.definition}</span>
             </p>
           )
       })
