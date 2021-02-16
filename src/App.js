@@ -51,19 +51,21 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <div className="top">
-          <h1>Patterns in the Hanzi</h1>
-          <SearchBar searchHandler={this.handleSearch} />
-          <div>
-            <label htmlFor="show-pinyin">Show pinyin? </label>
-            <input type="checkbox" id="show-pinyin" name="show-pinyin"
-                onClick={this.handleClickShowPinyin} />
+        <div>
+          <div className="top">
+            <h1>Patterns in the Hanzi</h1>
+            <SearchBar searchHandler={this.handleSearch} />
+            <div>
+              <label htmlFor="show-pinyin">Show pinyin? </label>
+              <input type="checkbox" id="show-pinyin" name="show-pinyin"
+                  onClick={this.handleClickShowPinyin} />
+            </div>
           </div>
+          {this.state.charData &&
+              <CharacterDetails hanzi={hanzi} charData={this.state.charData}
+                  charDefn={this.state.charDefn} clickHandler={this.handleSearch}
+                  showPinyin={this.state.showPinyin} />}
         </div>
-        {this.state.charData &&
-            <CharacterDetails hanzi={hanzi} charData={this.state.charData}
-                charDefn={this.state.charDefn} clickHandler={this.handleSearch}
-                showPinyin={this.state.showPinyin} />}
         <SearchHistory searchHistory={this.state.searchHistory} clickHandler={this.handleSearch} />
       </div>
     );

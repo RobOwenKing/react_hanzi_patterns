@@ -1,5 +1,8 @@
 .container {
   margin: 32px;
+
+  display: grid;
+  grid-template-columns: auto 32px;
 }
 
 .top {
@@ -22,6 +25,10 @@ input {
   font-style: italic;
 }
 
+.grey-text {
+  color: #666;
+}
+
 .small-character {
   cursor: pointer;
   margin: 0px 6px;
@@ -34,4 +41,8 @@ input {
 
 .small-character rt {
   font-size: 0.8em;
+}
+
+.search-history {
+  writing-mode: vertical-lr;
 }
