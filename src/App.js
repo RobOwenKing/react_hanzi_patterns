@@ -5,6 +5,7 @@ import { Component } from 'react';
 
 import SearchBar from './components/search_bar.jsx';
 import CharacterDetails from './components/character_details.jsx';
+import SearchHistory from './components/search_history.jsx';
 
 // const data = require('../src/data/test.json');
 const data = require('../src/data/dictionary.json');
@@ -63,6 +64,7 @@ class App extends Component {
             <CharacterDetails hanzi={hanzi} charData={this.state.charData}
                 charDefn={this.state.charDefn} clickHandler={this.handleSearch}
                 showPinyin={this.state.showPinyin} />}
+        <SearchHistory searchHistory={this.state.searchHistory} clickHandler={this.handleSearch} />
       </div>
     );
   }
