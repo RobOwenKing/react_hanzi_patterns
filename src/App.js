@@ -30,8 +30,9 @@ class App extends Component {
   handleSearch = (searchTerm) => {
     // If the searchTerm is a single Chinese character
     if (searchTerm.length === 1 && /\p{Script=Han}/u.test(searchTerm)) {
-      this.setState({ searchHistory: [searchTerm, ...this.state.searchHistory] });
-      console.log(this.state.searchHistory);
+      const newSearchHistory = [searchTerm, ...this.state.searchHistory]
+          .filter((term, index, self) => { return self.indexOf(term) === index });
+      this.setState({ searchHistory: newSearchHistory });
 
       const charData = data.find(element => element.character === searchTerm);
       const charDefn = hanzi.definitionLookup(searchTerm);
