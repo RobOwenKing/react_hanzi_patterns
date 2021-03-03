@@ -38,6 +38,11 @@ class App extends Component {
       const charDefn = hanzi.definitionLookup(searchTerm);
       if (charData) {
         this.setState({ charData: charData });
+        if (charData.etymology.type === 'pictophonetic') {
+          console.log(data.filter(element => {return element.etymology &&
+              element.etymology.type === 'pictophonetic' &&
+              element.etymology.phonetic === charData.etymology.phonetic}))
+        }
       }
       if (charDefn) {
         this.setState({ charDefn: charDefn });
