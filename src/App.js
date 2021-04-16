@@ -20,7 +20,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    data.hanzi.start();
+    data.startHanzi();
   };
 
   handleSearch = (searchTerm) => {
