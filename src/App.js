@@ -7,11 +7,7 @@ import SearchBar from './components/search_bar.jsx';
 import CharacterDetails from './components/character_details.jsx';
 import SearchHistory from './components/search_history.jsx';
 
-// const data = require('../src/data/test.json');
-const data = require('../src/data/dictionary.json');
-
-// Using HanziJS from https://github.com/nieldlr/hanzi under MIT license
-const hanzi = require("hanzi");
+import { data, hanzi } from './helpers/data.js';
 
 class App extends Component {
   constructor(props) {
