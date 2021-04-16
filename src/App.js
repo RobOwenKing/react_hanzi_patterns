@@ -23,12 +23,16 @@ class App extends Component {
     data.startHanzi();
   };
 
+  addToSearchHistory = (char) => {
+    const newSearchHistory = [char, ...this.state.searchHistory]
+        .filter((term, index, self) => { return self.indexOf(term) === index });
+    this.setState({ searchHistory: newSearchHistory });
+  }
+
   handleSearch = (searchTerm) => {
     // If the searchTerm is a single Chinese character
     if (searchTerm.length === 1 && /\p{Script=Han}/u.test(searchTerm)) {
-      const newSearchHistory = [searchTerm, ...this.state.searchHistory]
-          .filter((term, index, self) => { return self.indexOf(term) === index });
-      this.setState({ searchHistory: newSearchHistory });
+      this.addToSearchHistory(searchTerm);
 
       const charData = data.data.find(element => element.character === searchTerm);
       const charDefn = data.hanzi.definitionLookup(searchTerm);
