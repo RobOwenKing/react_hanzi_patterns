@@ -7,7 +7,7 @@ import SearchBar from './components/search_bar.jsx';
 import CharacterDetails from './components/character_details.jsx';
 import SearchHistory from './components/search_history.jsx';
 
-import { data, hanzi } from './helpers/data.js';
+import * as data from './helpers/data.js';
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    hanzi.start();
+    data.hanzi.start();
   };
 
   handleSearch = (searchTerm) => {
@@ -30,12 +30,12 @@ class App extends Component {
           .filter((term, index, self) => { return self.indexOf(term) === index });
       this.setState({ searchHistory: newSearchHistory });
 
-      const charData = data.find(element => element.character === searchTerm);
-      const charDefn = hanzi.definitionLookup(searchTerm);
+      const charData = data.data.find(element => element.character === searchTerm);
+      const charDefn = data.hanzi.definitionLookup(searchTerm);
       if (charData) {
         this.setState({ charData: charData });
         if (charData.etymology.type === 'pictophonetic') {
-          console.log(data.filter(element => {return element.etymology &&
+          console.log(data.data.filter(element => {return element.etymology &&
               element.etymology.type === 'pictophonetic' &&
               element.etymology.phonetic === charData.etymology.phonetic}))
         }
@@ -64,7 +64,7 @@ class App extends Component {
             </div>
           </div>
           {this.state.charData &&
-              <CharacterDetails hanzi={hanzi} charData={this.state.charData}
+              <CharacterDetails hanzi={data.hanzi} charData={this.state.charData}
                   charDefn={this.state.charDefn} clickHandler={this.handleSearch}
                   showPinyin={this.state.showPinyin} />}
         </div>
