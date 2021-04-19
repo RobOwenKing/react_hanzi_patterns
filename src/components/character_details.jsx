@@ -29,7 +29,7 @@ class CharacterDetails extends Component {
     }
   };
 
-  formattedDefinition() {
+  pronunciations() {
     return (
       this.props.charDefn.map((element, index) => {
         return (
@@ -95,7 +95,7 @@ class CharacterDetails extends Component {
 
         <p>{this.frequency()}</p>
 
-        {this.props.charDefn && this.formattedDefinition()}
+        {this.props.charDefn && this.pronunciations()}
 
         <Etymology type={this.etymologyType()} contents={this.etymologyContents()} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />
 
