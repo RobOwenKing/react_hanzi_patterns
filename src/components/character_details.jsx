@@ -25,22 +25,27 @@ class CharacterDetails extends Component {
     if (freq) {
       return `${freq} most common`;
     } else {
-      return `No frequency data`;
+      return `No frequency data found`;
     }
   };
 
   pronunciations() {
-    return (
-      this.props.charDefn.map((element, index) => {
-        return (
-            <p key={index}>
-              <span className="bold">{pinyinify(element.pinyin)}</span>
-              &nbsp;
-              <span className="italics grey-text">{element.definition}</span>
-            </p>
-          )
-      })
-    )
+    const pros = this.props.newCharData.pronunciations;
+    if (pros) {
+      return (
+        this.props.charDefn.map((element, index) => {
+          return (
+              <p key={index}>
+                <span className="bold">{pinyinify(element.pinyin)}</span>
+                &nbsp;
+                <span className="italics grey-text">{element.definition}</span>
+              </p>
+            )
+        })
+      )
+    } else {
+      return `No pronunciations found`;
+    }
   };
 
   etymologyType() {

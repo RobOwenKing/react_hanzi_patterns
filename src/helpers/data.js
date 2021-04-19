@@ -15,14 +15,15 @@ const getFrequency = (char) => {
   } else {
     return null;
   }
-}
+};
 
 export const getCharData = (char) => {
   const charInDict = data.find(element => element.character === char);
   const charInHanzi = hanzi.definitionLookup(char);
 
   const charData = {
-    frequency: getFrequency(char)
+    frequency: getFrequency(char),
+    pronunciations: hanzi.definitionLookup(char)
   };
 
   console.log('charInDict');
