@@ -15,8 +15,42 @@ class Etymology extends Component {
     }
   }
 
+  etymologyType() {
+    if (!this.props.newCharData.etymology) { return ''; }
+
+    const type = this.props.newCharData.etymology.type;
+    if (type === 'pictophonetic') {
+      return 'Etymology: Phonosemantic';
+    } else if (type === 'ideographic') {
+      return 'Etymology: Ideographic';
+    } else if (type === 'pictographic') {
+      return 'Etymology: Pictographic';
+    } else {
+      return '';
+    }
+  };
+
+  etymologyContents() {
+    if (!this.props.newCharData.etymology) { return `No data found`; }
+
+    const etymology = this.props.newCharData.etymology;
+    if (etymology.type === 'pictophonetic') {
+      return [
+          etymology.semantic,
+          etymology.hint,
+          etymology.phonetic
+      ];
+    } else if (etymology.type === 'ideographic') {
+      return etymology.hint;
+    } else if (etymology.type === 'pictographic') {
+      return etymology.hint;
+    } else {
+      return '';
+    }
+  };
+
   formattedContents() {
-    const contents = this.props.contents;
+    const contents = this.etymologyContents();
     if (Array.isArray(contents)) {
       return (
         <div>
@@ -28,14 +62,14 @@ class Etymology extends Component {
         </div>
       );
     } else {
-      return this.props.contents;
+      return contents;
     }
   };
 
   render() {
     return (
       <div>
-        <h3>Etymology: {this.props.type}</h3>
+        <h3>{this.etymologyType()}</h3>
         {this.formattedContents()}
       </div>
     );

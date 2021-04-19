@@ -8,6 +8,13 @@ export const hanzi = require("hanzi");
 
 export const startHanzi = () => { hanzi.start(); };
 
+const getEtymology = (char) => {
+  if (!char) { return null; }
+  if (!char.etymology) { return null; }
+
+  return char.etymology;
+};
+
 const getFrequency = (char) => {
   const freqData = hanzi.getCharacterFrequency(char);
   if (typeof freqData != 'string') {
@@ -22,14 +29,15 @@ export const getCharData = (char) => {
   const charInHanzi = hanzi.definitionLookup(char);
 
   const charData = {
+    etymology: getEtymology(charInDict),
     frequency: getFrequency(char),
     pronunciations: hanzi.definitionLookup(char)
   };
 
-  console.log('charInDict');
+  /*console.log('charInDict');
   console.log(charInDict);
   console.log('charInHanzi');
-  console.log(charInHanzi);
+  console.log(charInHanzi);*/
 
   console.log(charData);
 

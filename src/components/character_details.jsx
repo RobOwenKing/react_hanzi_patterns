@@ -48,38 +48,6 @@ class CharacterDetails extends Component {
     }
   };
 
-  etymologyType() {
-    if (!this.props.charData.etymology) { return 'Not found'; }
-    const type = this.props.charData.etymology.type;
-    if (type === 'pictophonetic') {
-      return 'Phonosemantic';
-    } else if (type === 'ideographic') {
-      return 'Ideographic';
-    } else if (type === 'pictographic') {
-      return 'Pictographic';
-    } else {
-      return 'Unknown';
-    }
-  };
-
-  etymologyContents() {
-    const etymology = this.props.charData.etymology;
-    if (!etymology) { return 'N/A'; }
-    if (etymology.type === 'pictophonetic') {
-      return [
-          etymology.semantic,
-          etymology.hint,
-          etymology.phonetic
-      ];
-    } else if (etymology.type === 'ideographic') {
-      return etymology.hint;
-    } else if (etymology.type === 'pictographic') {
-      return etymology.hint;
-    } else {
-      return '';
-    }
-  };
-
   charactersWithComponent() {
     const chars = this.props.hanzi.getCharactersWithComponent(this.props.charData.character);
     // If no characters are found with the given component
@@ -102,7 +70,7 @@ class CharacterDetails extends Component {
 
         {this.props.charDefn && this.pronunciations()}
 
-        <Etymology type={this.etymologyType()} contents={this.etymologyContents()} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />
+        <Etymology newCharData={this.props.newCharData} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />
 
         <h3>Characters which contain {this.props.charData.character}</h3>
         {this.charactersWithComponent()}
