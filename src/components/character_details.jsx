@@ -5,7 +5,6 @@ import LargeCharacter from './large_character.jsx';
 import SmallCharacter from './small_character.jsx';
 
 import { pinyinify } from '../helpers/pinyinify.js';
-import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
 
 const FONTFAMILIES = {
   'heiti': "STHeiti, 华文黑体, 'Microsoft YaHei', 微软雅黑, SimHei, 黑体, sans-serif",
@@ -22,10 +21,11 @@ const FONTFAMILIES = {
 
 class CharacterDetails extends Component {
   frequency() {
-    const freqData = this.props.hanzi.getCharacterFrequency(this.props.charData.character);
-    if (typeof freqData != 'string') {
-      const position = freqData.number;
-      return `${ordinalSuffix(position)} most common`;
+    const freq = this.props.newCharData.frequency;
+    if (freq) {
+      return `${freq} most common`;
+    } else {
+      return `No frequency data`;
     }
   };
 

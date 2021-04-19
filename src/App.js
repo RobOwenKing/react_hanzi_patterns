@@ -34,15 +34,20 @@ class App extends Component {
     if (searchTerm.length === 1 && /\p{Script=Han}/u.test(searchTerm)) {
       this.addToSearchHistory(searchTerm);
 
+      const newCharData = data.getCharData(searchTerm);
+      if (newCharData) {
+        this.setState({ newCharData: newCharData });
+      }
+
       const charData = data.data.find(element => element.character === searchTerm);
       const charDefn = data.hanzi.definitionLookup(searchTerm);
       if (charData) {
         this.setState({ charData: charData });
-        if (charData.etymology.type === 'pictophonetic') {
+/*        if (charData.etymology.type === 'pictophonetic') {
           console.log(data.data.filter(element => {return element.etymology &&
               element.etymology.type === 'pictophonetic' &&
               element.etymology.phonetic === charData.etymology.phonetic}))
-        }
+        }*/
       }
       if (charDefn) {
         this.setState({ charDefn: charDefn });
@@ -68,7 +73,8 @@ class App extends Component {
             </div>
           </div>
           {this.state.charData &&
-              <CharacterDetails hanzi={data.hanzi} charData={this.state.charData}
+              <CharacterDetails newCharData={this.state.newCharData}
+                  hanzi={data.hanzi} charData={this.state.charData}
                   charDefn={this.state.charDefn} clickHandler={this.handleSearch}
                   showPinyin={this.state.showPinyin} />}
         </div>
