@@ -9,6 +9,14 @@ export const hanzi = require("hanzi");
 
 export const startHanzi = () => { hanzi.start(); };
 
+const getAppearsIn = (char) => {
+    const chars = hanzi.getCharactersWithComponent(char);
+    // If no characters are found with the given component
+    // the above function returns string "X not found"
+    const returnable = Array.isArray(chars) ? chars : null;
+    return returnable;
+};
+
 const getEtymology = (char) => {
   if (!char) { return null; }
   if (!char.etymology) { return null; }
@@ -30,6 +38,7 @@ export const getCharData = (char) => {
   const charInHanzi = hanzi.definitionLookup(char);
 
   const charData = {
+    appearsIn: getAppearsIn(char),
     etymology: getEtymology(charInDict),
     frequency: getFrequency(char),
     pronunciations: hanzi.definitionLookup(char)

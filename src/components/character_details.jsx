@@ -49,10 +49,8 @@ class CharacterDetails extends Component {
   };
 
   charactersWithComponent() {
-    const chars = this.props.hanzi.getCharactersWithComponent(this.props.charData.character);
-    // If no characters are found with the given component
-    // the above function returns string "X not found"
-    if (Array.isArray(chars)) {
+    const chars = this.props.newCharData.appearsIn;
+    if (chars) {
       return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
           .reduce((prev, curr) => [prev, ' ', curr]);
     } else {
