@@ -1,4 +1,5 @@
 import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
+import { pinyinify } from '../helpers/pinyinify.js';
 
 // const data = require('../src/data/test.json');
 export const data = require('../../src/data/dictionary.json');
@@ -42,4 +43,14 @@ export const getCharData = (char) => {
   console.log(charData);
 
   return charData;
+};
+
+export const getPinyin = (char) => {
+  const pinyin = hanzi.getPinyin(char);
+  if (!pinyin) {
+    return '?';
+  } else {
+    const uniques = Array.from(new Set(pinyin));
+    return uniques.map((element) => pinyinify(element)).join(', ');
+  }
 };
