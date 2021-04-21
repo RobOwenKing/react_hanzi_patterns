@@ -51,7 +51,7 @@ class CharacterDetails extends Component {
   charactersWithComponent() {
     const chars = this.props.newCharData.appearsIn;
     if (chars) {
-      return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
+      return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
           .reduce((prev, curr) => [prev, ' ', curr]);
     } else {
       return (<p>None found</p>)
