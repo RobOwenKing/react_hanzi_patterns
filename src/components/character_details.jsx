@@ -66,7 +66,7 @@ class CharacterDetails extends Component {
 
         <p>{this.frequency()}</p>
 
-        {this.props.charDefn && this.pronunciations()}
+        {this.pronunciations()}
 
         <Etymology newCharData={this.props.newCharData} getPinyin={this.props.getPinyin} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />
 
