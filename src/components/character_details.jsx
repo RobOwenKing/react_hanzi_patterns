@@ -33,7 +33,7 @@ class CharacterDetails extends Component {
     const pros = this.props.newCharData.pronunciations;
     if (pros) {
       return (
-        this.props.charDefn.map((element, index) => {
+        pros.map((element, index) => {
           return (
               <p key={index}>
                 <span className="bold">{pinyinify(element.pinyin)}</span>
