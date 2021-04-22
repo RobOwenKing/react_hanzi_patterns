@@ -61,8 +61,8 @@ class CharacterDetails extends Component {
   render() {
     return (
       <div>
-        <LargeCharacter style={FONTFAMILIES.heiti} charData={this.props.charData} />
-        <LargeCharacter style={FONTFAMILIES.songti} charData={this.props.charData} />
+        <LargeCharacter style={FONTFAMILIES.heiti} char={this.props.newCharData.char} />
+        <LargeCharacter style={FONTFAMILIES.songti} char={this.props.newCharData.char} />
 
         <p>{this.frequency()}</p>
 

@@ -38,6 +38,7 @@ export const getCharData = (char) => {
   const charInHanzi = hanzi.definitionLookup(char);
 
   const charData = {
+    char: char,
     appearsIn: getAppearsIn(char),
     etymology: getEtymology(charInDict),
     frequency: getFrequency(char),
