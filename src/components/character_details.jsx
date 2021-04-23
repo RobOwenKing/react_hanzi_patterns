@@ -70,7 +70,7 @@ class CharacterDetails extends Component {
 
         <Etymology newCharData={this.props.newCharData} getPinyin={this.props.getPinyin} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} />
 
-        <h3>Characters which contain {this.props.charData.character}</h3>
+        <h3>Characters which contain {this.props.newCharData.char}</h3>
         {this.charactersWithComponent()}
       </div>
     );
