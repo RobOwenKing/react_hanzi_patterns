@@ -35,7 +35,6 @@ const getFrequency = (char) => {
 
 export const getCharData = (char) => {
   const charInDict = data.find(element => element.character === char);
-  const charInHanzi = hanzi.definitionLookup(char);
 
   const charData = {
     char: char,
@@ -44,13 +43,6 @@ export const getCharData = (char) => {
     frequency: getFrequency(char),
     pronunciations: hanzi.definitionLookup(char)
   };
-
-  /*console.log('charInDict');
-  console.log(charInDict);
-  console.log('charInHanzi');
-  console.log(charInHanzi);*/
-
-  console.log(charData);
 
   return charData;
 };
