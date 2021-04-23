@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import SmallCharacter from './small_character.jsx';
 
+import { getPinyin } from '../helpers/data.js';
+
 class Etymology extends Component {
   etymologyType() {
     if (!this.props.newCharData.etymology) { return ''; }
@@ -44,7 +46,7 @@ class Etymology extends Component {
         <div>
           <div>
             <SmallCharacter char={contents[0]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({contents[1]}) +
-            <SmallCharacter char={contents[2]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({this.props.getPinyin(contents[2])})
+            <SmallCharacter char={contents[2]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({getPinyin(contents[2])})
           </div>
           NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
         </div>

@@ -76,7 +76,7 @@ class App extends Component {
               <CharacterDetails newCharData={this.state.newCharData}
                   hanzi={data.hanzi} charData={this.state.charData}
                   charDefn={this.state.charDefn} clickHandler={this.handleSearch}
-                  showPinyin={this.state.showPinyin} getPinyin={data.getPinyin} />}
+                  showPinyin={this.state.showPinyin} />}
         </div>
         <SearchHistory searchHistory={this.state.searchHistory} clickHandler={this.handleSearch} />
       </div>
