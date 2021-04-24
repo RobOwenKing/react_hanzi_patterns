@@ -59,8 +59,9 @@ class App extends Component {
             </div>
           </div>
           {this.state.newCharData &&
-              <CharacterDetails newCharData={this.state.newCharData}
-                  hanzi={data.hanzi} clickHandler={this.handleSearch}
+              <CharacterDetails
+                  newCharData={this.state.newCharData}
+                  clickHandler={this.handleSearch}
                   showPinyin={this.state.showPinyin} />}
         </div>
         <SearchHistory searchHistory={this.state.searchHistory} clickHandler={this.handleSearch} />
