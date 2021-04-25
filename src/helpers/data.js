@@ -33,6 +33,10 @@ const getFrequency = (char) => {
   }
 };
 
+const getNeighbourhood = (char) => {
+  if (!char.etymology) { return null; }
+};
+
 export const getCharData = (char) => {
   const charInDict = data.find(element => element.character === char);
 
@@ -41,6 +45,7 @@ export const getCharData = (char) => {
     appearsIn: getAppearsIn(char),
     etymology: getEtymology(charInDict),
     frequency: getFrequency(char),
+    neighbourhood: getNeighbourhood(char),
     pronunciations: hanzi.definitionLookup(char)
   };
 

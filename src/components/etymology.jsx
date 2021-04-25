@@ -56,11 +56,18 @@ class Etymology extends Component {
     }
   };
 
+  formattedNeighbourhood() {
+    if (!this.props.newCharData.neighbourhood) {
+      return 'No neighbourhood'
+    }
+  }
+
   render() {
     return (
       <div>
         <h3>{this.etymologyType()}</h3>
         {this.formattedContents()}
+        {this.formattedNeighbourhood()}
       </div>
     );
   }
