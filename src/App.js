@@ -7,11 +7,7 @@ import SearchBar from './components/search_bar.jsx';
 import CharacterDetails from './components/character_details.jsx';
 import SearchHistory from './components/search_history.jsx';
 
-// const data = require('../src/data/test.json');
-const data = require('../src/data/dictionary.json');
-
-// Using HanziJS from https://github.com/nieldlr/hanzi under MIT license
-const hanzi = require("hanzi");
+import * as data from './helpers/data.js';
 
 class App extends Component {
   constructor(props) {
@@ -24,28 +20,23 @@ class App extends Component {
   };
 
   componentDidMount() {
-    hanzi.start();
+    data.startHanzi();
   };
+
+  addToSearchHistory = (char) => {
+    const newSearchHistory = [char, ...this.state.searchHistory]
+        .filter((term, index, self) => { return self.indexOf(term) === index });
+    this.setState({ searchHistory: newSearchHistory });
+  }
 
   handleSearch = (searchTerm) => {
     // If the searchTerm is a single Chinese character
     if (searchTerm.length === 1 && /\p{Script=Han}/u.test(searchTerm)) {
-      const newSearchHistory = [searchTerm, ...this.state.searchHistory]
-          .filter((term, index, self) => { return self.indexOf(term) === index });
-      this.setState({ searchHistory: newSearchHistory });
+      this.addToSearchHistory(searchTerm);
 
-      const charData = data.find(element => element.character === searchTerm);
-      const charDefn = hanzi.definitionLookup(searchTerm);
-      if (charData) {
-        this.setState({ charData: charData });
-        if (charData.etymology.type === 'pictophonetic') {
-          console.log(data.filter(element => {return element.etymology &&
-              element.etymology.type === 'pictophonetic' &&
-              element.etymology.phonetic === charData.etymology.phonetic}))
-        }
-      }
-      if (charDefn) {
-        this.setState({ charDefn: charDefn });
+      const newCharData = data.getCharData(searchTerm);
+      if (newCharData) {
+        this.setState({ newCharData: newCharData });
       }
     }
   };
@@ -67,9 +58,10 @@ class App extends Component {
                   onClick={this.handleClickShowPinyin} />
             </div>
           </div>
-          {this.state.charData &&
-              <CharacterDetails hanzi={hanzi} charData={this.state.charData}
-                  charDefn={this.state.charDefn} clickHandler={this.handleSearch}
+          {this.state.newCharData &&
+              <CharacterDetails
+                  newCharData={this.state.newCharData}
+                  clickHandler={this.handleSearch}
                   showPinyin={this.state.showPinyin} />}
         </div>
         <SearchHistory searchHistory={this.state.searchHistory} clickHandler={this.handleSearch} />
