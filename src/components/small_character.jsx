@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
 
-import { pinyinify } from '../helpers/pinyinify.js';
+import { getPinyin } from '../helpers/data.js';
 
 class SmallCharacter extends Component {
-  pinyin() {
-    const pinyin = this.props.hanzi.getPinyin(this.props.char);
-    if (!pinyin) {
-      return '?';
-    } else {
-      const uniques = Array.from(new Set(pinyin));
-      return uniques.map((element) => pinyinify(element)).join(', ');
-    }
-  }
-
   handleClick = (event) => {
     this.props.clickHandler(this.props.char);
   };
@@ -22,7 +12,7 @@ class SmallCharacter extends Component {
       return (
         <ruby onClick={this.handleClick}>
           <rb>{this.props.char}</rb>
-          <rp>(</rp><rt>{this.pinyin()}</rt><rp>)</rp>
+          <rp>(</rp><rt>{getPinyin(this.props.char)}</rt><rp>)</rp>
         </ruby>
       );
     } else {

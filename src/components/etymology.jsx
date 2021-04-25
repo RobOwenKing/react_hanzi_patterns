@@ -2,41 +2,72 @@ import React, { Component } from 'react';
 
 import SmallCharacter from './small_character.jsx';
 
-import { pinyinify } from '../helpers/pinyinify.js';
+import { getPinyin } from '../helpers/data.js';
 
 class Etymology extends Component {
-  pinyin(char) {
-    const pinyin = this.props.hanzi.getPinyin(char);
-    if (!pinyin) {
-      return '?';
+  etymologyType() {
+    if (!this.props.newCharData.etymology) { return ''; }
+
+    const type = this.props.newCharData.etymology.type;
+    if (type === 'pictophonetic') {
+      return 'Etymology: Phonosemantic';
+    } else if (type === 'ideographic') {
+      return 'Etymology: Ideographic';
+    } else if (type === 'pictographic') {
+      return 'Etymology: Pictographic';
     } else {
-      const uniques = Array.from(new Set(pinyin));
-      return uniques.map((element) => pinyinify(element)).join(', ');
+      return '';
     }
-  }
+  };
+
+  etymologyContents() {
+    if (!this.props.newCharData.etymology) { return `No data found`; }
+
+    const etymology = this.props.newCharData.etymology;
+    if (etymology.type === 'pictophonetic') {
+      return [
+          etymology.semantic,
+          etymology.hint,
+          etymology.phonetic
+      ];
+    } else if (etymology.type === 'ideographic') {
+      return etymology.hint;
+    } else if (etymology.type === 'pictographic') {
+      return etymology.hint;
+    } else {
+      return '';
+    }
+  };
 
   formattedContents() {
-    const contents = this.props.contents;
+    const contents = this.etymologyContents();
     if (Array.isArray(contents)) {
       return (
         <div>
           <div>
             <SmallCharacter char={contents[0]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({contents[1]}) +
-            <SmallCharacter char={contents[2]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({this.pinyin(contents[2])})
+            <SmallCharacter char={contents[2]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({getPinyin(contents[2])})
           </div>
           NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
         </div>
       );
     } else {
-      return this.props.contents;
+      return contents;
     }
   };
+
+  formattedNeighbourhood() {
+    if (!this.props.newCharData.neighbourhood) {
+      return 'No neighbourhood'
+    }
+  }
 
   render() {
     return (
       <div>
-        <h3>Etymology: {this.props.type}</h3>
+        <h3>{this.etymologyType()}</h3>
         {this.formattedContents()}
+        {this.formattedNeighbourhood()}
       </div>
     );
   }
