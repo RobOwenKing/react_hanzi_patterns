@@ -19,7 +19,7 @@ const getAppearsIn = (char) => {
     const chars = hanzi.getCharactersWithComponent(char);
     // If no characters are found with the given component
     // the above function returns string "X not found"
-    const returnable = Array.isArray(chars) ? chars : null;
+    const returnable = Array.isArray(chars) ? sortByFrequency(chars) : null;
     return returnable;
 };
 
