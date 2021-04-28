@@ -10,9 +10,7 @@ const hanzi = require("hanzi");
 export const startHanzi = () => { hanzi.start(); };
 
 const sortByFrequency = (chars) => {
-  //console.log(chars);
-  chars.sort((a, b) => {return hanzi.getCharacterFrequency(a).number - hanzi.getCharacterFrequency(b).number});
-  //console.log(chars);
+  return chars.sort((a, b) => {return hanzi.getCharacterFrequency(a).number - hanzi.getCharacterFrequency(b).number});
 };
 
 const getAppearsIn = (char) => {
@@ -39,16 +37,25 @@ const getFrequency = (char) => {
   }
 };
 
+const getMatchingCharacters = (match, filter) => {
+  let matches;
+  if (filter === 'phonetic') {
+    matches = data.filter(element => {return element?.etymology?.phonetic === match})
+  } else {
+    matches = data.filter(element => {return element?.etymology?.semantic === match})
+  }
+  const chars = matches.map(element => element.character);
+  return sortByFrequency(chars);
+};
+
 const getNeighbourhood = (char) => {
   if (!char) { return null; }
 
   if (char?.etymology?.type === 'pictophonetic') {
-    const phonetic = char.etymology.phonetic;
-    const semantic = char.etymology.semantic;
-    const samePhonetic = data.filter(element => {return element?.etymology?.phonetic === phonetic})
-                             .map(element => element.character);
-    sortByFrequency(samePhonetic);
-    const sameSemantic = data.filter(element => {return element?.etymology?.semantic === semantic});
+    const samePhonetic = getMatchingCharacters(char.etymology.phonetic, 'phonetic');
+    const sameSemantic = getMatchingCharacters(char.etymology.semantic, 'semantic');
+
+
   }
 
   return null;
