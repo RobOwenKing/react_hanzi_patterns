@@ -59,7 +59,7 @@ class Etymology extends Component {
   formatNeighbourhoodRow(row) {
     return (
       <tr>
-        <td>{row[0]}</td>
+        {row.map(char => {return <td>{char}</td>})}
       </tr>
     );
   };
