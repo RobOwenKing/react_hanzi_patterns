@@ -56,11 +56,28 @@ class Etymology extends Component {
     }
   };
 
+  formatNeighbourhoodRow(row) {
+    return (
+      <tr>
+        <td>{row[0]}</td>
+      </tr>
+    );
+  };
+
   formattedNeighbourhood() {
-    if (!this.props.newCharData.neighbourhood) {
+    const neighbourhood = this.props.newCharData.neighbourhood;
+    if (!neighbourhood) {
       return 'No neighbourhood'
+    } else {
+      return (
+        <table>
+          <tbody>
+            {neighbourhood.map(row => this.formatNeighbourhoodRow(row))}
+          </tbody>
+        </table>
+      );
     }
-  }
+  };
 
   render() {
     return (

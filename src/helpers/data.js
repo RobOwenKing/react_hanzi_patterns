@@ -88,7 +88,7 @@ const getNeighbourhood = (char) => {
       })
     });
 
-    console.log(neighbourhood);
+    return neighbourhood;
   }
 
   return null;
