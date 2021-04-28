@@ -82,8 +82,8 @@ const getNeighbourhood = (char) => {
     const samePhonetic = matchingChars[0];
     const sameSemantic = matchingChars[1];
 
-    const neighbourhood = samePhonetic.map((charMatchingP) => {
-      return sameSemantic.map((charMatchingS) => {
+    const neighbourhood = sameSemantic.map((charMatchingS) => {
+      return samePhonetic.map((charMatchingP) => {
         return getNeighbourhoodChar(charMatchingP, charMatchingS);
       })
     });
