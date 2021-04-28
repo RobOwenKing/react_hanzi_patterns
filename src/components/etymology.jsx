@@ -45,8 +45,8 @@ class Etymology extends Component {
       return (
         <div>
           <div>
-            <SmallCharacter char={contents[0]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({contents[1]}) +
-            <SmallCharacter char={contents[2]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({getPinyin(contents[2])})
+            <SmallCharacter char={contents[0]} clickHandler={this.props.clickHandler} /> ({contents[1]}) +
+            <SmallCharacter char={contents[2]} clickHandler={this.props.clickHandler} /> ({getPinyin(contents[2])})
           </div>
           NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
         </div>
@@ -59,7 +59,7 @@ class Etymology extends Component {
   formatNeighbourhoodRow(row) {
     return (
       <tr>
-        {row.map(char => {return <td>{char}</td>})}
+        {row.map(char => {return <td><SmallCharacter char={char} clickHandler={this.props.clickHandler} /></td>})}
       </tr>
     );
   };
