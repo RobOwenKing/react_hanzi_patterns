@@ -9,6 +9,10 @@ const hanzi = require("hanzi");
 
 export const startHanzi = () => { hanzi.start(); };
 
+const getCharInDict = (char) => {
+  return data.find(element => element.character === char);
+};
+
 const sortByFrequency = (chars) => {
   return chars.sort((a, b) => {return hanzi.getCharacterFrequency(a).number - hanzi.getCharacterFrequency(b).number});
 };
@@ -55,14 +59,18 @@ const getNeighbourhood = (char) => {
     const samePhonetic = getMatchingCharacters(char.etymology.phonetic, 'phonetic');
     const sameSemantic = getMatchingCharacters(char.etymology.semantic, 'semantic');
 
+    const neighbourhood = samePhonetic.map((charMatchP) => {
+      sameSemantic.map((charMatchS) => {
 
+      })
+    });
   }
 
   return null;
 };
 
 export const getCharData = (char) => {
-  const charInDict = data.find(element => element.character === char);
+  const charInDict = getCharInDict(char);
 
   const charData = {
     char: char,
