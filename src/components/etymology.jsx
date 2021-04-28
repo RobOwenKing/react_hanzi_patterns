@@ -56,10 +56,10 @@ class Etymology extends Component {
     }
   };
 
-  formatNeighbourhoodRow(row) {
+  formatNeighbourhoodRow(row, index) {
     return (
-      <tr>
-        {row.map(char => {return <td><SmallCharacter char={char} clickHandler={this.props.clickHandler} /></td>})}
+      <tr key={index}>
+        {row.map((char, index2) => {return <td key={index + ',' + index2}><SmallCharacter char={char} clickHandler={this.props.clickHandler} /></td>})}
       </tr>
     );
   };
@@ -72,7 +72,7 @@ class Etymology extends Component {
       return (
         <table>
           <tbody>
-            {neighbourhood.map(row => this.formatNeighbourhoodRow(row))}
+            {neighbourhood.map((row, index) => this.formatNeighbourhoodRow(row, index))}
           </tbody>
         </table>
       );
