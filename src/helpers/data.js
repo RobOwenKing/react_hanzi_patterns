@@ -41,15 +41,24 @@ const getFrequency = (char) => {
   }
 };
 
-const getMatchingCharacters = (match, filter) => {
-  let matches;
-  if (filter === 'phonetic') {
-    matches = data.filter(element => {return element?.etymology?.phonetic === match})
-  } else {
-    matches = data.filter(element => {return element?.etymology?.semantic === match})
-  }
-  const chars = matches.map(element => element.character);
-  return sortByFrequency(chars);
+const getMatchingCharacters = (char) => {
+  const pToMatch = char.etymology.phonetic;
+  const sToMatch = char.etymology.semantic;
+
+  const pMatches = data.filter(element => {
+    return element?.etymology?.phonetic === pToMatch &&
+        element?.etymology?.semantic !== sToMatch });
+  const sMatches = data.filter(element => {
+    return element?.etymology?.semantic === sToMatch &&
+        element?.etymology?.phonetic !== pToMatch });
+
+  const pChars = sortByFrequency(pMatches.map(element => element.character));
+  const sChars = sortByFrequency(sMatches.map(element => element.character));
+
+  pChars.unshift(char.character);
+  sChars.unshift(char.character);
+
+  return [pChars, sChars];
 };
 
 const getNeighbourhoodChar = (charMatchingP, charMatchingS) => {
@@ -69,8 +78,9 @@ const getNeighbourhood = (char) => {
   if (!char) { return null; }
 
   if (char?.etymology?.type === 'pictophonetic') {
-    const samePhonetic = getMatchingCharacters(char.etymology.phonetic, 'phonetic');
-    const sameSemantic = getMatchingCharacters(char.etymology.semantic, 'semantic');
+    const matchingChars = getMatchingCharacters(char);
+    const samePhonetic = matchingChars[0];
+    const sameSemantic = matchingChars[1];
 
     const neighbourhood = samePhonetic.map((charMatchingP) => {
       return sameSemantic.map((charMatchingS) => {
