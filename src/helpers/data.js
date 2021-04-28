@@ -52,6 +52,19 @@ const getMatchingCharacters = (match, filter) => {
   return sortByFrequency(chars);
 };
 
+const getNeighbourhoodChar = (charMatchingP, charMatchingS) => {
+  const sToMatch = getCharInDict(charMatchingP).etymology.semantic;
+  const pToMatch = getCharInDict(charMatchingS).etymology.phonetic;
+
+  const char = data.find((element) => {
+    return element?.etymology?.semantic === sToMatch &&
+        element?.etymology?.phonetic === pToMatch
+  });
+
+  const returnable = char ? char.character : '';
+  return returnable;
+};
+
 const getNeighbourhood = (char) => {
   if (!char) { return null; }
 
@@ -59,11 +72,13 @@ const getNeighbourhood = (char) => {
     const samePhonetic = getMatchingCharacters(char.etymology.phonetic, 'phonetic');
     const sameSemantic = getMatchingCharacters(char.etymology.semantic, 'semantic');
 
-    const neighbourhood = samePhonetic.map((charMatchP) => {
-      sameSemantic.map((charMatchS) => {
-
+    const neighbourhood = samePhonetic.map((charMatchingP) => {
+      return sameSemantic.map((charMatchingS) => {
+        return getNeighbourhoodChar(charMatchingP, charMatchingS);
       })
     });
+
+    console.log(neighbourhood);
   }
 
   return null;
