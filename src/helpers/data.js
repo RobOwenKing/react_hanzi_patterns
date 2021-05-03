@@ -9,11 +9,19 @@ const hanzi = require("hanzi");
 
 export const startHanzi = () => { hanzi.start(); };
 
+const getCharInDict = (char) => {
+  return data.find(element => element.character === char);
+};
+
+const sortByFrequency = (chars) => {
+  return chars.sort((a, b) => {return hanzi.getCharacterFrequency(a).number - hanzi.getCharacterFrequency(b).number});
+};
+
 const getAppearsIn = (char) => {
     const chars = hanzi.getCharactersWithComponent(char);
     // If no characters are found with the given component
     // the above function returns string "X not found"
-    const returnable = Array.isArray(chars) ? chars : null;
+    const returnable = Array.isArray(chars) ? sortByFrequency(chars) : null;
     return returnable;
 };
 
@@ -33,19 +41,68 @@ const getFrequency = (char) => {
   }
 };
 
+const getMatchingCharacters = (char) => {
+  const pToMatch = char.etymology.phonetic;
+  const sToMatch = char.etymology.semantic;
+
+  const pMatches = data.filter(element => {
+    return element?.etymology?.phonetic === pToMatch &&
+        element?.etymology?.semantic !== sToMatch });
+  const sMatches = data.filter(element => {
+    return element?.etymology?.semantic === sToMatch &&
+        element?.etymology?.phonetic !== pToMatch });
+
+  const pChars = sortByFrequency(pMatches.map(element => element.character));
+  const sChars = sortByFrequency(sMatches.map(element => element.character));
+
+  pChars.unshift(char.character);
+  sChars.unshift(char.character);
+
+  return [pChars, sChars];
+};
+
+const getNeighbourhoodChar = (charMatchingP, charMatchingS) => {
+  const sToMatch = getCharInDict(charMatchingP).etymology.semantic;
+  const pToMatch = getCharInDict(charMatchingS).etymology.phonetic;
+
+  const char = data.find((element) => {
+    return element?.etymology?.semantic === sToMatch &&
+        element?.etymology?.phonetic === pToMatch
+  });
+
+  const returnable = char ? char.character : null;
+  return returnable;
+};
+
 const getNeighbourhood = (char) => {
-  if (!char.etymology) { return null; }
+  if (!char) { return null; }
+
+  if (char?.etymology?.type === 'pictophonetic') {
+    const matchingChars = getMatchingCharacters(char);
+    const samePhonetic = matchingChars[0];
+    const sameSemantic = matchingChars[1];
+
+    const neighbourhood = sameSemantic.map((charMatchingS) => {
+      return samePhonetic.map((charMatchingP) => {
+        return getNeighbourhoodChar(charMatchingP, charMatchingS);
+      })
+    });
+
+    return neighbourhood;
+  }
+
+  return null;
 };
 
 export const getCharData = (char) => {
-  const charInDict = data.find(element => element.character === char);
+  const charInDict = getCharInDict(char);
 
   const charData = {
     char: char,
     appearsIn: getAppearsIn(char),
     etymology: getEtymology(charInDict),
     frequency: getFrequency(char),
-    neighbourhood: getNeighbourhood(char),
+    neighbourhood: getNeighbourhood(charInDict),
     pronunciations: hanzi.definitionLookup(char)
   };
 

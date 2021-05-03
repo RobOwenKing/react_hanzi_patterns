@@ -45,8 +45,8 @@ class Etymology extends Component {
       return (
         <div>
           <div>
-            <SmallCharacter char={contents[0]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({contents[1]}) +
-            <SmallCharacter char={contents[2]} hanzi={this.props.hanzi} clickHandler={this.props.clickHandler} /> ({getPinyin(contents[2])})
+            <SmallCharacter char={contents[0]} clickHandler={this.props.clickHandler} /> ({contents[1]}) +
+            <SmallCharacter char={contents[2]} clickHandler={this.props.clickHandler} /> ({getPinyin(contents[2])})
           </div>
           NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
         </div>
@@ -56,11 +56,36 @@ class Etymology extends Component {
     }
   };
 
-  formattedNeighbourhood() {
-    if (!this.props.newCharData.neighbourhood) {
-      return 'No neighbourhood'
+  formattedNeighbourhoodCell(char) {
+    if (char) {
+      return (<SmallCharacter char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin}  />);
+    } else {
+      return '';
     }
   }
+
+  formatNeighbourhoodRow(row, index) {
+    return (
+      <tr key={index}>
+        {row.map((char, index2) => {return <td key={index + ',' + index2}>{this.formattedNeighbourhoodCell(char)}</td>})}
+      </tr>
+    );
+  };
+
+  formattedNeighbourhood() {
+    const neighbourhood = this.props.newCharData.neighbourhood;
+    if (!neighbourhood) {
+      return 'No neighbourhood'
+    } else {
+      return (
+        <table>
+          <tbody>
+            {neighbourhood.map((row, index) => this.formatNeighbourhoodRow(row, index))}
+          </tbody>
+        </table>
+      );
+    }
+  };
 
   render() {
     return (
