@@ -70,7 +70,7 @@ const getNeighbourhoodChar = (charMatchingP, charMatchingS) => {
         element?.etymology?.phonetic === pToMatch
   });
 
-  const returnable = char ? char.character : '';
+  const returnable = char ? char.character : null;
   return returnable;
 };
 

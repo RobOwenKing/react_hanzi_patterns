@@ -56,10 +56,18 @@ class Etymology extends Component {
     }
   };
 
+  formattedNeighbourhoodCell(char) {
+    if (char) {
+      return (<SmallCharacter char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin}  />);
+    } else {
+      return '';
+    }
+  }
+
   formatNeighbourhoodRow(row, index) {
     return (
       <tr key={index}>
-        {row.map((char, index2) => {return <td key={index + ',' + index2}><SmallCharacter char={char} clickHandler={this.props.clickHandler} /></td>})}
+        {row.map((char, index2) => {return <td key={index + ',' + index2}>{this.formattedNeighbourhoodCell(char)}</td>})}
       </tr>
     );
   };
