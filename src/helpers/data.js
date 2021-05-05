@@ -76,22 +76,20 @@ const getNeighbourhoodChar = (charMatchingP, charMatchingS) => {
 
 const getNeighbourhood = (char) => {
   if (!char) { return null; }
+  if (char?.etymology?.type !== 'pictophonetic') { return null; }
+  if (!char.etymology.semantic || !char.etymology.phonetic) { return null; }
 
-  if (char?.etymology?.type === 'pictophonetic') {
-    const matchingChars = getMatchingCharacters(char);
-    const samePhonetic = matchingChars[0];
-    const sameSemantic = matchingChars[1];
+  const matchingChars = getMatchingCharacters(char);
+  const samePhonetic = matchingChars[0];
+  const sameSemantic = matchingChars[1];
 
-    const neighbourhood = sameSemantic.map((charMatchingS) => {
-      return samePhonetic.map((charMatchingP) => {
-        return getNeighbourhoodChar(charMatchingP, charMatchingS);
-      })
-    });
+  const neighbourhood = sameSemantic.map((charMatchingS) => {
+    return samePhonetic.map((charMatchingP) => {
+      return getNeighbourhoodChar(charMatchingP, charMatchingS);
+    })
+  });
 
-    return neighbourhood;
-  }
-
-  return null;
+  return neighbourhood;
 };
 
 export const getCharData = (char) => {
