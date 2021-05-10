@@ -1,16 +1,18 @@
 import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
 import { pinyinify } from '../helpers/pinyinify.js';
 
-// const data = require('../src/data/test.json');
-const data = require('../../src/data/dictionary.json');
+// Using Make Me A Hanzi data from github.com/skishore/makemeahanzi
+// under the GNU Lesser General Public License
+const dict = require('../../src/data/dictionary.json');
 
-// Using HanziJS from https://github.com/nieldlr/hanzi under MIT license
+// Using HanziJS from github.com/nieldlr/hanzi
+// under the MIT license
 const hanzi = require("hanzi");
 
 export const startHanzi = () => { hanzi.start(); };
 
 const getCharInDict = (char) => {
-  return data.find(element => element.character === char);
+  return dict.find(element => element.character === char);
 };
 
 const sortByFrequency = (chars) => {
@@ -45,10 +47,10 @@ const getMatchingCharacters = (char) => {
   const pToMatch = char.etymology.phonetic;
   const sToMatch = char.etymology.semantic;
 
-  const pMatches = data.filter(element => {
+  const pMatches = dict.filter(element => {
     return element?.etymology?.phonetic === pToMatch &&
         element?.etymology?.semantic !== sToMatch });
-  const sMatches = data.filter(element => {
+  const sMatches = dict.filter(element => {
     return element?.etymology?.semantic === sToMatch &&
         element?.etymology?.phonetic !== pToMatch });
 
@@ -65,7 +67,7 @@ const getNeighbourhoodChar = (charMatchingP, charMatchingS) => {
   const sToMatch = getCharInDict(charMatchingP).etymology.semantic;
   const pToMatch = getCharInDict(charMatchingS).etymology.phonetic;
 
-  const char = data.find((element) => {
+  const char = dict.find((element) => {
     return element?.etymology?.semantic === sToMatch &&
         element?.etymology?.phonetic === pToMatch
   });
