@@ -106,7 +106,20 @@ const getMatches = (char) => {
   returnable["semantic"] = matchingChars[1];
 
   return returnable;
-}
+};
+
+export const fillNeighbourhood = (matches, rows, cols) => {
+  const sameSemantic = matches["semantic"].slice(0, rows);
+  const samePhonetic = matches["phonetic"].slice(0, cols);
+
+  const neighbourhood = sameSemantic.map((charMatchingS) => {
+    return samePhonetic.map((charMatchingP) => {
+      return getNeighbourhoodChar(charMatchingP, charMatchingS);
+    })
+  });
+
+  return neighbourhood;
+};
 
 export const getCharData = (char) => {
   const charInDict = getCharInDict(char);

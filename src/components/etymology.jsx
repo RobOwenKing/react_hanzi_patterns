@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import SmallCharacter from './small_character.jsx';
 
-import { getPinyin } from '../helpers/data.js';
+import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
 
 class Etymology extends Component {
   etymologyType() {
@@ -73,7 +73,7 @@ class Etymology extends Component {
   };
 
   formattedNeighbourhood() {
-    const neighbourhood = this.props.newCharData.neighbourhood;
+    const neighbourhood = fillNeighbourhood(this.props.newCharData.matches, 10, 10);
     if (!neighbourhood) {
       return 'No neighbourhood'
     } else {
