@@ -76,24 +76,6 @@ const getNeighbourhoodChar = (charMatchingP, charMatchingS) => {
   return returnable;
 };
 
-const getNeighbourhood = (char) => {
-  if (!char) { return null; }
-  if (char?.etymology?.type !== 'pictophonetic') { return null; }
-  if (!char.etymology.semantic || !char.etymology.phonetic) { return null; }
-
-  const matchingChars = getMatchingCharacters(char);
-  const samePhonetic = matchingChars[0];
-  const sameSemantic = matchingChars[1];
-
-  const neighbourhood = sameSemantic.map((charMatchingS) => {
-    return samePhonetic.map((charMatchingP) => {
-      return getNeighbourhoodChar(charMatchingP, charMatchingS);
-    })
-  });
-
-  return neighbourhood;
-};
-
 const getMatches = (char) => {
   if (!char) { return null; }
   if (char?.etymology?.type !== 'pictophonetic') { return null; }
@@ -130,7 +112,6 @@ export const getCharData = (char) => {
     etymology: getEtymology(charInDict),
     frequency: getFrequency(char),
     matches: getMatches(charInDict),
-    neighbourhood: getNeighbourhood(charInDict),
     pronunciations: hanzi.definitionLookup(char)
   };
 
