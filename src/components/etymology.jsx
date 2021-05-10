@@ -73,10 +73,10 @@ class Etymology extends Component {
   };
 
   formattedNeighbourhood() {
-    const neighbourhood = fillNeighbourhood(this.props.newCharData.matches, 10, 10);
-    if (!neighbourhood) {
+    if (!this.props.newCharData.matches) {
       return 'No neighbourhood'
     } else {
+      const neighbourhood = fillNeighbourhood(this.props.newCharData.matches, 10, 10);
       return (
         <table>
           <tbody>

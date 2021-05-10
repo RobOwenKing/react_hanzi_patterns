@@ -49,9 +49,11 @@ const fillMatches = (char) => {
 
   const pMatches = dict.filter(element => {
     return element?.etymology?.phonetic === pToMatch &&
+        element?.etymology?.semantic &&
         element?.etymology?.semantic !== sToMatch });
   const sMatches = dict.filter(element => {
     return element?.etymology?.semantic === sToMatch &&
+        element?.etymology?.phonetic &&
         element?.etymology?.phonetic !== pToMatch });
 
   const pChars = sortByFrequency(pMatches.map(element => element.character));
