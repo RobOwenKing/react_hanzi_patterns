@@ -43,7 +43,7 @@ const getFrequency = (char) => {
   }
 };
 
-const getMatchingCharacters = (char) => {
+const fillMatches = (char) => {
   const pToMatch = char.etymology.phonetic;
   const sToMatch = char.etymology.semantic;
 
@@ -60,7 +60,12 @@ const getMatchingCharacters = (char) => {
   pChars.unshift(char.character);
   sChars.unshift(char.character);
 
-  return [pChars, sChars];
+  const returnable = {
+    phonetic: pChars,
+    semantic: sChars
+  };
+
+  return returnable;
 };
 
 const getNeighbourhoodChar = (charMatchingP, charMatchingS) => {
@@ -81,13 +86,7 @@ const getMatches = (char) => {
   if (char?.etymology?.type !== 'pictophonetic') { return null; }
   if (!char.etymology.semantic || !char.etymology.phonetic) { return null; }
 
-  const matchingChars = getMatchingCharacters(char);
-  const returnable = {};
-
-  returnable["phonetic"] = matchingChars[0];
-  returnable["semantic"] = matchingChars[1];
-
-  return returnable;
+  return fillMatches(char);
 };
 
 export const fillNeighbourhood = (matches, rows, cols) => {
