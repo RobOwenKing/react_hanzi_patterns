@@ -39,26 +39,26 @@ class Etymology extends Component {
     }
   };
 
-  formattedPhonetic(phonetic) {
+  formatPhonetic(phonetic) {
     if (phonetic) {
       return (
-        <div>
+        <span>
           <SmallCharacter char={phonetic} clickHandler={this.props.clickHandler} /> ({getPinyin(phonetic)})
-        </div>
+        </span>
         )
     } else {
       return ( <span className="char-mid">?</span>)
     }
   }
 
-  formattedContents() {
+  formatContents() {
     const contents = this.etymologyContents();
     if (Array.isArray(contents)) {
       return (
         <div>
           <div>
             <SmallCharacter char={contents[0]} clickHandler={this.props.clickHandler} /> ({contents[1]}) +
-            {this.formattedPhonetic(contents[2])}
+            {this.formatPhonetic(contents[2])}
           </div>
           NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
         </div>
@@ -68,7 +68,7 @@ class Etymology extends Component {
     }
   };
 
-  formattedNeighbourhoodCell(char) {
+  formatNeighbourhoodCell(char) {
     if (char) {
       return (<SmallCharacter char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin}  />);
     } else {
@@ -79,12 +79,12 @@ class Etymology extends Component {
   formatNeighbourhoodRow(row, index) {
     return (
       <tr key={index}>
-        {row.map((char, index2) => {return <td key={index + ',' + index2}>{this.formattedNeighbourhoodCell(char)}</td>})}
+        {row.map((char, index2) => {return <td key={index + ',' + index2}>{this.formatNeighbourhoodCell(char)}</td>})}
       </tr>
     );
   };
 
-  formattedNeighbourhood() {
+  formatNeighbourhood() {
     if (!this.props.newCharData.matches) {
       return 'No neighbourhood'
     } else {
@@ -103,8 +103,8 @@ class Etymology extends Component {
     return (
       <div>
         <h3>{this.etymologyType()}</h3>
-        {this.formattedContents()}
-        {this.formattedNeighbourhood()}
+        {this.formatContents()}
+        {this.formatNeighbourhood()}
       </div>
     );
   }
