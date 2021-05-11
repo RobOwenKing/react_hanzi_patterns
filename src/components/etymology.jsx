@@ -39,6 +39,18 @@ class Etymology extends Component {
     }
   };
 
+  formatSemantic(semantic, hint) {
+    if (semantic) {
+      return (
+        <span>
+          <SmallCharacter char={semantic} clickHandler={this.props.clickHandler} /> ({hint})
+        </span>
+        )
+    } else {
+      return ( <span className="char-mid">?</span>)
+    }
+  }
+
   formatPhonetic(phonetic) {
     if (phonetic) {
       return (
@@ -57,7 +69,8 @@ class Etymology extends Component {
       return (
         <div>
           <div>
-            <SmallCharacter char={contents[0]} clickHandler={this.props.clickHandler} /> ({contents[1]}) +
+            {this.formatSemantic(contents[0], contents[1])}
+            +
             {this.formatPhonetic(contents[2])}
           </div>
           NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
