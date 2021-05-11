@@ -17,6 +17,10 @@ input {
   font-size: 5em;
 }
 
+.char-mid {
+  font-size: 2em;
+}
+
 .bold {
   font-weight: bold;
 }

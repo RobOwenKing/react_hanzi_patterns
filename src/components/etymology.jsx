@@ -39,6 +39,18 @@ class Etymology extends Component {
     }
   };
 
+  formattedPhonetic(phonetic) {
+    if (phonetic) {
+      return (
+        <div>
+          <SmallCharacter char={phonetic} clickHandler={this.props.clickHandler} /> ({getPinyin(phonetic)})
+        </div>
+        )
+    } else {
+      return ( <span className="char-mid">?</span>)
+    }
+  }
+
   formattedContents() {
     const contents = this.etymologyContents();
     if (Array.isArray(contents)) {
@@ -46,7 +58,7 @@ class Etymology extends Component {
         <div>
           <div>
             <SmallCharacter char={contents[0]} clickHandler={this.props.clickHandler} /> ({contents[1]}) +
-            <SmallCharacter char={contents[2]} clickHandler={this.props.clickHandler} /> ({getPinyin(contents[2])})
+            {this.formattedPhonetic(contents[2])}
           </div>
           NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
         </div>
