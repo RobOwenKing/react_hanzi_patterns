@@ -9,8 +9,8 @@ class Etymology extends Component {
     super(props);
 
     this.state = {
-      maxNeighbourhoodRows: 10,
-      maxNeighbourhoodCols: 10
+      displayedRows: 10,
+      displayedCols: 10
     };
   };
 
@@ -58,7 +58,7 @@ class Etymology extends Component {
     } else {
       return ( <span className="char-mid">?</span>)
     }
-  }
+  };
 
   formatPhonetic(phonetic) {
     if (phonetic) {
@@ -70,7 +70,7 @@ class Etymology extends Component {
     } else {
       return ( <span className="char-mid">?</span>)
     }
-  }
+  };
 
   formatContents() {
     const contents = this.etymologyContents();
@@ -96,7 +96,7 @@ class Etymology extends Component {
     } else {
       return '';
     }
-  }
+  };
 
   formatNeighbourhoodRow(row, index) {
     return (
@@ -111,8 +111,8 @@ class Etymology extends Component {
       return 'No neighbourhood'
     } else {
       const neighbourhood = fillNeighbourhood(this.props.newCharData.matches,
-          this.state.maxNeighbourhoodRows,
-          this.state.maxNeighbourhoodCols);
+          this.state.displayedRows,
+          this.state.displayedCols);
       return (
         <table>
           <tbody>
@@ -131,7 +131,7 @@ class Etymology extends Component {
         {this.formatNeighbourhood()}
       </div>
     );
-  }
-}
+  };
+};
 
 export default Etymology;
