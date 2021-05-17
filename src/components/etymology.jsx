@@ -5,15 +5,6 @@ import SmallCharacter from './small_character.jsx';
 import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
 
 class Etymology extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      displayedRows: 10,
-      displayedCols: 10
-    };
-  };
-
   etymologyType() {
     if (!this.props.newCharData.etymology) { return ''; }
 
@@ -107,18 +98,19 @@ class Etymology extends Component {
   };
 
   formatNeighbourhood() {
-    if (!this.props.newCharData.matches) {
+    if (!this.props.newCharData.neighbourhood.matches) {
       return 'No neighbourhood'
     } else {
-      const neighbourhood = fillNeighbourhood(this.props.newCharData.matches,
-          this.state.displayedRows,
-          this.state.displayedCols);
+      const neighbourhood = fillNeighbourhood(this.props.newCharData.neighbourhood.matches,
+          10,
+          10);
       return (
         <table>
           <tbody>
             {neighbourhood.map((row, index) => this.formatNeighbourhoodRow(row, index))}
           </tbody>
         </table>
+
       );
     }
   };

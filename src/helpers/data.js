@@ -112,8 +112,10 @@ export const getCharData = (char) => {
     appearsIn: getAppearsIn(char),
     etymology: getEtymology(charInDict),
     frequency: getFrequency(char),
-    matches: getMatches(charInDict),
-    pronunciations: hanzi.definitionLookup(char)
+    pronunciations: hanzi.definitionLookup(char),
+    neighbourhood: {
+        matches: getMatches(charInDict)
+      }
   };
 
   console.log(charData);
