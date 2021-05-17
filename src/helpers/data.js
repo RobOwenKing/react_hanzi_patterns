@@ -114,7 +114,9 @@ export const getCharData = (char) => {
     frequency: getFrequency(char),
     pronunciations: hanzi.definitionLookup(char),
     neighbourhood: {
-        matches: getMatches(charInDict)
+        matches: getMatches(charInDict),
+        displayedRows: 10,
+        displayedCols: 10
       }
   };
 

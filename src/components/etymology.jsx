@@ -98,12 +98,13 @@ class Etymology extends Component {
   };
 
   formatNeighbourhood() {
-    if (!this.props.newCharData.neighbourhood.matches) {
+    const data = this.props.newCharData.neighbourhood;
+    if (!data.matches) {
       return 'No neighbourhood'
     } else {
-      const neighbourhood = fillNeighbourhood(this.props.newCharData.neighbourhood.matches,
-          10,
-          10);
+      const neighbourhood = fillNeighbourhood(data.matches,
+          data.displayedRows,
+          data.displayedCols);
       return (
         <table>
           <tbody>
