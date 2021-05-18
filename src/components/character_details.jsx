@@ -68,7 +68,10 @@ class CharacterDetails extends Component {
 
         {this.pronunciations()}
 
-        <Etymology newCharData={this.props.newCharData} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin}  />
+        <Etymology newCharData={this.props.newCharData}
+            clickHandler={this.props.clickHandler}
+            showPinyin={this.props.showPinyin}
+            showMore={this.props.showMore} />
 
         <h3>Characters which contain {this.props.newCharData.char}</h3>
         {this.charactersWithComponent()}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import ShowMore from './show_more.jsx';
 import SmallCharacter from './small_character.jsx';
 
 import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
@@ -122,6 +123,7 @@ class Etymology extends Component {
         <h3>{this.etymologyType()}</h3>
         {this.formatContents()}
         {this.formatNeighbourhood()}
+        <ShowMore direction="rows" showMore={this.props.showMore} />
       </div>
     );
   };
