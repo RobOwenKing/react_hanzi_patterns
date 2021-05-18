@@ -91,6 +91,38 @@ const getMatches = (char) => {
   return fillMatches(char);
 };
 
+const getNeighbourhood = (char) => {
+  const matches = getMatches(char);
+  const returnable = {
+      matches: matches,
+      displayedRows: 10,
+      displayedCols: 10
+    };
+  if (matches) {
+    returnable.maxRows = matches.semantic.length;
+    returnable.maxCols = matches.phonetic.length;
+  }
+
+  return returnable;
+};
+
+export const getCharData = (char) => {
+  const charInDict = getCharInDict(char);
+
+  const charData = {
+    char: char,
+    appearsIn: getAppearsIn(char),
+    etymology: getEtymology(charInDict),
+    frequency: getFrequency(char),
+    neighbourhood: getNeighbourhood(charInDict),
+    pronunciations: hanzi.definitionLookup(char)
+  };
+
+  console.log(charData);
+
+  return charData;
+};
+
 export const fillNeighbourhood = (matches, rows, cols) => {
   const sameSemantic = matches["semantic"].slice(0, rows);
   const samePhonetic = matches["phonetic"].slice(0, cols);
@@ -102,27 +134,6 @@ export const fillNeighbourhood = (matches, rows, cols) => {
   });
 
   return neighbourhood;
-};
-
-export const getCharData = (char) => {
-  const charInDict = getCharInDict(char);
-
-  const charData = {
-    char: char,
-    appearsIn: getAppearsIn(char),
-    etymology: getEtymology(charInDict),
-    frequency: getFrequency(char),
-    pronunciations: hanzi.definitionLookup(char),
-    neighbourhood: {
-        matches: getMatches(charInDict),
-        displayedRows: 10,
-        displayedCols: 10
-      }
-  };
-
-  console.log(charData);
-
-  return charData;
 };
 
 export const getPinyin = (char) => {
