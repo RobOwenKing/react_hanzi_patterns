@@ -127,6 +127,10 @@ class Etymology extends Component {
             showMore={this.props.showMore}
             displayed={this.props.newCharData.neighbourhood.displayedRows}
             max={this.props.newCharData.neighbourhood.maxRows} />
+        <ShowMore direction="columns"
+            showMore={this.props.showMore}
+            displayed={this.props.newCharData.neighbourhood.displayedCols}
+            max={this.props.newCharData.neighbourhood.maxCols} />
       </div>
     );
   };
