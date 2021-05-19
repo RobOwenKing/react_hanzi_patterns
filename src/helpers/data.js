@@ -1,6 +1,8 @@
 import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
 import { pinyinify } from '../helpers/pinyinify.js';
 
+const NEIGHBOURHOOD_MEMO = {};
+
 // Using Make Me A Hanzi data from github.com/skishore/makemeahanzi
 // under the GNU Lesser General Public License
 const dict = require('../../src/data/dictionary.json');
@@ -74,12 +76,23 @@ const getNeighbourhoodChar = (charMatchingP, charMatchingS) => {
   const sToMatch = getCharInDict(charMatchingP).etymology.semantic;
   const pToMatch = getCharInDict(charMatchingS).etymology.phonetic;
 
+  if (NEIGHBOURHOOD_MEMO[sToMatch]) {
+    if (pToMatch in NEIGHBOURHOOD_MEMO[sToMatch]) {
+      console.log("Using memo");
+      return NEIGHBOURHOOD_MEMO[sToMatch][pToMatch];
+    }
+  } else {
+    NEIGHBOURHOOD_MEMO[sToMatch] = {};
+  }
+
   const char = dict.find((element) => {
     return element?.etymology?.semantic === sToMatch &&
         element?.etymology?.phonetic === pToMatch
   });
 
   const returnable = char ? char.character : null;
+  NEIGHBOURHOOD_MEMO[sToMatch][pToMatch] = returnable;
+
   return returnable;
 };
 

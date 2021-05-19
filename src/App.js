@@ -47,7 +47,7 @@ class App extends Component {
 
   showMore = (direction) => {
     const dataCopy = { ...this.state.newCharData };
-    if (direction == "rows") {
+    if (direction === "rows") {
       dataCopy.neighbourhood.displayedRows += 10;
     } else {
       dataCopy.neighbourhood.displayedCols += 10;
