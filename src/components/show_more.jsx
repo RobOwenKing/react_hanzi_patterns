@@ -7,7 +7,14 @@ class ShowMore extends Component {
 
   render() {
     return (
-      <span onClick={this.handleChange}>Show more</span>
+      <div>
+        {
+          `Showing
+          ${Math.min(this.props.displayed, this.props.max)}/${this.props.max}
+          ${this.props.direction}. `
+        }
+        <span onClick={this.handleChange}>Show more</span>
+      </div>
     );
   }
 }

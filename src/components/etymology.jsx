@@ -123,7 +123,10 @@ class Etymology extends Component {
         <h3>{this.etymologyType()}</h3>
         {this.formatContents()}
         {this.formatNeighbourhood()}
-        <ShowMore direction="rows" showMore={this.props.showMore} />
+        <ShowMore direction="rows"
+            showMore={this.props.showMore}
+            displayed={this.props.newCharData.neighbourhood.displayedRows}
+            max={this.props.newCharData.neighbourhood.maxRows} />
       </div>
     );
   };
