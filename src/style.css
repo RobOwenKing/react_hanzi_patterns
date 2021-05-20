@@ -17,6 +17,11 @@ input {
   font-size: 5em;
 }
 
+.char-mid {
+  font-size: 2em;
+  margin: 0px 6px;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -35,12 +40,6 @@ input {
 
 .small-character {
   cursor: pointer;
-  margin: 0px 6px;
-}
-
-.small-character rb,
-.small-character > span {
-  font-size: 2em;
 }
 
 .small-character rt {

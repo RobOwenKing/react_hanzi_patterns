@@ -45,6 +45,17 @@ class App extends Component {
     this.setState({ showPinyin: event.target.checked });
   }
 
+  showMore = (direction) => {
+    const dataCopy = { ...this.state.newCharData };
+    if (direction === "rows") {
+      dataCopy.neighbourhood.displayedRows += 10;
+    } else {
+      dataCopy.neighbourhood.displayedCols += 10;
+    }
+
+    this.setState({ newCharData: dataCopy });
+  }
+
   render() {
     return (
       <div className="container">
@@ -62,7 +73,8 @@ class App extends Component {
               <CharacterDetails
                   newCharData={this.state.newCharData}
                   clickHandler={this.handleSearch}
-                  showPinyin={this.state.showPinyin} />}
+                  showPinyin={this.state.showPinyin}
+                  showMore={this.showMore} />}
         </div>
         <SearchHistory searchHistory={this.state.searchHistory} clickHandler={this.handleSearch} />
       </div>
