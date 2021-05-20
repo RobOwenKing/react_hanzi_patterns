@@ -78,7 +78,6 @@ const getNeighbourhoodChar = (charMatchingP, charMatchingS) => {
 
   if (NEIGHBOURHOOD_MEMO[sToMatch]) {
     if (pToMatch in NEIGHBOURHOOD_MEMO[sToMatch]) {
-      console.log("Using memo");
       return NEIGHBOURHOOD_MEMO[sToMatch][pToMatch];
     }
   } else {
