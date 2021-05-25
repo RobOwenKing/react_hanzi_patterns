@@ -8,7 +8,8 @@ import { pinyinify } from '../helpers/pinyinify.js';
 
 const FONTFAMILIES = {
   'heiti': "STHeiti, 华文黑体, 'Microsoft YaHei', 微软雅黑, SimHei, 黑体, sans-serif",
-  'songti': "SimSun, 宋体, 'Zhongyi Songti', 中易宋体, serif"
+  'songti': "SimSun, 宋体, 'Zhongyi Songti', 中易宋体, serif",
+  'liu': "'Liu Jian Mao Cao', cursive"
 };
 
 /**
@@ -63,6 +64,7 @@ class CharacterDetails extends Component {
       <div>
         <LargeCharacter style={FONTFAMILIES.heiti} char={this.props.newCharData.char} />
         <LargeCharacter style={FONTFAMILIES.songti} char={this.props.newCharData.char} />
+        <LargeCharacter style={FONTFAMILIES.liu} char={this.props.newCharData.char} />
 
         <p>{this.frequency()}</p>
 
