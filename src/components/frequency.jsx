@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
+import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
+
 import SmallCharacter from './small_character.jsx';
 
 class Frequency extends Component {
   frequency() {
     const freq = this.props.newCharData.frequency;
     if (freq) {
-      return `${freq} most common`;
+      return `${ordinalSuffix(freq)} most common`;
     } else {
       return `No frequency data found`;
     }

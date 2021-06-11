@@ -1,4 +1,3 @@
-import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
 import { pinyinify } from '../helpers/pinyinify.js';
 
 const NEIGHBOURHOOD_MEMO = {};
@@ -39,7 +38,7 @@ const getEtymology = (char) => {
 const getFrequency = (char) => {
   const freqData = hanzi.getCharacterFrequency(char);
   if (typeof freqData != 'string') {
-    return ordinalSuffix(freqData.number);
+    return freqData.number;
   } else {
     return null;
   }
