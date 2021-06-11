@@ -1,10 +1,10 @@
-import { pinyinify } from '../helpers/pinyinify.js';
+import { pinyinify } from './pinyinify.js';
 
 const NEIGHBOURHOOD_MEMO = {};
 
 // Using Make Me A Hanzi data from github.com/skishore/makemeahanzi
 // under the GNU Lesser General Public License
-const dict = require('../../src/data/dictionary.json');
+const dict = require('../data/dictionary.json');
 
 // Using HanziJS from github.com/nieldlr/hanzi
 // under the MIT license
