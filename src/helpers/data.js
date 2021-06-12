@@ -36,9 +36,9 @@ const getEtymology = (char) => {
 };
 
 const getFrequency = (char) => {
-  const freqData = hanzi.getCharacterFrequency(char);
-  if (typeof freqData != 'string') {
-    return freqData.number;
+  const freq = hanzi.getCharacterFrequency(char)?.number;
+  if (freq) {
+    return freq;
   } else {
     return null;
   }
@@ -156,3 +156,7 @@ export const getPinyin = (char) => {
     return uniques.map((element) => pinyinify(element)).join(', ');
   }
 };
+
+console.log(hanzi.getCharacterInFrequencyListByPosition(111)?.character);
+console.log(hanzi.getCharacterInFrequencyListByPosition(1)?.character);
+console.log(hanzi.getCharacterInFrequencyListByPosition(0)?.character);
