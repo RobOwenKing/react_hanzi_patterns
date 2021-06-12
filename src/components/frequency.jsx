@@ -6,7 +6,7 @@ import SmallCharacter from './small_character.jsx';
 
 class Frequency extends Component {
   frequency() {
-    const freq = this.props.newCharData.frequency;
+    const freq = this.props.newCharData.frequency.frequency;
     if (freq) {
       return `${ordinalSuffix(freq)} most common`;
     } else {

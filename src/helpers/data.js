@@ -38,7 +38,9 @@ const getEtymology = (char) => {
 const getFrequency = (char) => {
   const freq = hanzi.getCharacterFrequency(char)?.number;
   if (freq) {
-    return freq;
+    return {
+      frequency: freq
+    };
   } else {
     return null;
   }
