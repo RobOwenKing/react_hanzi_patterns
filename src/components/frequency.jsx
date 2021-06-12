@@ -5,7 +5,7 @@ import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
 import SmallCharacter from './small_character.jsx';
 
 class Frequency extends Component {
-  frequency() {
+  formatFrequency() {
     const freq = this.props.newCharData.frequency.frequency;
     if (freq) {
       return `${ordinalSuffix(freq)} most common`;
@@ -17,7 +17,7 @@ class Frequency extends Component {
   render() {
     return (
       <div>
-        <p>{this.frequency()}</p>
+        <p>{this.formatFrequency()}</p>
       </div>
     );
   }
