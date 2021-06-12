@@ -35,11 +35,20 @@ const getEtymology = (char) => {
   return char.etymology;
 };
 
+const getFrequencyNeighbours = (freq) => {
+  const neighbours = [];
+  for (let i = -3; i <= 3; i+=1) {
+    neighbours.push(hanzi.getCharacterInFrequencyListByPosition(freq + i)?.character)
+  }
+  return neighbours;
+};
+
 const getFrequency = (char) => {
   const freq = hanzi.getCharacterFrequency(char)?.number;
   if (freq) {
     return {
-      frequency: freq
+      frequency: freq,
+      neighbours: getFrequencyNeighbours(parseInt(freq))
     };
   } else {
     return null;
@@ -158,7 +167,3 @@ export const getPinyin = (char) => {
     return uniques.map((element) => pinyinify(element)).join(', ');
   }
 };
-
-console.log(hanzi.getCharacterInFrequencyListByPosition(111)?.character);
-console.log(hanzi.getCharacterInFrequencyListByPosition(1)?.character);
-console.log(hanzi.getCharacterInFrequencyListByPosition(0)?.character);
