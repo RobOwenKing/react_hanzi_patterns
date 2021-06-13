@@ -14,10 +14,18 @@ class Frequency extends Component {
     }
   };
 
+  formatNeighbours() {
+    const neighbours = this.props.newCharData.frequency.neighbours;
+    return neighbours.map((char, index) =>
+          {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)}
+        );
+  };
+
   render() {
     return (
       <div>
-        <p>{this.formatFrequency()}</p>
+        <div>{this.formatFrequency()}</div>
+        <div>{this.formatNeighbours()}</div>
       </div>
     );
   }

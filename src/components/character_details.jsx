@@ -65,7 +65,9 @@ class CharacterDetails extends Component {
         <LargeCharacter style={FONTFAMILIES.heiti} char={this.props.newCharData.char} />
         <LargeCharacter style={FONTFAMILIES.songti} char={this.props.newCharData.char} />
 
-        <Frequency newCharData={this.props.newCharData} />
+        <Frequency newCharData={this.props.newCharData}
+            clickHandler={this.props.clickHandler}
+            showPinyin={this.props.showPinyin} />
 
         {this.pronunciations()}
 
