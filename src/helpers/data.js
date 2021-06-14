@@ -43,12 +43,20 @@ const getFrequencyNeighbours = (freq) => {
   return neighbours;
 };
 
+const getFrequencyDots = (freq) => {
+  return [
+    hanzi.getCharacterInFrequencyListByPosition(freq - 4),
+    hanzi.getCharacterInFrequencyListByPosition(freq + 4)
+  ];
+};
+
 const getFrequency = (char) => {
   const freq = hanzi.getCharacterFrequency(char)?.number;
   if (freq) {
     return {
       frequency: freq,
-      neighbours: getFrequencyNeighbours(parseInt(freq))
+      neighbours: getFrequencyNeighbours(parseInt(freq)),
+      dots: getFrequencyDots(parseInt(freq))
     };
   } else {
     return null;
