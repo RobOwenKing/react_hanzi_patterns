@@ -15,10 +15,17 @@ class Frequency extends Component {
   };
 
   formatNeighbours() {
+    const dots = this.props.newCharData.frequency.dots;
     const neighbours = this.props.newCharData.frequency.neighbours;
-    return neighbours.map((char, index) =>
-          {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)}
-        );
+    return (
+      <div>
+        {dots[0] && "..."}
+        {neighbours.map((char, index) =>
+            {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)}
+          )}
+        {dots[1] && "..."}
+      </div>
+    );
   };
 
   render() {
