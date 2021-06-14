@@ -19,11 +19,11 @@ class Frequency extends Component {
     const neighbours = this.props.newCharData.frequency.neighbours;
     return (
       <div>
-        {dots[0] && "..."}
+        {dots[0] && "⋯⋯"}
         {neighbours.map((char, index) =>
             {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)}
           )}
-        {dots[1] && "..."}
+        {dots[1] && "⋯⋯"}
       </div>
     );
   };
