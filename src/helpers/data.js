@@ -38,7 +38,8 @@ const getEtymology = (char) => {
 const getFrequencyNeighbours = (freq) => {
   const neighbours = [];
   for (let i = -3; i <= 3; i+=1) {
-    neighbours.push(hanzi.getCharacterInFrequencyListByPosition(freq + i)?.character)
+    const char = hanzi.getCharacterInFrequencyListByPosition(freq + i)?.character;
+    if (char) {neighbours.push(char)}
   }
   return neighbours;
 };
