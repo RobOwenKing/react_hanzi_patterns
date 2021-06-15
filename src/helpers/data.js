@@ -37,10 +37,7 @@ const getEtymology = (char) => {
 };
 
 const getCharWithFrequency = (freq) => {
-  if (FREQUENCY_MEMO[freq]) {
-    console.log('Memo time');
-    return FREQUENCY_MEMO[freq];
-  }
+  if (FREQUENCY_MEMO[freq]) { return FREQUENCY_MEMO[freq]; }
 
   const char = hanzi.getCharacterInFrequencyListByPosition(freq)?.character;
   FREQUENCY_MEMO[freq] = char;
@@ -58,8 +55,8 @@ const getFrequencyNeighbours = (freq) => {
 
 const getFrequencyDots = (freq) => {
   return [
-    hanzi.getCharacterInFrequencyListByPosition(freq - 4)?.character,
-    hanzi.getCharacterInFrequencyListByPosition(freq + 4)?.character
+    getCharWithFrequency(freq - 4),
+    getCharWithFrequency(freq + 4)
   ];
 };
 
