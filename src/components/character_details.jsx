@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Etymology from './etymology.jsx';
+import Frequency from './frequency.jsx';
 import LargeCharacter from './large_character.jsx';
 import SmallCharacter from './small_character.jsx';
 
@@ -64,7 +65,9 @@ class CharacterDetails extends Component {
         <LargeCharacter style={FONTFAMILIES.heiti} char={this.props.newCharData.char} />
         <LargeCharacter style={FONTFAMILIES.songti} char={this.props.newCharData.char} />
 
-        <p>{this.frequency()}</p>
+        <Frequency newCharData={this.props.newCharData}
+            clickHandler={this.props.clickHandler}
+            showPinyin={this.props.showPinyin} />
 
         {this.pronunciations()}
 
