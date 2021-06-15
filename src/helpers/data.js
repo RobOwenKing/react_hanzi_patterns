@@ -1,11 +1,10 @@
-import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
-import { pinyinify } from '../helpers/pinyinify.js';
+import { pinyinify } from './pinyinify.js';
 
 const NEIGHBOURHOOD_MEMO = {};
 
 // Using Make Me A Hanzi data from github.com/skishore/makemeahanzi
 // under the GNU Lesser General Public License
-const dict = require('../../src/data/dictionary.json');
+const dict = require('../data/dictionary.json');
 
 // Using HanziJS from github.com/nieldlr/hanzi
 // under the MIT license
@@ -36,10 +35,30 @@ const getEtymology = (char) => {
   return char.etymology;
 };
 
+const getFrequencyNeighbours = (freq) => {
+  const neighbours = [];
+  for (let i = -3; i <= 3; i+=1) {
+    const char = hanzi.getCharacterInFrequencyListByPosition(freq + i)?.character;
+    if (char) {neighbours.push(char)}
+  }
+  return neighbours;
+};
+
+const getFrequencyDots = (freq) => {
+  return [
+    hanzi.getCharacterInFrequencyListByPosition(freq - 4)?.character,
+    hanzi.getCharacterInFrequencyListByPosition(freq + 4)?.character
+  ];
+};
+
 const getFrequency = (char) => {
-  const freqData = hanzi.getCharacterFrequency(char);
-  if (typeof freqData != 'string') {
-    return ordinalSuffix(freqData.number);
+  const freq = hanzi.getCharacterFrequency(char)?.number;
+  if (freq) {
+    return {
+      frequency: freq,
+      neighbours: getFrequencyNeighbours(parseInt(freq)),
+      dots: getFrequencyDots(parseInt(freq))
+    };
   } else {
     return null;
   }
