@@ -31,6 +31,7 @@ class Frequency extends Component {
   render() {
     return (
       <div>
+        <h3>Frequency</h3>
         <div>{this.formatFrequency()}</div>
         <div>{this.formatNeighbours()}</div>
       </div>
