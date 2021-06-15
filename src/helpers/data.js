@@ -1,5 +1,6 @@
 import { pinyinify } from './pinyinify.js';
 
+const FREQUENCY_MEMO = {};
 const NEIGHBOURHOOD_MEMO = {};
 
 // Using Make Me A Hanzi data from github.com/skishore/makemeahanzi
@@ -35,10 +36,18 @@ const getEtymology = (char) => {
   return char.etymology;
 };
 
+const getCharWithFrequency = (freq) => {
+  if (FREQUENCY_MEMO[freq]) { return FREQUENCY_MEMO[freq]; }
+
+  const char = hanzi.getCharacterInFrequencyListByPosition(freq)?.character;
+  FREQUENCY_MEMO[freq] = char;
+  return char
+};
+
 const getFrequencyNeighbours = (freq) => {
   const neighbours = [];
   for (let i = -3; i <= 3; i+=1) {
-    const char = hanzi.getCharacterInFrequencyListByPosition(freq + i)?.character;
+    const char = getCharWithFrequency(freq + i);
     if (char) {neighbours.push(char)}
   }
   return neighbours;
@@ -46,8 +55,8 @@ const getFrequencyNeighbours = (freq) => {
 
 const getFrequencyDots = (freq) => {
   return [
-    hanzi.getCharacterInFrequencyListByPosition(freq - 4)?.character,
-    hanzi.getCharacterInFrequencyListByPosition(freq + 4)?.character
+    getCharWithFrequency(freq - 4),
+    getCharWithFrequency(freq + 4)
   ];
 };
 
