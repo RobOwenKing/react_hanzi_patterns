@@ -7,7 +7,7 @@ import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
 
 class Etymology extends Component {
   etymologyType() {
-    if (!this.props.charData.etymology) { return ''; }
+    if (!this.props.charData.etymology) { return 'Etymology'; }
 
     const type = this.props.charData.etymology.type;
     if (type === 'pictophonetic') {
