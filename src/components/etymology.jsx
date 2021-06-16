@@ -7,9 +7,9 @@ import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
 
 class Etymology extends Component {
   etymologyType() {
-    if (!this.props.newCharData.etymology) { return ''; }
+    if (!this.props.charData.etymology) { return ''; }
 
-    const type = this.props.newCharData.etymology.type;
+    const type = this.props.charData.etymology.type;
     if (type === 'pictophonetic') {
       return 'Etymology: Phonosemantic';
     } else if (type === 'ideographic') {
@@ -22,9 +22,9 @@ class Etymology extends Component {
   };
 
   etymologyContents() {
-    if (!this.props.newCharData.etymology) { return `No data found`; }
+    if (!this.props.charData.etymology) { return `No data found`; }
 
-    const etymology = this.props.newCharData.etymology;
+    const etymology = this.props.charData.etymology;
     if (etymology.type === 'pictophonetic') {
       return [
           etymology.semantic,
@@ -99,7 +99,7 @@ class Etymology extends Component {
   };
 
   formatNeighbourhood() {
-    const data = this.props.newCharData.neighbourhood;
+    const data = this.props.charData.neighbourhood;
     if (!data.matches) {
       return 'No neighbourhood'
     } else {
@@ -125,12 +125,12 @@ class Etymology extends Component {
         {this.formatNeighbourhood()}
         <ShowMore direction="rows"
             showMore={this.props.showMore}
-            displayed={this.props.newCharData.neighbourhood.displayedRows}
-            max={this.props.newCharData.neighbourhood.maxRows} />
+            displayed={this.props.charData.neighbourhood.displayedRows}
+            max={this.props.charData.neighbourhood.maxRows} />
         <ShowMore direction="columns"
             showMore={this.props.showMore}
-            displayed={this.props.newCharData.neighbourhood.displayedCols}
-            max={this.props.newCharData.neighbourhood.maxCols} />
+            displayed={this.props.charData.neighbourhood.displayedCols}
+            max={this.props.charData.neighbourhood.maxCols} />
       </div>
     );
   };
