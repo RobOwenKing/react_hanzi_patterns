@@ -98,6 +98,21 @@ class Etymology extends Component {
     );
   };
 
+  showMore() {
+    return (
+      <div>
+        <ShowMore direction="rows"
+            showMore={this.props.showMore}
+            displayed={this.props.charData.neighbourhood.displayedRows}
+            max={this.props.charData.neighbourhood.maxRows} />
+        <ShowMore direction="columns"
+            showMore={this.props.showMore}
+            displayed={this.props.charData.neighbourhood.displayedCols}
+            max={this.props.charData.neighbourhood.maxCols} />
+      </div>
+    );
+  };
+
   formatNeighbourhood() {
     const data = this.props.charData.neighbourhood;
     if (!data.matches) {
@@ -107,12 +122,14 @@ class Etymology extends Component {
           data.displayedRows,
           data.displayedCols);
       return (
-        <table>
-          <tbody>
-            {neighbourhood.map((row, index) => this.formatNeighbourhoodRow(row, index))}
-          </tbody>
-        </table>
-
+        <div>
+          <table>
+            <tbody>
+              {neighbourhood.map((row, index) => this.formatNeighbourhoodRow(row, index))}
+            </tbody>
+          </table>
+          {this.showMore()}
+        </div>
       );
     }
   };
@@ -123,14 +140,6 @@ class Etymology extends Component {
         <h3>{this.etymologyType()}</h3>
         {this.formatContents()}
         {this.formatNeighbourhood()}
-        <ShowMore direction="rows"
-            showMore={this.props.showMore}
-            displayed={this.props.charData.neighbourhood.displayedRows}
-            max={this.props.charData.neighbourhood.maxRows} />
-        <ShowMore direction="columns"
-            showMore={this.props.showMore}
-            displayed={this.props.charData.neighbourhood.displayedCols}
-            max={this.props.charData.neighbourhood.maxCols} />
       </div>
     );
   };
