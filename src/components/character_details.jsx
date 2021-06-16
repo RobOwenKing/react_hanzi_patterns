@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
+import AppearsIn from './appears_in.jsx';
 import Etymology from './etymology.jsx';
 import Frequency from './frequency.jsx';
 import LargeCharacter from './large_character.jsx';
 import Pronunciation from './pronunciation.jsx';
-import SmallCharacter from './small_character.jsx';
 
 const FONTFAMILIES = {
   'heiti': "STHeiti, 华文黑体, 'Microsoft YaHei', 微软雅黑, SimHei, 黑体, sans-serif",
@@ -29,16 +29,6 @@ class CharacterDetails extends Component {
     }
   };
 
-  charactersWithComponent() {
-    const chars = this.props.charData.appearsIn;
-    if (chars) {
-      return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
-          .reduce((prev, curr) => [prev, ' ', curr]);
-    } else {
-      return (<p>None found</p>)
-    }
-  }
-
   render() {
     return (
       <div>
@@ -56,8 +46,9 @@ class CharacterDetails extends Component {
             showPinyin={this.props.showPinyin}
             showMore={this.props.showMore} />
 
-        <h3>Characters which contain {this.props.charData.char}</h3>
-        {this.charactersWithComponent()}
+        <AppearsIn charData={this.props.charData}
+            clickHandler={this.props.clickHandler}
+            showPinyin={this.props.showPinyin} />
       </div>
     );
   }
