@@ -116,7 +116,9 @@ class Etymology extends Component {
   formatNeighbourhood() {
     const data = this.props.charData.neighbourhood;
     if (!data.matches) {
-      return 'No neighbourhood'
+      return (
+        <div>No neighbourhood</div>
+      )
     } else {
       const neighbourhood = fillNeighbourhood(data.matches,
           data.displayedRows,
