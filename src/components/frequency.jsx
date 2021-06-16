@@ -6,7 +6,7 @@ import SmallCharacter from './small_character.jsx';
 
 class Frequency extends Component {
   formatFrequency() {
-    const freq = this.props.newCharData.frequency.frequency;
+    const freq = this.props.charData.frequency.frequency;
     if (freq) {
       return `${ordinalSuffix(freq)} most common`;
     } else {
@@ -15,8 +15,8 @@ class Frequency extends Component {
   };
 
   formatNeighbours() {
-    const dots = this.props.newCharData.frequency.dots;
-    const neighbours = this.props.newCharData.frequency.neighbours;
+    const dots = this.props.charData.frequency.dots;
+    const neighbours = this.props.charData.frequency.neighbours;
     return (
       <div>
         {dots[0] && "⋯⋯"}

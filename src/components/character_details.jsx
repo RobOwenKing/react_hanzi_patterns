@@ -22,7 +22,7 @@ const FONTFAMILIES = {
 
 class CharacterDetails extends Component {
   frequency() {
-    const freq = this.props.newCharData.frequency;
+    const freq = this.props.charData.frequency;
     if (freq) {
       return `${freq} most common`;
     } else {
@@ -31,7 +31,7 @@ class CharacterDetails extends Component {
   };
 
   pronunciations() {
-    const pros = this.props.newCharData.pronunciations;
+    const pros = this.props.charData.pronunciations;
     if (pros) {
       return (
         pros.map((element, index) => {
@@ -50,7 +50,7 @@ class CharacterDetails extends Component {
   };
 
   charactersWithComponent() {
-    const chars = this.props.newCharData.appearsIn;
+    const chars = this.props.charData.appearsIn;
     if (chars) {
       return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
           .reduce((prev, curr) => [prev, ' ', curr]);
@@ -62,21 +62,21 @@ class CharacterDetails extends Component {
   render() {
     return (
       <div>
-        <LargeCharacter style={FONTFAMILIES.heiti} char={this.props.newCharData.char} />
-        <LargeCharacter style={FONTFAMILIES.songti} char={this.props.newCharData.char} />
+        <LargeCharacter style={FONTFAMILIES.heiti} char={this.props.charData.char} />
+        <LargeCharacter style={FONTFAMILIES.songti} char={this.props.charData.char} />
 
         {this.pronunciations()}
 
-        <Frequency newCharData={this.props.newCharData}
+        <Frequency charData={this.props.charData}
             clickHandler={this.props.clickHandler}
             showPinyin={this.props.showPinyin} />
 
-        <Etymology newCharData={this.props.newCharData}
+        <Etymology charData={this.props.charData}
             clickHandler={this.props.clickHandler}
             showPinyin={this.props.showPinyin}
             showMore={this.props.showMore} />
 
-        <h3>Characters which contain {this.props.newCharData.char}</h3>
+        <h3>Characters which contain {this.props.charData.char}</h3>
         {this.charactersWithComponent()}
       </div>
     );

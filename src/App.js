@@ -34,9 +34,9 @@ class App extends Component {
     if (searchTerm.length === 1 && /\p{Script=Han}/u.test(searchTerm)) {
       this.addToSearchHistory(searchTerm);
 
-      const newCharData = data.getCharData(searchTerm);
-      if (newCharData) {
-        this.setState({ newCharData: newCharData });
+      const charData = data.getCharData(searchTerm);
+      if (charData) {
+        this.setState({ charData: charData });
       }
     }
   };
@@ -46,14 +46,14 @@ class App extends Component {
   }
 
   showMore = (direction) => {
-    const dataCopy = { ...this.state.newCharData };
+    const dataCopy = { ...this.state.charData };
     if (direction === "rows") {
       dataCopy.neighbourhood.displayedRows += 10;
     } else {
       dataCopy.neighbourhood.displayedCols += 10;
     }
 
-    this.setState({ newCharData: dataCopy });
+    this.setState({ charData: dataCopy });
   }
 
   render() {
@@ -69,9 +69,9 @@ class App extends Component {
                   onClick={this.handleClickShowPinyin} />
             </div>
           </div>
-          {this.state.newCharData &&
+          {this.state.charData &&
               <CharacterDetails
-                  newCharData={this.state.newCharData}
+                  charData={this.state.charData}
                   clickHandler={this.handleSearch}
                   showPinyin={this.state.showPinyin}
                   showMore={this.showMore} />}
