@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { formatDefinition } from '../helpers/format_definition.js';
 import { pinyinify } from '../helpers/pinyinify.js';
 
 class Pronunciation extends Component {
@@ -12,7 +13,7 @@ class Pronunciation extends Component {
               <p key={index}>
                 <span className="bold">{pinyinify(element.pinyin)}</span>
                 &nbsp;
-                <span className="italics grey-text">{element.definition}</span>
+                <span className="italics grey-text">{formatDefinition(element.definition)}</span>
               </p>
             )
         })
