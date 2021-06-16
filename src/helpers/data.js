@@ -1,5 +1,6 @@
 import { pinyinify } from './pinyinify.js';
 
+const DATA_MEMO = {};
 const FREQUENCY_MEMO = {};
 const NEIGHBOURHOOD_MEMO = {};
 
@@ -147,6 +148,8 @@ const getNeighbourhood = (char) => {
 };
 
 export const getCharData = (char) => {
+  if (DATA_MEMO[char]) { return DATA_MEMO[char]; }
+
   const charInDict = getCharInDict(char);
 
   const charData = {
@@ -159,6 +162,7 @@ export const getCharData = (char) => {
   };
 
   console.log(charData);
+  DATA_MEMO[char] = charData;
 
   return charData;
 };
