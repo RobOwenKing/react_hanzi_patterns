@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import Etymology from './etymology.jsx';
 import Frequency from './frequency.jsx';
 import LargeCharacter from './large_character.jsx';
+import Pronunciation from './pronunciation.jsx';
 import SmallCharacter from './small_character.jsx';
-
-import { pinyinify } from '../helpers/pinyinify.js';
 
 const FONTFAMILIES = {
   'heiti': "STHeiti, 华文黑体, 'Microsoft YaHei', 微软雅黑, SimHei, 黑体, sans-serif",
@@ -30,25 +29,6 @@ class CharacterDetails extends Component {
     }
   };
 
-  pronunciations() {
-    const pros = this.props.charData.pronunciations;
-    if (pros) {
-      return (
-        pros.map((element, index) => {
-          return (
-              <p key={index}>
-                <span className="bold">{pinyinify(element.pinyin)}</span>
-                &nbsp;
-                <span className="italics grey-text">{element.definition}</span>
-              </p>
-            )
-        })
-      )
-    } else {
-      return `No pronunciations found`;
-    }
-  };
-
   charactersWithComponent() {
     const chars = this.props.charData.appearsIn;
     if (chars) {
@@ -65,7 +45,7 @@ class CharacterDetails extends Component {
         <LargeCharacter style={FONTFAMILIES.heiti} char={this.props.charData.char} />
         <LargeCharacter style={FONTFAMILIES.songti} char={this.props.charData.char} />
 
-        {this.pronunciations()}
+        <Pronunciation charData={this.props.charData} />
 
         <Frequency charData={this.props.charData}
             clickHandler={this.props.clickHandler}
