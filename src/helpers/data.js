@@ -30,9 +30,15 @@ const getAppearsInChars = (char) => {
   return returnable;
 };
 
+const getAppearsInWords = (char) => {
+  const words = hanzi.getExamples(char);
+  return words[0].concat(words[1], words[2]);
+};
+
 const getAppearsIn = (char) => {
   return {
-    chars: getAppearsInChars(char)
+    chars: getAppearsInChars(char),
+    words: getAppearsInWords(char)
   }
 };
 
