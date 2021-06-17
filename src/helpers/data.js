@@ -22,12 +22,18 @@ const sortByFrequency = (chars) => {
   return chars.sort((a, b) => {return hanzi.getCharacterFrequency(a).number - hanzi.getCharacterFrequency(b).number});
 };
 
+const getAppearsInChars = (char) => {
+  const chars = hanzi.getCharactersWithComponent(char);
+  // If no characters are found with the given component
+  // the above function returns string "X not found"
+  const returnable = Array.isArray(chars) ? sortByFrequency(chars) : null;
+  return returnable;
+};
+
 const getAppearsIn = (char) => {
-    const chars = hanzi.getCharactersWithComponent(char);
-    // If no characters are found with the given component
-    // the above function returns string "X not found"
-    const returnable = Array.isArray(chars) ? sortByFrequency(chars) : null;
-    return returnable;
+  return {
+    chars: getAppearsInChars(char)
+  }
 };
 
 const getEtymology = (char) => {

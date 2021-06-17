@@ -4,7 +4,7 @@ import SmallCharacter from './small_character.jsx';
 
 class AppearsIn extends Component {
   charactersWithComponent() {
-    const chars = this.props.charData.appearsIn;
+    const chars = this.props.charData.appearsIn.chars;
     if (chars) {
       return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
           .reduce((prev, curr) => [prev, ' ', curr]);
