@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { pinyinify } from '../helpers/pinyinify.js';
 
-class SmallCharacter extends Component {
+class WordCharacter extends Component {
   handleClick = (event) => {
     this.props.clickHandler(this.props.char);
   };
@@ -31,4 +31,4 @@ class SmallCharacter extends Component {
   }
 }
 
-export default SmallCharacter;
+export default WordCharacter;
