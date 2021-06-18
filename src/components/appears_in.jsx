@@ -3,13 +3,23 @@ import React, { Component } from 'react';
 import SmallCharacter from './small_character.jsx';
 
 class AppearsIn extends Component {
-  charactersWithComponent() {
+  charsWithComponent() {
     const chars = this.props.charData.appearsIn.chars;
     if (chars) {
       return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
           .reduce((prev, curr) => [prev, ' ', curr]);
     } else {
-      return (<p>None found</p>)
+      return (<p>None found</p>);
+    }
+  };
+
+  wordsWithComponent() {
+    const words = this.props.charData.appearsIn.words;
+    if (words) {
+      return words.map((word, index) => {return (<div>{word.simplified} - {word.definition}</div>)})
+          .reduce((prev, curr) => [prev, ' ', curr]);
+    } else {
+      return (<p>None found</p>);
     }
   };
 
@@ -17,7 +27,9 @@ class AppearsIn extends Component {
     return (
       <div>
         <h3>Characters which contain {this.props.charData.char}</h3>
-        {this.charactersWithComponent()}
+        {this.charsWithComponent()}
+        <h3>Words/expressions which contain {this.props.charData.char}</h3>
+        {this.wordsWithComponent()}
       </div>
     );
   }
