@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { formatDefinition } from '../helpers/format_definition.js';
 
 import SmallCharacter from './small_character.jsx';
+import WordCharacter from './word_character.jsx';
 
 class AppearsIn extends Component {
   charsWithComponent() {
@@ -16,7 +17,7 @@ class AppearsIn extends Component {
   };
 
   wordToSmallCharacters(word) {
-    return [...word].map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
+    return [...word].map((char, index) => {return (<WordCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
           .reduce((prev, curr) => [prev, '', curr]);
   };
 
