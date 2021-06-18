@@ -13,13 +13,18 @@ class AppearsIn extends Component {
     }
   };
 
+  wordToSmallCharacters(word) {
+    return [...word].map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
+          .reduce((prev, curr) => [prev, '', curr]);
+  };
+
   wordsWithComponent() {
     const words = this.props.charData.appearsIn.words;
     if (words?.length) {
       return words.map((word, index) => {
           return (
             <div>
-              {word.simplified}
+              {this.wordToSmallCharacters(word.simplified)}
               <span className="italics grey-text">{word.definition}</span>
             </div>
           )})
