@@ -16,9 +16,15 @@ class AppearsIn extends Component {
     }
   };
 
-  wordToCharacters(word) {
-    return [...word].map((char, index) => {return (<WordCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
-          .reduce((prev, curr) => [prev, '', curr]);
+  wordToCharacters(word, pinyin) {
+    const pinyins = pinyin.split(' ')
+    return [...word].map((char, index) => {
+        return (
+          <WordCharacter key={index} char={char}
+              clickHandler={this.props.clickHandler}
+              showPinyin={this.props.showPinyin} pinyin={pinyins[index]} />
+        )})
+        .reduce((prev, curr) => [prev, '', curr]);
   };
 
   wordsWithComponent() {
@@ -27,7 +33,7 @@ class AppearsIn extends Component {
       return words.map((word, index) => {
           return (
             <div>
-              {this.wordToCharacters(word.simplified)}
+              {this.wordToCharacters(word.simplified, word.pinyin)}
               <span className="italics grey-text">{formatDefinition(word.definition)}</span>
             </div>
           )})

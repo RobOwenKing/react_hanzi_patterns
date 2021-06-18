@@ -12,7 +12,7 @@ class SmallCharacter extends Component {
       return (
         <ruby onClick={this.handleClick}>
           <rb className="char-mid">{this.props.char}</rb>
-          <rp>(</rp><rt>{getPinyin(this.props.char)}</rt><rp>)</rp>
+          <rp>(</rp><rt>{this.props.pinyin}</rt><rp>)</rp>
         </ruby>
       );
     } else {
