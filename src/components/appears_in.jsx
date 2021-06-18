@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { formatDefinition } from '../helpers/format_definition.js';
+
 import SmallCharacter from './small_character.jsx';
 
 class AppearsIn extends Component {
@@ -25,7 +27,7 @@ class AppearsIn extends Component {
           return (
             <div>
               {this.wordToSmallCharacters(word.simplified)}
-              <span className="italics grey-text">{word.definition}</span>
+              <span className="italics grey-text">{formatDefinition(word.definition)}</span>
             </div>
           )})
           .reduce((prev, curr) => [prev, ' ', curr]);
