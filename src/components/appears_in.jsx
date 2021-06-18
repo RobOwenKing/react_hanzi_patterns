@@ -15,8 +15,14 @@ class AppearsIn extends Component {
 
   wordsWithComponent() {
     const words = this.props.charData.appearsIn.words;
-    if (words) {
-      return words.map((word, index) => {return (<div>{word.simplified} - {word.definition}</div>)})
+    if (words?.length) {
+      return words.map((word, index) => {
+          return (
+            <div>
+              {word.simplified}
+              <span className="italics grey-text">{word.definition}</span>
+            </div>
+          )})
           .reduce((prev, curr) => [prev, ' ', curr]);
     } else {
       return (<p>None found</p>);
