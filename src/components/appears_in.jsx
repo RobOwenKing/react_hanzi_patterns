@@ -16,7 +16,7 @@ class AppearsIn extends Component {
     }
   };
 
-  wordToSmallCharacters(word) {
+  wordToCharacters(word) {
     return [...word].map((char, index) => {return (<WordCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
           .reduce((prev, curr) => [prev, '', curr]);
   };
@@ -27,7 +27,7 @@ class AppearsIn extends Component {
       return words.map((word, index) => {
           return (
             <div>
-              {this.wordToSmallCharacters(word.simplified)}
+              {this.wordToCharacters(word.simplified)}
               <span className="italics grey-text">{formatDefinition(word.definition)}</span>
             </div>
           )})
