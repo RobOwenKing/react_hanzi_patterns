@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { getPinyin } from '../helpers/data.js';
+import { pinyinify } from '../helpers/pinyinify.js';
 
 class SmallCharacter extends Component {
   handleClick = (event) => {
@@ -12,7 +12,7 @@ class SmallCharacter extends Component {
       return (
         <ruby onClick={this.handleClick}>
           <rb className="char-mid">{this.props.char}</rb>
-          <rp>(</rp><rt>{this.props.pinyin}</rt><rp>)</rp>
+          <rp>(</rp><rt>{pinyinify(this.props.pinyin)}</rt><rp>)</rp>
         </ruby>
       );
     } else {
