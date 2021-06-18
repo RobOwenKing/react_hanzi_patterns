@@ -32,7 +32,7 @@ class AppearsIn extends Component {
     if (words?.length) {
       return words.map((word, index) => {
           return (
-            <div>
+            <div key={index}>
               <span className="margin-l-r">{this.wordToCharacters(word.simplified, word.pinyin)}</span>
               <span className="italics grey-text">{formatDefinition(word.definition)}</span>
             </div>
