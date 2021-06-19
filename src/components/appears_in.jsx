@@ -27,18 +27,26 @@ class AppearsIn extends Component {
         .reduce((prev, curr) => [prev, '', curr]);
   };
 
+  formatWords(words) {
+    return words.map((word, index) => {
+        return (
+          <div key={index}>
+            <span className="margin-l-r">{this.wordToCharacters(word.simplified, word.pinyin)}</span>
+            <span className="italics grey-text">{formatDefinition(word.definition)}</span>
+          </div>
+        )})
+        .reduce((prev, curr) => [prev, ' ', curr]);
+  }
+
   wordsWithComponent() {
     let words = this.props.charData.appearsIn.words;
     if (words?.length) {
       words = words.slice(0, this.props.charData.appearsIn.displayedWords);
-      return words.map((word, index) => {
-          return (
-            <div key={index}>
-              <span className="margin-l-r">{this.wordToCharacters(word.simplified, word.pinyin)}</span>
-              <span className="italics grey-text">{formatDefinition(word.definition)}</span>
-            </div>
-          )})
-          .reduce((prev, curr) => [prev, ' ', curr]);
+      return (
+        <div>
+          {this.formatWords(words)}
+        </div>
+      );
     } else {
       return (<p>None found</p>);
     }
