@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { formatDefinition } from '../helpers/format_definition.js';
 
+import ShowMore from './show_more.jsx';
 import SmallCharacter from './small_character.jsx';
 import WordCharacter from './word_character.jsx';
 
@@ -45,6 +46,10 @@ class AppearsIn extends Component {
       return (
         <div>
           {this.formatWords(words)}
+          <ShowMore direction="words"
+            showMore={this.props.showMore}
+            displayed={this.props.charData.appearsIn.displayedWords}
+            max={this.props.charData.appearsIn.maxWords} />
         </div>
       );
     } else {
