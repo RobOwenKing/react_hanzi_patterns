@@ -7,11 +7,24 @@ import SmallCharacter from './small_character.jsx';
 import WordCharacter from './word_character.jsx';
 
 class AppearsIn extends Component {
+  formatChars(chars) {
+    return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
+        .reduce((prev, curr) => [prev, ' ', curr]);
+  };
+
   charsWithComponent() {
-    const chars = this.props.charData.appearsIn.chars;
-    if (chars) {
-      return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
-          .reduce((prev, curr) => [prev, ' ', curr]);
+    let chars = this.props.charData.appearsIn.chars;
+    if (chars?.length) {
+      chars = chars.slice(0, this.props.charData.appearsIn.displayedChars);
+      return (
+        <div>
+          {this.formatChars(chars)}
+          <ShowMore direction="characters"
+            showMore={this.props.showMore}
+            displayed={this.props.charData.appearsIn.displayedChars}
+            max={this.props.charData.appearsIn.maxChars} />
+        </div>
+      );
     } else {
       return (<p>None found</p>);
     }

@@ -54,6 +54,8 @@ class App extends Component {
       dataCopy.neighbourhood.displayedCols += 10;
     } else if (direction === "words") {
       dataCopy.appearsIn.displayedWords += 10;
+    } else if (direction === "characters") {
+      dataCopy.appearsIn.displayedChars += 20;
     }
 
     this.setState({ charData: dataCopy });
