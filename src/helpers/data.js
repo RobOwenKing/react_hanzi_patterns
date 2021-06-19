@@ -36,10 +36,22 @@ const getAppearsInWords = (char) => {
 };
 
 const getAppearsIn = (char) => {
-  return {
+  const returnable = {
     chars: getAppearsInChars(char),
     words: getAppearsInWords(char)
+  };
+
+  if (returnable.chars?.length) {
+    returnable.maxChars = returnable.chars.length;
+    returnable.displayedChars = 20;
   }
+
+  if (returnable.words?.length) {
+    returnable.maxWords = returnable.words.length;
+    returnable.displayedWords = 10;
+  }
+
+  return returnable;
 };
 
 const getEtymology = (char) => {
