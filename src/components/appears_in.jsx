@@ -28,8 +28,9 @@ class AppearsIn extends Component {
   };
 
   wordsWithComponent() {
-    const words = this.props.charData.appearsIn.words;
+    let words = this.props.charData.appearsIn.words;
     if (words?.length) {
+      words = words.slice(0, this.props.charData.appearsIn.displayedWords);
       return words.map((word, index) => {
           return (
             <div key={index}>
