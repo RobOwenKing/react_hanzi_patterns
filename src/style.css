@@ -19,6 +19,9 @@ input {
 
 .char-mid {
   font-size: 2em;
+}
+
+.margin-l-r {
   margin: 0px 6px;
 }
 

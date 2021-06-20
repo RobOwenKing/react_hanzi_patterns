@@ -22,12 +22,36 @@ const sortByFrequency = (chars) => {
   return chars.sort((a, b) => {return hanzi.getCharacterFrequency(a).number - hanzi.getCharacterFrequency(b).number});
 };
 
+const getAppearsInChars = (char) => {
+  const chars = hanzi.getCharactersWithComponent(char);
+  // If no characters are found with the given component
+  // the above function returns string "X not found"
+  const returnable = Array.isArray(chars) ? sortByFrequency(chars) : null;
+  return returnable;
+};
+
+const getAppearsInWords = (char) => {
+  const words = hanzi.getExamples(char);
+  return words[0].concat(words[1], words[2]);
+};
+
 const getAppearsIn = (char) => {
-    const chars = hanzi.getCharactersWithComponent(char);
-    // If no characters are found with the given component
-    // the above function returns string "X not found"
-    const returnable = Array.isArray(chars) ? sortByFrequency(chars) : null;
-    return returnable;
+  const returnable = {
+    chars: getAppearsInChars(char),
+    words: getAppearsInWords(char)
+  };
+
+  if (returnable.chars?.length) {
+    returnable.maxChars = returnable.chars.length;
+    returnable.displayedChars = 20;
+  }
+
+  if (returnable.words?.length) {
+    returnable.maxWords = returnable.words.length;
+    returnable.displayedWords = 10;
+  }
+
+  return returnable;
 };
 
 const getEtymology = (char) => {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { getPinyin } from '../helpers/data.js';
+import { pinyinify } from '../helpers/pinyinify.js';
 
-class SmallCharacter extends Component {
+class WordCharacter extends Component {
   handleClick = (event) => {
     this.props.clickHandler(this.props.char);
   };
@@ -11,13 +11,13 @@ class SmallCharacter extends Component {
     if (this.props.showPinyin) {
       return (
         <ruby onClick={this.handleClick}>
-          <rb className="char-mid margin-l-r">{this.props.char}</rb>
-          <rp>(</rp><rt>{getPinyin(this.props.char)}</rt><rp>)</rp>
+          <rb className="char-mid">{this.props.char}</rb>
+          <rp>(</rp><rt>{pinyinify(this.props.pinyin)}</rt><rp>)</rp>
         </ruby>
       );
     } else {
       return (
-        <span onClick={this.handleClick} className="char-mid margin-l-r">{this.props.char}</span>
+        <span onClick={this.handleClick} className="char-mid">{this.props.char}</span>
       );
     }
   };
@@ -31,4 +31,4 @@ class SmallCharacter extends Component {
   }
 }
 
-export default SmallCharacter;
+export default WordCharacter;

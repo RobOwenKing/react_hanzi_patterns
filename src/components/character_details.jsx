@@ -48,7 +48,8 @@ class CharacterDetails extends Component {
 
         <AppearsIn charData={this.props.charData}
             clickHandler={this.props.clickHandler}
-            showPinyin={this.props.showPinyin} />
+            showPinyin={this.props.showPinyin}
+            showMore={this.props.showMore} />
       </div>
     );
   }
