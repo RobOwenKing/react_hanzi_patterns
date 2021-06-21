@@ -79,7 +79,7 @@ class Etymology extends Component {
 
   formatContents() {
     const contents = this.etymologyContents();
-    if (this.props.charData.etymology.type === 'pictophonetic') {
+    if (this.props.charData.etymology?.type === 'pictophonetic') {
       return (
         <div>
           <div>
