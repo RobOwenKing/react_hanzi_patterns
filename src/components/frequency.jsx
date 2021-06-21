@@ -5,15 +5,6 @@ import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
 import SmallCharacter from './small_character.jsx';
 
 class Frequency extends Component {
-  formatFrequency() {
-    const freq = this.props.charData.frequency.frequency;
-    if (freq) {
-      return `${ordinalSuffix(freq)} most common`;
-    } else {
-      return `No frequency data found`;
-    }
-  };
-
   formatNeighbours() {
     const dots = this.props.charData.frequency.dots;
     const neighbours = this.props.charData.frequency.neighbours;
@@ -28,12 +19,25 @@ class Frequency extends Component {
     );
   };
 
+  formatFrequency() {
+    const freq = this.props.charData.frequency;
+    if (freq) {
+      return (
+        <div>
+          <div>{ordinalSuffix(freq.frequency)} most common</div>
+          {this.formatNeighbours()}
+        </div>
+      );
+    } else {
+      return `No frequency data found`;
+    }
+  };
+
   render() {
     return (
       <div>
         <h3>Frequency</h3>
-        <div>{this.formatFrequency()}</div>
-        <div>{this.formatNeighbours()}</div>
+        {this.formatFrequency()}
       </div>
     );
   }
