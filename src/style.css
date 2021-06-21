@@ -41,7 +41,7 @@ input {
   color: #666;
 }
 
-.small-character {
+[tabindex] {
   cursor: pointer;
 }
 
