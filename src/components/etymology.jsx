@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import ShowMore from './show_more.jsx';
 import SmallCharacter from './small_character.jsx';
+import WordCharacter from './word_character.jsx';
 
 import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
 
@@ -21,6 +22,20 @@ class Etymology extends Component {
     }
   };
 
+  formatHint(hint) {
+    const hintComponents = hint.split(/(\p{Script=Han})/u);
+    console.log(hintComponents);
+    const formattedComponents = hintComponents.map((str) => {
+      if (/\p{Script=Han}/u.test(str)) {
+        return (<WordCharacter char={str} clickHandler={this.props.clickHandler} />);
+      } else {
+        return str;
+      }
+    })
+    console.log(formattedComponents);
+    return formattedComponents.reduce((prev, curr) => [prev, '', curr]);
+  };
+
   etymologyContents() {
     if (!this.props.charData.etymology) { return `No data found`; }
 
@@ -32,9 +47,9 @@ class Etymology extends Component {
           etymology.phonetic
       ];
     } else if (etymology.type === 'ideographic') {
-      return etymology.hint;
+      return this.formatHint(etymology.hint);
     } else if (etymology.type === 'pictographic') {
-      return etymology.hint;
+      return this.formatHint(etymology.hint);
     } else {
       return '';
     }
@@ -66,7 +81,7 @@ class Etymology extends Component {
 
   formatContents() {
     const contents = this.etymologyContents();
-    if (Array.isArray(contents)) {
+    if (this.props.charData.etymology.type === 'pictophonetic') {
       return (
         <div>
           <div>
