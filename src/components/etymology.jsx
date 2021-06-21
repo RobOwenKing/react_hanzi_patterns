@@ -24,7 +24,6 @@ class Etymology extends Component {
 
   formatHint(hint) {
     const hintComponents = hint.split(/(\p{Script=Han})/u);
-    console.log(hintComponents);
     const formattedComponents = hintComponents.map((str) => {
       if (/\p{Script=Han}/u.test(str)) {
         return (<WordCharacter char={str} clickHandler={this.props.clickHandler} />);
@@ -32,7 +31,6 @@ class Etymology extends Component {
         return str;
       }
     })
-    console.log(formattedComponents);
     return formattedComponents.reduce((prev, curr) => [prev, '', curr]);
   };
 
