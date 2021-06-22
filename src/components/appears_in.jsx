@@ -12,7 +12,8 @@ class AppearsIn extends Component {
         return (
           <SmallCharacter key={index} char={char}
               clickHandler={this.props.clickHandler}
-              showPinyin={this.props.showPinyin} />
+              showPinyin={this.props.showPinyin}
+              classes="char-mid margin-l-r" />
         )
       }).reduce((prev, curr) => [prev, ' ', curr]);
   };

@@ -57,7 +57,9 @@ class Etymology extends Component {
     if (semantic) {
       return (
         <span>
-          <SmallCharacter char={semantic} clickHandler={this.props.clickHandler} /> ({hint})
+          <SmallCharacter char={semantic}
+              clickHandler={this.props.clickHandler}
+              classes="char-mid margin-l-r" /> ({hint})
         </span>
         )
     } else {
@@ -69,7 +71,9 @@ class Etymology extends Component {
     if (phonetic) {
       return (
         <span>
-          <SmallCharacter char={phonetic} clickHandler={this.props.clickHandler} /> ({getPinyin(phonetic)})
+          <SmallCharacter char={phonetic}
+              clickHandler={this.props.clickHandler}
+              classes="char-mid margin-l-r" /> ({getPinyin(phonetic)})
         </span>
         )
     } else {
@@ -97,7 +101,11 @@ class Etymology extends Component {
 
   formatNeighbourhoodCell(char) {
     if (char) {
-      return (<SmallCharacter char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin}  />);
+      return (
+        <SmallCharacter char={char} clickHandler={this.props.clickHandler}
+            showPinyin={this.props.showPinyin}
+            classes="char-mid margin-l-r"  />
+      );
     } else {
       return '';
     }
