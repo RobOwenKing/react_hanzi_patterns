@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import ShowMore from './show_more.jsx';
 import SmallCharacter from './small_character.jsx';
-import WordCharacter from './word_character.jsx';
 
 import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
 
@@ -26,7 +25,12 @@ class Etymology extends Component {
     const hintComponents = hint.split(/(\p{Script=Han})/u);
     const formattedComponents = hintComponents.map((str) => {
       if (/\p{Script=Han}/u.test(str)) {
-        return (<WordCharacter char={str} clickHandler={this.props.clickHandler} />);
+        return (
+          <SmallCharacter char={str}
+              clickHandler={this.props.clickHandler}
+              showPinyin={this.props.showPinyin}
+              classes="char-mid" />
+        );
       } else {
         return str;
       }
