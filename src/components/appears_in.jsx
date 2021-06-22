@@ -47,12 +47,16 @@ class AppearsIn extends Component {
         .reduce((prev, curr) => [prev, '', curr]);
   };
 
+  formatDef(def) {
+    return formatDefinition(def, this.props.clickHandler, this.props.showPinyin, "");
+  };
+
   formatWords(words) {
     return words.map((word, index) => {
         return (
           <div key={index}>
             <span className="margin-l-r">{this.wordToCharacters(word.simplified, word.pinyin)}</span>
-            <span className="italics grey-text">{formatDefinition(word.definition)}</span>
+            <span className="italics grey-text">{this.formatDef(word.definition)}</span>
           </div>
         )})
         .reduce((prev, curr) => [prev, ' ', curr]);
