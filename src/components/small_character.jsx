@@ -21,7 +21,7 @@ class SmallCharacter extends Component {
       return (
         <ruby onClick={this.handleClick}>
           <rb className={this.props.classes}
-              tabindex="0">{this.props.char}</rb>
+              tabIndex="0">{this.props.char}</rb>
           <rp>(</rp><rt>{this.pinyin()}</rt><rp>)</rp>
         </ruby>
       );
@@ -29,7 +29,7 @@ class SmallCharacter extends Component {
       return (
         <span onClick={this.handleClick}
             className={this.props.classes}
-            tabindex="0">{this.props.char}</span>
+            tabIndex="0">{this.props.char}</span>
       );
     }
   };

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ShowMore from './show_more.jsx';
 import SmallCharacter from './small_character.jsx';
 
+import { addSmallCharInStr } from '../helpers/add_small_chars_in_str.jsx';
 import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
 
 class Etymology extends Component {
@@ -22,20 +23,7 @@ class Etymology extends Component {
   };
 
   formatHint(hint) {
-    const hintComponents = hint.split(/(\p{Script=Han})/u);
-    const formattedComponents = hintComponents.map((str) => {
-      if (/\p{Script=Han}/u.test(str)) {
-        return (
-          <SmallCharacter char={str}
-              clickHandler={this.props.clickHandler}
-              showPinyin={this.props.showPinyin}
-              classes="char-mid" />
-        );
-      } else {
-        return str;
-      }
-    })
-    return formattedComponents.reduce((prev, curr) => [prev, '', curr]);
+    return addSmallCharInStr(hint, this.props.clickHandler, this.props.showPinyin, "char-mid");
   };
 
   etymologyContents() {
@@ -48,9 +36,7 @@ class Etymology extends Component {
           etymology.hint,
           etymology.phonetic
       ];
-    } else if (etymology.type === 'ideographic') {
-      return this.formatHint(etymology.hint);
-    } else if (etymology.type === 'pictographic') {
+    } else if (etymology.type === 'ideographic' || etymology.type === 'pictographic') {
       return this.formatHint(etymology.hint);
     } else {
       return '';
