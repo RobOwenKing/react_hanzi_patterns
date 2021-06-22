@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ShowMore from './show_more.jsx';
 import SmallCharacter from './small_character.jsx';
 
+import { addSmallCharInStr } from '../helpers/add_small_chars_in_str.jsx';
 import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
 
 class Etymology extends Component {
