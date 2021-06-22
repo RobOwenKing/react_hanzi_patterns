@@ -8,8 +8,13 @@ import WordCharacter from './word_character.jsx';
 
 class AppearsIn extends Component {
   formatChars(chars) {
-    return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
-        .reduce((prev, curr) => [prev, ' ', curr]);
+    return chars.map((char, index) => {
+        return (
+          <SmallCharacter key={index} char={char}
+              clickHandler={this.props.clickHandler}
+              showPinyin={this.props.showPinyin} />
+        )
+      }).reduce((prev, curr) => [prev, ' ', curr]);
   };
 
   charsWithComponent() {

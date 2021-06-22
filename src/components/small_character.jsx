@@ -7,12 +7,18 @@ class SmallCharacter extends Component {
     this.props.clickHandler(this.props.char);
   };
 
+  pinyin = () => {
+    if (!this.props.pinyin) {
+      return getPinyin(this.props.char);
+    }
+  };
+
   component() {
     if (this.props.showPinyin) {
       return (
         <ruby onClick={this.handleClick}>
           <rb className="char-mid margin-l-r" tabindex="0">{this.props.char}</rb>
-          <rp>(</rp><rt>{getPinyin(this.props.char)}</rt><rp>)</rp>
+          <rp>(</rp><rt>{this.pinyin()}</rt><rp>)</rp>
         </ruby>
       );
     } else {
@@ -28,7 +34,7 @@ class SmallCharacter extends Component {
         {this.component()}
       </span>
     );
-  }
+  };
 }
 
 export default SmallCharacter;
