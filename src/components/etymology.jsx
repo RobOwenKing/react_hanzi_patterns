@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import ShowMore from './show_more.jsx';
 import SmallCharacter from './small_character.jsx';
-import WordCharacter from './word_character.jsx';
 
 import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
 
@@ -26,7 +25,12 @@ class Etymology extends Component {
     const hintComponents = hint.split(/(\p{Script=Han})/u);
     const formattedComponents = hintComponents.map((str) => {
       if (/\p{Script=Han}/u.test(str)) {
-        return (<WordCharacter char={str} clickHandler={this.props.clickHandler} />);
+        return (
+          <SmallCharacter char={str}
+              clickHandler={this.props.clickHandler}
+              showPinyin={this.props.showPinyin}
+              classes="char-mid" />
+        );
       } else {
         return str;
       }
@@ -57,7 +61,9 @@ class Etymology extends Component {
     if (semantic) {
       return (
         <span>
-          <SmallCharacter char={semantic} clickHandler={this.props.clickHandler} /> ({hint})
+          <SmallCharacter char={semantic}
+              clickHandler={this.props.clickHandler}
+              classes="char-mid margin-l-r" /> ({hint})
         </span>
         )
     } else {
@@ -69,7 +75,9 @@ class Etymology extends Component {
     if (phonetic) {
       return (
         <span>
-          <SmallCharacter char={phonetic} clickHandler={this.props.clickHandler} /> ({getPinyin(phonetic)})
+          <SmallCharacter char={phonetic}
+              clickHandler={this.props.clickHandler}
+              classes="char-mid margin-l-r" /> ({getPinyin(phonetic)})
         </span>
         )
     } else {
@@ -97,7 +105,11 @@ class Etymology extends Component {
 
   formatNeighbourhoodCell(char) {
     if (char) {
-      return (<SmallCharacter char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin}  />);
+      return (
+        <SmallCharacter char={char} clickHandler={this.props.clickHandler}
+            showPinyin={this.props.showPinyin}
+            classes="char-mid margin-l-r"  />
+      );
     } else {
       return '';
     }

@@ -4,12 +4,17 @@ import { formatDefinition } from '../helpers/format_definition.js';
 
 import ShowMore from './show_more.jsx';
 import SmallCharacter from './small_character.jsx';
-import WordCharacter from './word_character.jsx';
 
 class AppearsIn extends Component {
   formatChars(chars) {
-    return chars.map((char, index) => {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)})
-        .reduce((prev, curr) => [prev, ' ', curr]);
+    return chars.map((char, index) => {
+        return (
+          <SmallCharacter key={index} char={char}
+              clickHandler={this.props.clickHandler}
+              showPinyin={this.props.showPinyin}
+              classes="char-mid margin-l-r" />
+        )
+      }).reduce((prev, curr) => [prev, ' ', curr]);
   };
 
   charsWithComponent() {
@@ -34,9 +39,10 @@ class AppearsIn extends Component {
     const pinyins = pinyin.split(' ')
     return [...word].map((char, index) => {
         return (
-          <WordCharacter key={index} char={char}
+          <SmallCharacter key={index} char={char}
               clickHandler={this.props.clickHandler}
-              showPinyin={this.props.showPinyin} pinyin={pinyins[index]} />
+              showPinyin={this.props.showPinyin} pinyin={pinyins[index]}
+              classes="char-mid" />
         )})
         .reduce((prev, curr) => [prev, '', curr]);
   };

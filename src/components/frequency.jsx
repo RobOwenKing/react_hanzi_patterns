@@ -12,7 +12,12 @@ class Frequency extends Component {
       <div>
         {dots[0] && "⋯⋯"}
         {neighbours.map((char, index) =>
-            {return (<SmallCharacter key={index} char={char} clickHandler={this.props.clickHandler} showPinyin={this.props.showPinyin} />)}
+            {return (
+              <SmallCharacter key={index} char={char}
+                  clickHandler={this.props.clickHandler}
+                  showPinyin={this.props.showPinyin}
+                  classes="char-mid margin-l-r" />
+            )}
           )}
         {dots[1] && "⋯⋯"}
       </div>
