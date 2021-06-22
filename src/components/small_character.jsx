@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { getPinyin } from '../helpers/data.js';
+import { pinyinify } from '../helpers/pinyinify.js';
 
 class SmallCharacter extends Component {
   handleClick = (event) => {
@@ -8,7 +9,9 @@ class SmallCharacter extends Component {
   };
 
   pinyin = () => {
-    if (!this.props.pinyin) {
+    if (this.props.pinyin) {
+      return pinyinify(this.props.pinyin);
+    } else {
       return getPinyin(this.props.char);
     }
   };
