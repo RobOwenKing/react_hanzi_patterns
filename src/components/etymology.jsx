@@ -53,25 +53,17 @@ class Etymology extends Component {
     return addSmallCharInStr(hint, this.props.clickHandler, this.props.showPinyin, "char-mid");
   };
 
-  /*
-    Returns: JSX
-    Used in: formatContents()
-  */
-  etymologyContents() {
-    if (!this.props.charData.etymology) { return `No data found`; }
-
-    const etymology = this.props.charData.etymology;
-    if (etymology.type === 'pictophonetic') {
-      return [
-          etymology.semantic,
-          etymology.hint,
-          etymology.phonetic
-      ];
-    } else if (etymology.type === 'ideographic' || etymology.type === 'pictographic') {
-      return this.formatHint(etymology.hint);
-    } else {
-      return '';
-    }
+  formatPhonosemantic(etymology) {
+    return (
+      <div>
+        <div>
+          {this.formatSemantic(etymology.semantic, etymology.hint)}
+          +
+          {this.formatPhonetic(etymology.phonetic)}
+        </div>
+        NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
+      </div>
+    );
   };
 
   formatSemantic(semantic, hint) {
@@ -103,20 +95,15 @@ class Etymology extends Component {
   };
 
   formatContents() {
-    const contents = this.etymologyContents();
-    if (this.props.charData.etymology?.type === 'pictophonetic') {
-      return (
-        <div>
-          <div>
-            {this.formatSemantic(contents[0], contents[1])}
-            +
-            {this.formatPhonetic(contents[2])}
-          </div>
-          NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
-        </div>
-      );
+    if (!this.props.charData.etymology) { return `No data found`; }
+
+    const etymology = this.props.charData.etymology;
+    if (etymology.type === 'pictophonetic') {
+      return this.formatPhonosemantic(etymology);
+    } else if (etymology.type === 'ideographic' || etymology.type === 'pictographic') {
+      return this.formatHint(etymology.hint);
     } else {
-      return contents;
+      return '';
     }
   };
 
