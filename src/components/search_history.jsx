@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 
+// Used in: render()
 import SmallCharacter from './small_character.jsx';
 
+/*
+  Returns: <SearchHistory />
+  Props:   searchHistory - Array. Elements are String (characters)
+           clickHandler  - Function
+  Used in: <CharacterDetails /> from ./character_details.jsx
+*/
 class SearchHistory extends Component {
+  /*
+    Returns: JSX
+    Used in: render()
+  */
   render() {
     return (
       <div className="search-history">
