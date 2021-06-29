@@ -42,7 +42,7 @@ class Etymology extends Component {
   };
 
   /*
-    Params:  hint - A string explaining the etymology, possibly containing characters
+    Params:  hint - String explaining the etymology, possibly containing characters
              Note: 'hint' is the term used in ../data/dictionary.json
     Returns: JSX
              The result of addSmallCharInStr() - the hint with characters as <SmallCharacter />s
@@ -53,19 +53,15 @@ class Etymology extends Component {
     return addSmallCharInStr(hint, this.props.clickHandler, this.props.showPinyin, "char-mid");
   };
 
-  formatPhonosemantic(etymology) {
-    return (
-      <div>
-        <div>
-          {this.formatSemantic(etymology.semantic, etymology.hint)}
-          +
-          {this.formatPhonetic(etymology.phonetic)}
-        </div>
-        NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
-      </div>
-    );
-  };
-
+  /*
+    Params:  semantic - String, a single character
+             hint - String explaining the etymology, possibly containing characters
+             Note: 'hint' is the term used in ../data/dictionary.json
+    Returns: JSX
+             The semantic as a <SmallCharacter /> followed by the hint in brackets
+          or "?"
+    Used in: formatPhonosemantic()
+  */
   formatSemantic(semantic, hint) {
     if (semantic) {
       return (
@@ -80,6 +76,13 @@ class Etymology extends Component {
     }
   };
 
+  /*
+    Params:  phonetic - String, a single character
+    Returns: JSX
+             The phonetic as a <SmallCharacter /> followed by its pinyin in brackets
+          or "?"
+    Used in: formatPhonosemantic()
+  */
   formatPhonetic(phonetic) {
     if (phonetic) {
       return (
@@ -94,6 +97,31 @@ class Etymology extends Component {
     }
   };
 
+  /*
+    Params:  etymology - Object
+    Returns: JSX
+             The details of the etymology formatted with <SmallCharacter />s
+    Used in: formatContents()
+  */
+  formatPhonosemantic(etymology) {
+    return (
+      <div>
+        <div>
+          {this.formatSemantic(etymology.semantic, etymology.hint)}
+          +
+          {this.formatPhonetic(etymology.phonetic)}
+        </div>
+        NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
+      </div>
+    );
+  };
+
+  /*
+    Returns: JSX
+             The details of the etymology formatted with <SmallCharacter />s
+          or "No data found"
+    Used in: render()
+  */
   formatContents() {
     if (!this.props.charData.etymology) { return `No data found`; }
 
@@ -107,6 +135,13 @@ class Etymology extends Component {
     }
   };
 
+  /*
+    Params:  char - String, a single character
+    Returns: JSX
+             The char as a <SmallCharacter />
+          or ''
+    Used in: formatNeighbourhoodRow()
+  */
   formatNeighbourhoodCell(char) {
     if (char) {
       return (
@@ -119,6 +154,14 @@ class Etymology extends Component {
     }
   };
 
+  /*
+    Params:  row - Array of characters
+             index - Integer, the index of the row in the Neighbourhood
+    Returns: JSX
+             A <tr>, populated with <SmallCharacter />s
+          or ''
+    Used in: formatNeighbourhood()
+  */
   formatNeighbourhoodRow(row, index) {
     return (
       <tr key={index}>
@@ -127,6 +170,11 @@ class Etymology extends Component {
     );
   };
 
+  /*
+    Returns: JSX
+             Two <ShowMore />, one for Neighbourhood rows, one for columns
+    Used in: formatNeighbourhood()
+  */
   showMore() {
     return (
       <div>
@@ -142,6 +190,12 @@ class Etymology extends Component {
     );
   };
 
+  /*
+    Returns: JSX
+             <table> containing a character Neighbourhood
+          or ''
+    Used in: render()
+  */
   formatNeighbourhood() {
     const data = this.props.charData.neighbourhood;
     if (!data.matches) {
