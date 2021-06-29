@@ -25,7 +25,7 @@ class Frequency extends Component {
     const neighbours = this.props.charData.frequency.neighbours;
     return (
       <div>
-        {dots[0] && "⋯⋯" /*Dots at the start if more characters not shown*/}
+        {dots[0] && "⋯⋯" /*Dots at the start of the list if more characters not shown*/}
         {neighbours.map((char, index) =>
             {return (
               <SmallCharacter key={index} char={char}
@@ -34,7 +34,7 @@ class Frequency extends Component {
                   classes="char-mid margin-l-r" />
             )}
           )}
-        {dots[1] && "⋯⋯" /*Dots at the end if more characters not shown*/}
+        {dots[1] && "⋯⋯" /*Dots at the end of the list if more characters not shown*/}
       </div>
     );
   };
