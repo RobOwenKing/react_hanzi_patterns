@@ -15,10 +15,10 @@ const FONTFAMILIES = {
 
 /*
   Returns: <CharacterDetails />
-  Props: charData
-         clickHandler
-         showPinyin
-         showMore
+  Props: charData     - Object
+         clickHandler - Function
+         showPinyin   - Boolean
+         showMore     - Function
   Used in: <App /> from ../App.js
 */
 class CharacterDetails extends Component {

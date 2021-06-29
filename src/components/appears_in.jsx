@@ -10,12 +10,12 @@ import SmallCharacter from './small_character.jsx';
 
 /*
   Returns: <AppearsIn />
-  Props:   charData
-            char
-            appearsIn {chars, displayedChars, maxChars, words, displayedWords, maxWords}
-           clickHandler - To pass to <SmallCharacter /> directly and via formatDefinition()
-           showPinyin   - To pass to <SmallCharacter /> directly and via formatDefinition()
-           showMore     - With directions characters and words
+  Props:   charData     - Object:
+             char           String
+             appearsIn      Object {chars, displayedChars, maxChars, words, displayedWords, maxWords}
+           clickHandler - Function. To pass to <SmallCharacter /> directly and via formatDefinition()
+           showPinyin   - Boolean. To pass to <SmallCharacter /> directly and via formatDefinition()
+           showMore     - Function. With directions characters and words
   Used in: <CharacterDetails /> from ./character_details.jsx
 */
 class AppearsIn extends Component {

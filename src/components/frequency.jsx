@@ -8,10 +8,10 @@ import SmallCharacter from './small_character.jsx';
 
 /*
   Returns: <Frequency />
-  Props:   charData
-            frequency {dots, frequency, neighbours}
-           clickHandler
-           showPinyin
+  Props:   charData     - Object:
+             frequency      {dots, frequency, neighbours}
+           clickHandler - Function
+           showPinyin   - Boolean
   Used in: <CharacterDetails /> from ./character_details.jsx
 */
 class Frequency extends Component {
