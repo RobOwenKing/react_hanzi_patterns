@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 
+// Used in: formatFrequency()
 import { ordinalSuffix } from '../helpers/ordinal_suffix.js';
 
+// Used in: formatNeighbours()
 import SmallCharacter from './small_character.jsx';
 
+/*
+  Returns: <Frequency />
+  Props:   charData
+            frequency {dots, frequency, neighbours}
+           clickHandler
+           showPinyin
+  Used in: <CharacterDetails /> from ./character_details.jsx
+*/
 class Frequency extends Component {
   formatNeighbours() {
     const dots = this.props.charData.frequency.dots;
