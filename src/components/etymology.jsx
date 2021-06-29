@@ -123,9 +123,9 @@ class Etymology extends Component {
     Used in: render()
   */
   formatContents() {
-    if (!this.props.charData.etymology) { return `No data found`; }
-
     const etymology = this.props.charData.etymology;
+    if (!etymology) { return `No data found`; }
+
     if (etymology.type === 'pictophonetic') {
       return this.formatPhonosemantic(etymology);
     } else if (etymology.type === 'ideographic' || etymology.type === 'pictographic') {
