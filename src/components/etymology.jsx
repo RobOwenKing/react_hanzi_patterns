@@ -14,9 +14,11 @@ import { getPinyin, fillNeighbourhood } from '../helpers/data.js';
 /*
   Returns: <Etymology />
   Props:   charData
+            etymology {type, hint, semantic, phonetic}
+            neighbourhood {matches, displayedRows, maxRows, displayedCols, maxCols}
            clickHandler
            showPinyin
-           showMore
+           showMore     - With directions rows and columns
   Used in: <CharacterDetails /> from ./character_details.jsx
 */
 class Etymology extends Component {
