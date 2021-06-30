@@ -12,7 +12,11 @@ import { pinyinify } from '../helpers/pinyinify.js';
            classes      - Array. Elements are String (CSS classes for the character)
            clickHandler - Function
            showPinyin   - Boolean
-  Used in: Many components
+  Used in: <AppearsIn />       from ./appears_in.jsx
+           <Etymology />       from ./etymology.jsx
+           <Frequency />       from ./frequency.jsx
+           <SearchHistory />   from ./search_history.jsx
+           addSmallCharInStr() from ../helpers/add_small_chars_in_str.jsx
 */
 class SmallCharacter extends Component {
   /*
