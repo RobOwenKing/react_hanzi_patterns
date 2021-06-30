@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-// Used in pinyin()
+// Used in: pinyin()
 import { getPinyin } from '../helpers/data.js';
-// Used in pinyin()
+// Used in: pinyin()
 import { pinyinify } from '../helpers/pinyinify.js';
 
 /*
