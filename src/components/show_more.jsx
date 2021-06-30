@@ -29,6 +29,7 @@ class ShowMore extends Component {
   render() {
     // We use Math.min so we can just keep adding to displayed
     // without worrying about comparing it with max and capping it
+    // props.direction is a full word in plural ("column", etc) so we can interpolate it straight here
     return (
       <div>
         {
