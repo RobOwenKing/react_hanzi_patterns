@@ -278,12 +278,15 @@ const getMatches = (char) => {
 */
 const getNeighbourhood = (char) => {
   const matches = getMatches(char);
+
   const returnable = {
-      matches: matches,
-      displayedRows: 10,
-      displayedCols: 10
+      matches: matches
     };
+
+  // We only need these for <ShowMore /> if there's anything to show
   if (matches) {
+    returnable.displayedRows = 10;
+    returnable.displayedCols = 10;
     returnable.maxRows = matches.semantic.length;
     returnable.maxCols = matches.phonetic.length;
   }
