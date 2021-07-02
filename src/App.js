@@ -4,9 +4,10 @@ import './style.css';
 import { Component } from 'react';
 
 // All used in: render()
-import SearchBar from './components/search_bar.jsx';
 import CharacterDetails from './components/character_details.jsx';
+import SearchBar from './components/search_bar.jsx';
 import SearchHistory from './components/search_history.jsx';
+import Footer from './components/footer.jsx';
 
 // Used in: componentDidMount(), handleSearch()
 import * as data from './helpers/data.js';
@@ -120,6 +121,7 @@ class App extends Component {
                   showMore={this.showMore} />}
         </div>
         <SearchHistory searchHistory={this.state.searchHistory} clickHandler={this.handleSearch} />
+        <Footer />
       </div>
     );
   }
