@@ -35,7 +35,7 @@ class SearchHistory extends Component {
     return (
       <div className="search-history">
         {this.formatChars(['搜', '索', '记','录'], "light-grey-text char-mid")}
-        &nbsp;‧&nbsp;
+        <span className="char-mid">‧</span>
         {this.formatChars(this.props.searchHistory, "char-mid")}
       </div>
     );
