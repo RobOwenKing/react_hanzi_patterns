@@ -1,0 +1,26 @@
+The file ./src/data/dictionary.txt is from Make Me A Hanzi,
+available on GitHub at: https://github.com/skishore/makemeahanzi
+
+That project states:
+
+  dictionary.txt is derived from:
+      Unihan - http://unicode.org/charts/unihan.html
+      CJKlib - https://github.com/cburgmer/cjklib
+
+  You can redistribute and/or modify dictionary.txt under the terms of the GNU
+  Lesser General Public License as published by the Free Software Foundation,
+  either version 3 of the license, or (at your option) any later version.
+
+A copy of the GNU Lesser General Public License is included
+in this project as ./LGPL.txt
+
+./src/data/dictionary.json was created for this project
+directly from the data in the above file.
+
+------
+
+This project uses the HanziJS library,
+available on GitHub at: https://github.com/nieldlr/hanzi
+
+That module is released under the MIT liecense. A copy of that license
+is included in this project as ./MIT.txt
