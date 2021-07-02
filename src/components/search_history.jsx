@@ -11,26 +11,32 @@ import SmallCharacter from './small_character.jsx';
 */
 class SearchHistory extends Component {
   /*
+    Params:  chars   - Array. Characters to format
+             classes - String. CSS classes
     Returns: JSX
+             A <SmallCharacter /> for each of chars
     Used in: render()
   */
-  render() {
-    return (
-      <div className="search-history">
-        <span className="light-grey-text">
-          <SmallCharacter char={'搜'} clickHandler={this.props.clickHandler} classes="char-mid" />
-          <SmallCharacter char={'索'} clickHandler={this.props.clickHandler} classes="char-mid" />
-          <SmallCharacter char={'记'} clickHandler={this.props.clickHandler} classes="char-mid" />
-          <SmallCharacter char={'录'} clickHandler={this.props.clickHandler} classes="char-mid" />
-        </span>
-        &nbsp;·&nbsp;
-        {this.props.searchHistory.map((char, index) => {
+  formatChars(chars, classes) {
+    if (chars.length) {
+      return chars.map((char, index) => {
           return (
             <SmallCharacter key={index} char={char}
                 clickHandler={this.props.clickHandler}
-                classes="char-mid" />
+                classes={classes} />
           )
-        })}
+        }).reduce((prev, curr) => [prev, ' ', curr]);
+    } else {
+      return ""
+    }
+  };
+
+  render() {
+    return (
+      <div className="search-history">
+        {this.formatChars(['搜', '索', '记','录'], "light-grey-text char-mid")}
+        &nbsp;‧&nbsp;
+        {this.formatChars(this.props.searchHistory, "char-mid")}
       </div>
     );
   }
