@@ -1,25 +1,42 @@
 import React, { Component } from 'react';
 
+// Used in: render()
 import SmallCharacter from './small_character.jsx';
 
+/*
+  Returns: <SearchHistory />
+  Props:   searchHistory - Array. Elements are String (characters)
+           clickHandler  - Function
+  Used in: <CharacterDetails /> from ./character_details.jsx
+*/
 class SearchHistory extends Component {
-  render() {
-    return (
-      <div className="search-history">
-        <span className="light-grey-text">
-          <SmallCharacter char={'搜'} clickHandler={this.props.clickHandler} classes="char-mid" />
-          <SmallCharacter char={'索'} clickHandler={this.props.clickHandler} classes="char-mid" />
-          <SmallCharacter char={'记'} clickHandler={this.props.clickHandler} classes="char-mid" />
-          <SmallCharacter char={'录'} clickHandler={this.props.clickHandler} classes="char-mid" />
-        </span>
-        &nbsp;·&nbsp;
-        {this.props.searchHistory.map((char, index) => {
+  /*
+    Params:  chars   - Array. Characters to format
+             classes - String. CSS classes
+    Returns: JSX
+             A <SmallCharacter /> for each of chars
+    Used in: render()
+  */
+  formatChars(chars, classes) {
+    if (chars.length) {
+      return chars.map((char, index) => {
           return (
             <SmallCharacter key={index} char={char}
                 clickHandler={this.props.clickHandler}
-                classes="char-mid" />
+                classes={classes} />
           )
-        })}
+        }).reduce((prev, curr) => [prev, ' ', curr]);
+    } else {
+      return ""
+    }
+  };
+
+  render() {
+    return (
+      <div className="search-history">
+        {this.formatChars(['搜', '索', '记','录'], "light-grey-text char-mid")}
+        <span className="char-mid">‧</span>
+        {this.formatChars(this.props.searchHistory, "char-mid")}
       </div>
     );
   }
