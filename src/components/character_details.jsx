@@ -10,7 +10,8 @@ import Pronunciation from './pronunciation.jsx';
 // Values for CSS font-family of different <LargeCharacter />s
 const FONTFAMILIES = {
   'heiti': "STHeiti, 华文黑体, 'Microsoft YaHei', 微软雅黑, SimHei, 黑体, sans-serif",
-  'songti': "SimSun, 宋体, 'Zhongyi Songti', 中易宋体, serif"
+  'songti': "SimSun, 宋体, 'Zhongyi Songti', 中易宋体, serif",
+  'liu': "'Liu Jian Mao Cao', cursive"
 };
 
 /*
@@ -27,6 +28,7 @@ class CharacterDetails extends Component {
       <div>
         <LargeCharacter style={FONTFAMILIES.heiti} char={this.props.charData.char} />
         <LargeCharacter style={FONTFAMILIES.songti} char={this.props.charData.char} />
+        <LargeCharacter style={FONTFAMILIES.liu} char={this.props.charData.char} />
 
         <Pronunciation charData={this.props.charData}
             clickHandler={this.props.clickHandler}
