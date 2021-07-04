@@ -31,7 +31,7 @@ class ShowMore extends Component {
     // without worrying about comparing it with max and capping it
     // props.direction is a full word in plural ("column", etc) so we can interpolate it straight here
     return (
-      <div>
+      <div className="show-more">
         {
           `Showing
           ${Math.min(this.props.displayed, this.props.max)}/${this.props.max}

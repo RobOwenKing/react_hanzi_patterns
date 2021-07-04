@@ -107,11 +107,11 @@ class App extends Component {
           <div className="top">
             <h1>Patterns in the Hanzi</h1>
             <SearchBar searchHandler={this.handleSearch} />
-            <div>
+            <p>
               <label htmlFor="show-pinyin">Show pinyin? </label>
               <input type="checkbox" id="show-pinyin" name="show-pinyin"
                   onClick={this.handleClickShowPinyin} />
-            </div>
+            </p>
           </div>
           {this.state.charData &&
               <CharacterDetails
