@@ -21,6 +21,10 @@ input {
   font-size: 2em;
 }
 
+.show-more {
+  margin-top: 0.4em;
+}
+
 .margin-l-r {
   margin: 0px 6px;
 }
