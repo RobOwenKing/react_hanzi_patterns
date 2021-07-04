@@ -19,6 +19,9 @@ input {
 
 .char-mid {
   font-size: 2em;
+}
+
+.margin-l-r {
   margin: 0px 6px;
 }
 
@@ -38,7 +41,7 @@ input {
   color: #666;
 }
 
-.small-character {
+[tabindex] {
   cursor: pointer;
 }
 
@@ -48,4 +51,14 @@ input {
 
 .search-history {
   writing-mode: vertical-lr;
+}
+
+footer {
+  padding: 1em 0 0 0;
+}
+
+footer div {
+  font-size: 0.8em;
+  color: #666;
+  padding: 0.4em 0 0 0;
 }
