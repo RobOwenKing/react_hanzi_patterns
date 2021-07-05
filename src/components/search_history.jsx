@@ -15,7 +15,7 @@ class SearchHistory extends Component {
              classes - String. CSS classes
     Returns: JSX
              A <SmallCharacter /> for each of chars
-    Used in: render()
+    Used in: formatSearchHistory()
   */
   formatChars(chars, classes) {
     if (chars.length) {
@@ -31,12 +31,29 @@ class SearchHistory extends Component {
     }
   };
 
+  /*
+    Returns: JSX
+             props.searchHistory displayed nicely if non-empty
+    Used in: render()
+  */
+  formatSearchHistory() {
+    if (this.props.searchHistory.length) {
+      return (
+        <div>
+          {this.formatChars(['搜', '索', '记','录'], "light-grey-text char-mid")}
+          <span className="char-mid">‧</span>
+          {this.formatChars(this.props.searchHistory, "char-mid")}
+        </div>
+      )
+    } else {
+      return ("")
+    }
+  }
+
   render() {
     return (
       <div className="search-history">
-        {this.formatChars(['搜', '索', '记','录'], "light-grey-text char-mid")}
-        <span className="char-mid">‧</span>
-        {this.formatChars(this.props.searchHistory, "char-mid")}
+        {this.formatSearchHistory()}
       </div>
     );
   }
