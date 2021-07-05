@@ -51,8 +51,8 @@ class Frequency extends Component {
     if (freq) {
       return (
         <div>
-          <div>{ordinalSuffix(freq.frequency)} most common</div>
           {this.formatNeighbours()}
+          <div>{ordinalSuffix(freq.frequency)} most common</div>
         </div>
       );
     } else {
