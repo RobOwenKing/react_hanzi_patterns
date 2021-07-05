@@ -5,7 +5,7 @@
   grid-template-columns: auto 32px;
 }
 
-.top {
+header {
   margin: 0px auto;
 }
 
@@ -65,8 +65,9 @@ footer {
   margin-top: 1em;
 }
 
-footer div {
+footer small {
   font-size: 0.8em;
   color: #666;
   margin-top: 0.4em;
+  display: block;
 }

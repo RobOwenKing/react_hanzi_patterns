@@ -62,10 +62,10 @@ class Frequency extends Component {
 
   render() {
     return (
-      <div>
+      <section>
         <h3>Frequency</h3>
         {this.formatFrequency()}
-      </div>
+      </section>
     );
   }
 }

@@ -25,7 +25,7 @@ const FONTFAMILIES = {
 class CharacterDetails extends Component {
   render() {
     return (
-      <div>
+      <article>
         <LargeCharacter style={FONTFAMILIES.heiti} char={this.props.charData.char} />
         <LargeCharacter style={FONTFAMILIES.songti} char={this.props.charData.char} />
         <LargeCharacter style={FONTFAMILIES.liu} char={this.props.charData.char} />
@@ -47,7 +47,7 @@ class CharacterDetails extends Component {
             clickHandler={this.props.clickHandler}
             showPinyin={this.props.showPinyin}
             showMore={this.props.showMore} />
-      </div>
+      </article>
     );
   }
 }
