@@ -41,7 +41,7 @@ class SearchHistory extends Component {
       return (
         <div>
           {this.formatChars(['搜', '索', '记','录'], "light-grey-text char-mid")}
-          <span className="char-mid">‧</span>
+          <span className="char-mid" style={{marginTop:"0.2em", marginBottom:"0.2em"}}>‧</span>
           {this.formatChars(this.props.searchHistory, "char-mid")}
         </div>
       )
