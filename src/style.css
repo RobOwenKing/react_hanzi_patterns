@@ -13,6 +13,10 @@ input {
   font-size: 1.6em;
 }
 
+h3 {
+  margin-bottom: 0.2em;
+}
+
 .char-large {
   font-size: 5em;
 }
