@@ -61,6 +61,10 @@ h3 {
   writing-mode: vertical-lr;
 }
 
+.underlined {
+  text-decoration: underline;
+}
+
 footer {
   margin-top: 1em;
 }

@@ -31,13 +31,13 @@ class ShowMore extends Component {
     // without worrying about comparing it with max and capping it
     // props.direction is a full word in plural ("column", etc) so we can interpolate it straight here
     return (
-      <div className="show-more">
+      <div className="show-more light-grey-text">
         {
           `Showing
           ${Math.min(this.props.displayed, this.props.max)}/${this.props.max}
           ${this.props.direction}. `
         }
-        <span onClick={this.handleChange}>Show more</span>
+        <span className="underlined" onClick={this.handleChange}>Show more</span>
       </div>
     );
   }
