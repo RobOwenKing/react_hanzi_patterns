@@ -113,7 +113,9 @@ class App extends Component {
             </p>
           </div>
           {!this.state.charData &&
-              <RandomCharacters />}
+              <RandomCharacters
+                  clickHandler={this.handleSearch}
+                  showPinyin={this.state.showPinyin}/>}
           {this.state.charData &&
               <CharacterDetails
                   charData={this.state.charData}

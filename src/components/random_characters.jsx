@@ -28,6 +28,7 @@ class RandomCharacters extends Component {
         return (
           <SmallCharacter key={index} char={char}
               clickHandler={this.props.clickHandler}
+              showPinyin={this.props.showPinyin}
               classes={classes} />
         )
       }).reduce((prev, curr) => [prev, ' ', curr]);
