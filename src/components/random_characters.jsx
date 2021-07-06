@@ -13,16 +13,39 @@ import SmallCharacter from './small_character.jsx';
   Used in: <App /> from ./app.jsx
 */
 class RandomCharacters extends Component {
-  getRandomCharacters() {
-    const chars = [];
+  /*
+    Params:  chars   - Array. Characters to format
+             classes - String. CSS classes
+    Returns: JSX
+             A <SmallCharacter /> for each of chars
+    Used in: getRandomCharacters()
+  */
+  formatChars(chars, classes) {
+    return chars.map(char => getCharWithFrequency(char))
+                .map((char, index) => {
+        return (
+          <SmallCharacter key={index} char={char}
+              clickHandler={this.props.clickHandler}
+              classes={classes} />
+        )
+      }).reduce((prev, curr) => [prev, ' ', curr]);
+  };
 
-    for (let i = 1; i < 16; i += 1) {
-      const start = (i-1)*i*10;
-      const rand = Math.ceil(Math.random() * i * 20) + start;
-      chars.push(rand);
+  /*
+    Returns: JSX
+             15 <SmallCharacter />s for random characters
+    Used in: render()
+  */
+  getRandomCharacters() {
+    const rands = [];
+
+    for (let i = 0; i < 15; i += 1) {
+      const rand = Math.ceil((Math.random() ** 2) * 7500);
+      rands.push(rand);
     }
 
-    console.log(chars);
+    rands.sort((a, b) => a - b);
+    return this.formatChars(rands, "char-mid margin-l-r");
   }
 
   render() {
