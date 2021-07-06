@@ -14,13 +14,15 @@ import SmallCharacter from './small_character.jsx';
 */
 class RandomCharacters extends Component {
   /*
-    Params:  chars   - Array. Characters to format
+    Params:  chars   - Array of Integers.
              classes - String. CSS classes
     Returns: JSX
              A <SmallCharacter /> for each of chars
     Used in: getRandomCharacters()
   */
   formatChars(chars, classes) {
+    // First find the character with each frequency
+    // Then make the <SmallCharacter />
     return chars.map(char => getCharWithFrequency(char))
                 .map((char, index) => {
         return (
@@ -39,9 +41,9 @@ class RandomCharacters extends Component {
   getRandomCharacters() {
     const rands = [];
 
-    for (let i = 0; i < 15; i += 1) {
+    while (rands.length < 15) {
       const rand = Math.ceil((Math.random() ** 2) * 7500);
-      rands.push(rand);
+      if (!rands.includes(rand)) { rands.push(rand); }
     }
 
     rands.sort((a, b) => a - b);
