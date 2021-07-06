@@ -5,6 +5,7 @@ import { Component } from 'react';
 
 // All used in: render()
 import CharacterDetails from './components/character_details.jsx';
+import RandomCharacters from './components/random_characters.jsx';
 import SearchBar from './components/search_bar.jsx';
 import SearchHistory from './components/search_history.jsx';
 import Footer from './components/footer.jsx';
@@ -113,6 +114,8 @@ class App extends Component {
                   onClick={this.handleClickShowPinyin} />
             </p>
           </div>
+          {!this.state.charData &&
+              <RandomCharacters />}
           {this.state.charData &&
               <CharacterDetails
                   charData={this.state.charData}
