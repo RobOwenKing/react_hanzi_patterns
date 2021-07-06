@@ -20,7 +20,7 @@ class SearchBar extends Component {
     // We want to update every time the input's value changes
     return (
       <input type="text" className="search-bar"
-          onChange={this.handleChange} placeholder="Any hanzi or pinyin" />
+          onChange={this.handleChange} placeholder="Enter any hanzi" />
     );
   }
 }
