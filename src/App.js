@@ -108,7 +108,7 @@ class App extends Component {
             <h1>Patterns in the Hanzi</h1>
             <SearchBar searchHandler={this.handleSearch} />
             <p>
-              <label htmlFor="show-pinyin">Show pinyin? </label>
+              <label htmlFor="show-pinyin" className="light-grey-text">Show pinyin? </label>
               <input type="checkbox" id="show-pinyin" name="show-pinyin"
                   onClick={this.handleClickShowPinyin} />
             </p>
