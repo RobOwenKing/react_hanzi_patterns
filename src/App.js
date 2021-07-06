@@ -21,10 +21,8 @@ class App extends Component {
       searchHistory: [],
       showPinyin: false
     };
-  };
 
-  // Needed to use hanzi library
-  componentDidMount() {
+    // Needed to use hanzi library
     data.startHanzi();
   };
 
