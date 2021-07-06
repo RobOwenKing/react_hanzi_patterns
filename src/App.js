@@ -22,6 +22,8 @@ class App extends Component {
       showPinyin: false
     };
 
+    this.handleClick = this.handleClick.bind(this);
+
     // Needed to use hanzi library
     data.startHanzi();
   };
@@ -99,12 +101,16 @@ class App extends Component {
     this.setState({ charData: dataCopy });
   }
 
+  handleClick() {
+    this.setState({ charData: null });
+  }
+
   render() {
     return (
       <div className="container">
         <div>
           <div className="top">
-            <h1>Patterns in the Hanzi</h1>
+            <h1 onClick={this.handleClick}>Patterns in the Hanzi</h1>
             <SearchBar searchHandler={this.handleSearch} />
             <p>
               <label htmlFor="show-pinyin">Show pinyin? </label>
