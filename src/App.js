@@ -101,6 +101,12 @@ class App extends Component {
     this.setState({ charData: dataCopy });
   }
 
+  /*
+    Returns: N/A
+    Action:  Sets charData to null when user clicks on h1 title
+               to "return to home sceen"
+    Used in: render()
+  */
   handleClick() {
     this.setState({ charData: null });
   }
@@ -110,7 +116,7 @@ class App extends Component {
       <div className="container">
         <div>
           <div className="top">
-            <h1 onClick={this.handleClick}>Patterns in the Hanzi</h1>
+            <h1 onClick={this.handleClick} tabIndex="0">Patterns in the Hanzi</h1>
             <SearchBar searchHandler={this.handleSearch} />
             <p>
               <label htmlFor="show-pinyin">Show pinyin? </label>
