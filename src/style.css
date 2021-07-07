@@ -13,6 +13,10 @@ input {
   font-size: 1.6em;
 }
 
+input[type="text"] {
+  width: 240px;
+}
+
 h3 {
   margin-bottom: 0.2em;
 }
