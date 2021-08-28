@@ -24,6 +24,7 @@ class CharacterDetails extends Component {
       <article>
         <LargeCharacter style={FONT_FAMILIES.heiti} char={this.props.charData.char} />
         <LargeCharacter style={FONT_FAMILIES.songti} char={this.props.charData.char} />
+        <LargeCharacter style={FONT_FAMILIES.xing} char={this.props.charData.char} />
         <LargeCharacter style={FONT_FAMILIES.liu} char={this.props.charData.char} />
 
         <Pronunciation charData={this.props.charData}
