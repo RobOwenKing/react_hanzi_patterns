@@ -22,10 +22,9 @@ class CharacterDetails extends Component {
   render() {
     return (
       <article>
-        <LargeCharacter style={FONT_FAMILIES.heiti} char={this.props.charData.char} />
-        <LargeCharacter style={FONT_FAMILIES.songti} char={this.props.charData.char} />
-        <LargeCharacter style={FONT_FAMILIES.xing} char={this.props.charData.char} />
-        <LargeCharacter style={FONT_FAMILIES.liu} char={this.props.charData.char} />
+        {['heiti', 'songti', 'xing', 'liu'].map((style, index) => {
+          return (<LargeCharacter key={index} style={FONT_FAMILIES[style]} char={this.props.charData.char} />)}
+        )}
 
         <Pronunciation charData={this.props.charData}
             clickHandler={this.props.clickHandler}
