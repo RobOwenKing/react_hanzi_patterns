@@ -9,9 +9,9 @@ import { pinyinify } from '../helpers/pinyinify.js';
   Returns: <SmallCharacter />
   Props:   char         - String
            pinyin       - String. Optional.
-           classes      - Array. Elements are String (CSS classes for the character)
+           classes      - Array. Optional. Elements are String (CSS classes for the character)
            clickHandler - Function
-           showPinyin   - Boolean
+           showPinyin   - Boolean. Optional.
   Used in: <AppearsIn />       from ./appears_in.jsx
            <Etymology />       from ./etymology.jsx
            <Frequency />       from ./frequency.jsx
@@ -53,8 +53,8 @@ class SmallCharacter extends Component {
     if (this.props.showPinyin) {
       return (
         <ruby onClick={this.handleClick}>
-          <rb className={this.props.classes}
-              tabIndex="0">{this.props.char}</rb>
+          <span className={this.props.classes}
+              tabIndex="0">{this.props.char}</span>
           <rp>(</rp><rt>{this.pinyin()}</rt><rp>)</rp>
         </ruby>
       );

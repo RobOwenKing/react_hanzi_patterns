@@ -11,7 +11,9 @@ import { addSmallCharInStr } from './add_small_chars_in_str.jsx';
            <Etymology />      from ../components/etymology.jsx
 */
 export const formatDefinition = (str, clickHandler, showPinyin, classes) => {
-  // Prefer ; to / to separate words in a definition
-  // Also adding spaces to spread them out
-  return addSmallCharInStr(str.replace(/\//g, '; '), clickHandler, showPinyin, "");
+  // Prefer '; ' to '/' to separate words/phrases
+  // Remove pinyin in square brackets (eg: [Qin2 Shi3 huang2])
+  const string = str.replace(/\//g, '; ')
+                    .replace(/\[[\w\s]+\]/g,"");
+  return addSmallCharInStr(string, clickHandler, showPinyin, "");
 };

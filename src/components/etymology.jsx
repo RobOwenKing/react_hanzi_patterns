@@ -221,11 +221,11 @@ class Etymology extends Component {
 
   render() {
     return (
-      <div>
+      <section>
         <h3>{this.etymologyType()}</h3>
         {this.formatContents()}
         {this.formatNeighbourhood()}
-      </div>
+      </section>
     );
   };
 };

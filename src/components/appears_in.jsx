@@ -142,10 +142,14 @@ class AppearsIn extends Component {
   render() {
     return (
       <div>
-        <h3>Characters which contain {this.props.charData.char}</h3>
-        {this.charsWithComponent()}
-        <h3>Words/expressions which contain {this.props.charData.char}</h3>
-        {this.wordsWithComponent()}
+        <section>
+          <h3>Characters which contain {this.props.charData.char}</h3>
+          {this.charsWithComponent()}
+        </section>
+        <section>
+          <h3>Words/expressions which contain {this.props.charData.char}</h3>
+          {this.wordsWithComponent()}
+        </section>
       </div>
     );
   }
