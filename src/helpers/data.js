@@ -295,6 +295,19 @@ const getNeighbourhood = (char) => {
 };
 
 /*
+  Params:  char - Object. An entry from dict
+  Returns: Array of Objects
+  Used in: getCharData()
+*/
+const getPronunciations = (char) => {
+  const defs = hanzi.definitionLookup(char)
+
+  return defs.filter((obj, id, arr) => {
+      return arr.findIndex(first => first.definition === obj.definition) === id
+    });
+};
+
+/*
   Params:  char - String. A single Chinese character
   Returns: Object
   Used in: <App /> from ../App.js
@@ -311,7 +324,7 @@ export const getCharData = (char) => {
     etymology: getEtymology(charInDict),
     frequency: getFrequency(char),
     neighbourhood: getNeighbourhood(charInDict),
-    pronunciations: hanzi.definitionLookup(char)
+    pronunciations: getPronunciations(char)
   };
 
   console.log(charData);
