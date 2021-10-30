@@ -47,6 +47,8 @@ class App extends Component {
 
   componentDidMount() {
     this.getRandomCharacters();
+
+    document.getElementById('placeholder').remove();
   }
 
   /*
