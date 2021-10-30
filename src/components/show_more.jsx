@@ -37,9 +37,12 @@ class ShowMore extends Component {
           ${Math.min(this.props.displayed, this.props.max)}/${this.props.max}
           ${this.props.direction}. `
         }
-        <span className="underlined"
+        {
+          this.props.displayed < this.props.max &&
+          <span className="underlined"
             onClick={this.handleChange}
             tabIndex="0">Show more</span>
+        }
       </div>
     );
   }
