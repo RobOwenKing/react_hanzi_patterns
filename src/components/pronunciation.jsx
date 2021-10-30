@@ -53,9 +53,9 @@ class Pronunciation extends Component {
 
   render() {
     return (
-      <div>
+      <section>
         {this.pronunciations()}
-      </div>
+      </section>
     );
   }
 }

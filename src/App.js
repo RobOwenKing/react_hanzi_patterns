@@ -136,15 +136,15 @@ class App extends Component {
     return (
       <div className="container">
         <div>
-          <div className="top">
+          <header>
             <h1 onClick={this.handleClick} tabIndex="0">Patterns in the Hanzi</h1>
             <SearchBar searchHandler={this.handleSearch} />
             <p>
-              <label htmlFor="show-pinyin">Show pinyin? </label>
+              <label htmlFor="show-pinyin" className="light-grey-text">Show pinyin? </label>
               <input type="checkbox" id="show-pinyin" name="show-pinyin"
                   onClick={this.handleClickShowPinyin} />
             </p>
-          </div>
+          </header>
           {!this.state.charData &&
               <RandomCharacters
                   chars={this.state.randomCharacters}
@@ -157,7 +157,9 @@ class App extends Component {
                   showPinyin={this.state.showPinyin}
                   showMore={this.showMore} />}
         </div>
-        <SearchHistory searchHistory={this.state.searchHistory} clickHandler={this.handleSearch} />
+        <nav>
+          <SearchHistory searchHistory={this.state.searchHistory} clickHandler={this.handleSearch} />
+        </nav>
         <Footer />
       </div>
     );
