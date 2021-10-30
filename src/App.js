@@ -18,7 +18,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      randomCharacters: [''],
+      randomCharacters: [],
       searchHistory: [],
       showPinyin: false
     };
@@ -146,6 +146,7 @@ class App extends Component {
             </p>
           </header>
           {!this.state.charData &&
+              this.state.randomCharacters.length > 0 &&
               <RandomCharacters
                   chars={this.state.randomCharacters}
                   clickHandler={this.handleSearch}
