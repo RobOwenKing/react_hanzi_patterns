@@ -34,28 +34,12 @@ class RandomCharacters extends Component {
       }).reduce((prev, curr) => [prev, ' ', curr]);
   };
 
-  /*
-    Returns: JSX
-             15 <SmallCharacter />s for random characters
-    Used in: render()
-  */
-  getRandomCharacters() {
-    const rands = [];
-
-    while (rands.length < 15) {
-      const rand = Math.ceil((Math.random() ** 2) * 7500);
-      if (!rands.includes(rand)) { rands.push(rand); }
-    }
-
-    rands.sort((a, b) => a - b);
-    return this.formatChars(rands, "char-mid margin-l-r");
-  }
 
   render() {
     return (
       <div>
         <p>Or click on one of the random characters below:</p>
-        {this.getRandomCharacters()}
+        {this.formatChars(this.props.chars, "char-mid margin-l-r")}
       </div>
     );
   }

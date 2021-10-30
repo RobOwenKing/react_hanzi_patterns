@@ -18,6 +18,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      randomCharacters: [''],
       searchHistory: [],
       showPinyin: false
     };
@@ -27,6 +28,26 @@ class App extends Component {
     // Needed to use hanzi library
     data.startHanzi();
   };
+
+  /*
+    Returns: Array of Strings
+             15 random hanzi
+    Used in: componentDidMount()
+  */
+  getRandomCharacters() {
+    const rands = [];
+
+    while (rands.length < 15) {
+      const rand = Math.ceil((Math.random() ** 2) * 7500);
+      if (!rands.includes(rand)) { rands.push(rand); }
+    }
+
+    this.setState({ randomCharacters: rands.sort((a, b) => a - b) });
+  }
+
+  componentDidMount() {
+    this.getRandomCharacters();
+  }
 
   /*
     Params:  char - String
@@ -126,6 +147,7 @@ class App extends Component {
           </div>
           {!this.state.charData &&
               <RandomCharacters
+                  chars={this.state.randomCharacters}
                   clickHandler={this.handleSearch}
                   showPinyin={this.state.showPinyin}/>}
           {this.state.charData &&
