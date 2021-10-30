@@ -36,15 +36,17 @@ class Pronunciation extends Component {
     const pros = this.props.charData.pronunciations;
     if (pros) {
       return (
-        pros.map((element, index) => {
-          return (
-              <p key={index}>
-                <span className="bold">{pinyinify(element.pinyin)}</span>
-                &nbsp;
-                <span className="italics grey-text">{this.formatDef(element.definition)}</span>
-              </p>
-            )
-        })
+        pros.filter((obj, id, arr) => {
+              return arr.findIndex(first => first.definition === obj.definition) === id
+            }).map((element, index) => {
+              return (
+                  <p key={index}>
+                    <span className="bold">{pinyinify(element.pinyin)}</span>
+                    &nbsp;
+                    <span className="italics grey-text">{this.formatDef(element.definition)}</span>
+                  </p>
+                )
+            })
       )
     } else {
       return `No pronunciations found`;
