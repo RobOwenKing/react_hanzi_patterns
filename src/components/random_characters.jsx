@@ -39,7 +39,11 @@ class RandomCharacters extends Component {
     return (
       <div>
         <p>Or click on one of the random characters below:</p>
-        {this.formatChars(this.props.chars, "char-mid margin-l-r")}
+        {this.formatChars(this.props.chars.slice(0, 5), "char-mid margin-l-r")}
+        <br />
+        {this.formatChars(this.props.chars.slice(5, 10), "char-mid margin-l-r")}
+        <br />
+        {this.formatChars(this.props.chars.slice(10), "char-mid margin-l-r")}
       </div>
     );
   }
