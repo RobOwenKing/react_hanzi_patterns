@@ -37,14 +37,14 @@ class Pronunciation extends Component {
     if (pros) {
       return (
         pros.map((element, index) => {
-          return (
-              <p key={index}>
-                <span className="bold">{pinyinify(element.pinyin)}</span>
-                &nbsp;
-                <span className="italics grey-text">{this.formatDef(element.definition)}</span>
-              </p>
-            )
-        })
+              return (
+                  <p key={index}>
+                    <span className="bold">{pinyinify(element.pinyin)}</span>
+                    &nbsp;
+                    <span className="italics grey-text">{this.formatDef(element.definition)}</span>
+                  </p>
+                )
+            })
       )
     } else {
       return `No pronunciations found`;
