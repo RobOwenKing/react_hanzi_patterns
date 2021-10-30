@@ -120,7 +120,7 @@ const getEtymology = (char) => {
            A single Chinese character with position freq on a frequency list
   Used in: getFrequencyNeighbours(), getFrequencyDots()
 */
-const getCharWithFrequency = (freq) => {
+export const getCharWithFrequency = (freq) => {
   if (FREQUENCY_MEMO[freq]) { return FREQUENCY_MEMO[freq]; }
 
   const char = hanzi.getCharacterInFrequencyListByPosition(freq)?.character;
