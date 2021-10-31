@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react_hanzi_patterns/static/css/main.a0609d8a.chunk.css",
+    "main.js": "/react_hanzi_patterns/static/js/main.29403a3c.chunk.js",
+    "main.js.map": "/react_hanzi_patterns/static/js/main.29403a3c.chunk.js.map",
+    "runtime-main.js": "/react_hanzi_patterns/static/js/runtime-main.afeda6d8.js",
+    "runtime-main.js.map": "/react_hanzi_patterns/static/js/runtime-main.afeda6d8.js.map",
+    "static/js/2.b1abec79.chunk.js": "/react_hanzi_patterns/static/js/2.b1abec79.chunk.js",
+    "static/js/2.b1abec79.chunk.js.map": "/react_hanzi_patterns/static/js/2.b1abec79.chunk.js.map",
+    "static/js/3.bf3df2ce.chunk.js": "/react_hanzi_patterns/static/js/3.bf3df2ce.chunk.js",
+    "static/js/3.bf3df2ce.chunk.js.map": "/react_hanzi_patterns/static/js/3.bf3df2ce.chunk.js.map",
+    "index.html": "/react_hanzi_patterns/index.html",
+    "static/css/main.a0609d8a.chunk.css.map": "/react_hanzi_patterns/static/css/main.a0609d8a.chunk.css.map",
+    "static/js/2.b1abec79.chunk.js.LICENSE.txt": "/react_hanzi_patterns/static/js/2.b1abec79.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.afeda6d8.js",
+    "static/js/2.b1abec79.chunk.js",
+    "static/css/main.a0609d8a.chunk.css",
+    "static/js/main.29403a3c.chunk.js"
+  ]
+}
