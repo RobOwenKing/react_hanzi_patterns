@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+.container {
+  margin: 32px;
+
+  display: grid;
+  grid-template-columns: auto 32px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  margin: 0px auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input {
+  font-size: 1.6em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+input[type="text"] {
+  width: 240px;
 }
 
-.App-link {
-  color: #61dafb;
+h3 {
+  margin-bottom: 0.2em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.char-large {
+  font-size: 5em;
+}
+
+.char-mid {
+  font-size: 2em;
+}
+
+.show-more {
+  margin-top: 0.4em;
+}
+
+.margin-l-r {
+  margin: 0px 6px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italics {
+  font-style: italic;
+}
+
+.grey-text {
+  color: #333;
+}
+
+.light-grey-text {
+  color: #666;
+}
+
+[tabindex] {
+  cursor: pointer;
+}
+
+.small-character rt {
+  font-size: 0.7em;
+}
+
+.search-history {
+  writing-mode: vertical-lr;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: 1em;
+}
+
+footer small {
+  font-size: 0.8em;
+  color: #666;
+  margin-top: 0.4em;
+  display: block;
+}
+
+ruby {
+  margin: auto 2px;
+}
+
+ruby span {
+  display: ruby-base;
 }
