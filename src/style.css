@@ -58,7 +58,7 @@ h3 {
 }
 
 .small-character rt {
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .search-history {
@@ -78,6 +78,10 @@ footer small {
   color: #666;
   margin-top: 0.4em;
   display: block;
+}
+
+ruby {
+  margin: auto 2px;
 }
 
 ruby span {
