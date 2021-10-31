@@ -79,3 +79,7 @@ footer small {
   margin-top: 0.4em;
   display: block;
 }
+
+ruby span {
+  display: ruby-base;
+}
