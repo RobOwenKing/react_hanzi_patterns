@@ -56,8 +56,12 @@ const getAppearsInChars = (char) => {
   const chars = hanzi.getCharactersWithComponent(char);
   // If no characters are found with the given component
   // the above function returns string "X not found"
-  const returnable = Array.isArray(chars) ? sortByFrequency(chars) : null;
-  return returnable;
+  if (!Array.isArray(chars)) { return null; }
+
+  const returnable = sortByFrequency(chars);
+  return returnable.filter((char, id, arr) => {
+      return arr.findIndex(first => first === char) === id
+    });;
 };
 
 /*
