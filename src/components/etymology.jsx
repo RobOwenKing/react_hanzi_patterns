@@ -113,7 +113,7 @@ class Etymology extends Component {
           +
           {this.formatPhonetic(etymology.phonetic)}
         </div>
-        NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.
+        <p className="light-grey-text">NB: The pronunciations given are from modern Mandarin, not those at the time the character was created.</p>
       </div>
     );
   };
